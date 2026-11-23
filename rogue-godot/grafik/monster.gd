@@ -883,6 +883,11 @@ func _masse() -> Dictionary:
 ## Bild auf ein senkrechtes Rechteck legen, das sich immer zur Kamera dreht (nur um die Hochachse).
 ## Durchsichtige Stellen werden ausgeschnitten.
 func _bild_setzen(bild: MeshInstance3D, c: String, tex: Texture2D, name := "") -> void:
+	if tex == null:
+		# Kein Standbild (im Paket liegen nur die 3D-Modelle): Aufsteller unsichtbar, die 3D-Figur kommt trotzdem
+		bild.visible = false
+		bild.set_meta("tex", null)
+		return
 	var meter: float = _meter(c)
 	var flieger := schwebt(c)
 	var faktor := 1.0
