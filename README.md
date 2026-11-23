@@ -30,6 +30,17 @@ It could become much more, for example animated monsters fighting in different p
 a bit like the holographic chess in Star Wars. I don't have the time or resources for that,
 so **forks and pull requests are very welcome**.
 
+## Help wanted
+
+Ideas I would love to see, and can't do alone:
+
+- **Animated monsters** that move, attack and react, instead of standing still.
+- **Fight scenes** played out between you and the monster, a bit like the holographic chess in Star Wars.
+- **Hack (1982)**: porting the third game into the same 3D view.
+- Better VR comfort, more textures, sounds, translations.
+
+Fork the repository, build something, and open a pull request. Questions and ideas are welcome as issues.
+
 ## Repository layout
 
 | Folder | Content |
