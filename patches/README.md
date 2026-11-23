@@ -26,7 +26,7 @@ git -C rogue-src am ../patches/rogue/*.patch
 
 - Quelle: https://github.com/NetHack/NetHack.git
 - Tag: `NetHack-3.6.7_Released` (Commit `ed600d9f0f3c37677418f0150f59363ca641f3dc`)
-- Unser Commit: `6d2b169` – Sonde `src/wah_sonde.c` (+ Aufruf in `src/allmain.c`) für die 3D-/VR-Ansicht
+- Unsere Commits: `6d2b169` – Sonde `src/wah_sonde.c` (+ Aufruf in `src/allmain.c`) für die 3D-/VR-Ansicht; `2d4eea4` – Änderungshinweise mit Datum (NetHack-Lizenz §2a, 23.11.2026)
 - Erzeugt mit: `git -C nethack-src format-patch NetHack-3.6.7_Released -o patches/nethack`
 
 Anwenden:

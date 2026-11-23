@@ -1,0 +1,39 @@
+From 2d4eea40de6d352a916b791d6fb74f0f2d88f721 Mon Sep 17 00:00:00 2001
+From: Quameda <50173018+Quameda@users.noreply.github.com>
+Date: Mon, 23 Nov 2026 06:20:57 +0100
+Subject: [PATCH 2/2] We Are Hack: Hinweis auf Aenderung mit Datum
+ (NetHack-Lizenz 2a)
+
+---
+ src/allmain.c   | 2 ++
+ src/wah_sonde.c | 4 ++++
+ 2 files changed, 6 insertions(+)
+
+diff --git a/src/allmain.c b/src/allmain.c
+index 0812dde..8d23e95 100644
+--- a/src/allmain.c
++++ b/src/allmain.c
+@@ -2,6 +2,8 @@
+ /* Copyright (c) Stichting Mathematisch Centrum, Amsterdam, 1985. */
+ /*-Copyright (c) Robert Patrick Rankin, 2012. */
+ /* NetHack may be freely redistributed.  See license for details. */
++/* Modified 2026-11-22 for We Are Hack (3D/VR view): added call to wah_sonde().
++ * This is not the version distributed by the NetHack DevTeam. */
+ 
+ /* various code that was replicated in *main.c */
+ 
+diff --git a/src/wah_sonde.c b/src/wah_sonde.c
+index 00f3b3c..7fe5f1b 100644
+--- a/src/wah_sonde.c
++++ b/src/wah_sonde.c
+@@ -1,3 +1,7 @@
++/* We Are Hack, 2026-11-22, distributed under the NetHack General Public License, see dat/license.
++ * Added to NetHack 3.6.7 for the We Are Hack 3D/VR view; not part of the version distributed by
++ * the NetHack DevTeam. */
++
+ /* We Are Hack: Sonde fuer die 3D-/VR-Ansicht ("NetHack (1987) VR").
+  *
+  * Schreibt vor jedem Befehl des Spielers die Werte von Spieler, Monstern und
+-- 
+2.49.0.windows.1
+

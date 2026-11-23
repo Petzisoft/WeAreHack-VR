@@ -1,7 +1,7 @@
 From 6d2b1690baa6deca31bfc08c48fe4f2c99767383 Mon Sep 17 00:00:00 2001
 From: We Are Hack <wearehack@localhost>
 Date: Sun, 22 Nov 2026 08:39:03 +0100
-Subject: [PATCH] We Are Hack: Sonde (wah_sonde.c) fuer die 3D-/VR-Ansicht
+Subject: [PATCH 1/2] We Are Hack: Sonde (wah_sonde.c) fuer die 3D-/VR-Ansicht
 
 Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>
 ---

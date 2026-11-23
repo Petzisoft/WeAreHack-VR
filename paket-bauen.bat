@@ -37,7 +37,7 @@ rem Texturen in den KI-Modellen als JPEG statt PNG (nur im Paket), sonst wird da
 python werkzeuge\glb_verkleinern.py "%Z%\nethack-monster\3d" "%Z%\hack-monster\3d"
 if errorlevel 1 echo FEHLER: glb_verkleinern.py (Python mit Pillow noetig) & pause & exit /b 1
 copy /y lizenzen\*.txt "%Z%\lizenzen\" >nul
-copy /y nethack-spiel\license "%Z%\lizenzen\NetHack-Lizenz.txt" >nul
+rem NetHack-Lizenz.txt liegt in lizenzen\ (oben mitkopiert); englische Uebersicht THIRD_PARTY_NOTICES.md kommt aus paket-vorlage\
 rem Quelltext zum Weitergeben (NetHack-Lizenz verlangt ihn): NetHack 3.6.7 und Rogue 5.4.4 mit unseren Aenderungen,
 rem genau der committete Stand (git archive, keine Bau-Ausgaben), dazu die Aenderungen einzeln als Patch
 mkdir "%Z%\quelltext\nethack" "%Z%\quelltext\rogue" "%Z%\quelltext\patches"
