@@ -49,6 +49,16 @@ Ideas I would love to see, and can't do alone:
 
 Fork the repository, build something, and open a pull request. Questions and ideas are welcome as issues.
 
+## How to build
+
+You need Windows, [Godot 4.7](https://godotengine.org/download) and, for the games themselves, MSYS2 (UCRT64) with gcc.
+
+1. **NetHack:** get the NetHack 3.6.7 source, apply `patches/nethack/*.patch`, build with `nethack-bauen.sh` (MSYS2) into `nethack-spiel/`.
+2. **Rogue:** get the Rogue 5.4.4 source ([Davidslv/rogue](https://github.com/Davidslv/rogue)), apply `patches/rogue/*.patch`, build with `rogue-bauen.bat`. Build the bridge `bruecke/rogue-bruecke.c` with gcc.
+3. **3D view:** open `rogue-godot/project.godot` in Godot, or start a game with `rogue-3d-starten.bat` / `nethack-3d-starten.bat` (VR: `*-vr-starten.bat`).
+4. **3D monsters:** the models are not in this repository. Copy the folders `nethack-monster/3d`, `hack-monster/3d` and `rogue-godot/modelle` from an installed copy of We Are Hack.
+5. **Installer:** `paket-bauen.bat`, then NSIS with `setup.nsi`.
+
 ## Repository layout
 
 | Folder | Content |
