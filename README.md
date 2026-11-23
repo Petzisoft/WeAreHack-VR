@@ -27,7 +27,7 @@ you can walk through, on a monitor or in VR with controller support.
 ## Download
 
 Get the Windows installer from the [Releases](../../releases) page.
-It contains everything: Godot, Rogue, NetHack, all 3D monsters and the licence texts.
+It contains everything: Godot, Rogue, Hack, NetHack, all 3D monsters and the licence texts.
 
 ## Status and ideas
 
@@ -44,7 +44,6 @@ Ideas I would love to see, and can't do alone:
 
 - **Animated monsters** that move, attack and react, instead of standing still.
 - **Fight scenes** played out between you and the monster, a bit like the holographic chess in Star Wars.
-- **Hack (1982)**: porting the third game into the same 3D view.
 - Better VR comfort, more textures, sounds, translations.
 
 Fork the repository, build something, and open a pull request. Questions and ideas are welcome as issues.
@@ -54,10 +53,11 @@ Fork the repository, build something, and open a pull request. Questions and ide
 You need Windows, [Godot 4.7](https://godotengine.org/download) and, for the games themselves, MSYS2 (UCRT64) with gcc.
 
 1. **NetHack:** get the NetHack 3.6.7 source, apply `patches/nethack/*.patch`, build with `nethack-bauen.sh` (MSYS2) into `nethack-spiel/`.
-2. **Rogue:** get the Rogue 5.4.4 source ([Davidslv/rogue](https://github.com/Davidslv/rogue)), apply `patches/rogue/*.patch`, build with `rogue-bauen.bat`. Build the bridge `bruecke/rogue-bruecke.c` with gcc.
-3. **3D view:** open `rogue-godot/project.godot` in Godot, or start a game with `rogue-3d-starten.bat` / `nethack-3d-starten.bat` (VR: `*-vr-starten.bat`).
-4. **3D monsters:** the models are not in this repository. Copy the folders `nethack-monster/3d`, `hack-monster/3d` and `rogue-godot/modelle` from an installed copy of We Are Hack.
-5. **Installer:** `paket-bauen.bat`, then NSIS with `setup.nsi`.
+2. **Hack:** get Hack 1.0.3 (NetBSD `src/games/hack`), apply `patches/hack/*.patch`, build with `hack-bauen.bat` into `hack-spiel/`.
+3. **Rogue:** get the Rogue 5.4.4 source ([Davidslv/rogue](https://github.com/Davidslv/rogue)), apply `patches/rogue/*.patch`, build with `rogue-bauen.bat`. Build the bridge `bruecke/rogue-bruecke.c` with gcc.
+4. **3D view:** open `rogue-godot/project.godot` in Godot, or start a game with `rogue-3d-starten.bat` / `hack-3d-starten.bat` / `nethack-3d-starten.bat` (VR: `*-vr-starten.bat`).
+5. **3D monsters:** the models are not in this repository. Copy the folders `nethack-monster/3d`, `hack-monster/3d` and `rogue-godot/modelle` from an installed copy of We Are Hack.
+6. **Installer:** `paket-bauen.bat`, then NSIS with `setup.nsi`.
 
 ## Repository layout
 
@@ -65,7 +65,7 @@ You need Windows, [Godot 4.7](https://godotengine.org/download) and, for the gam
 |---|---|
 | `rogue-godot/` | Godot 4.7 project: 3D/VR view, start menu, monster gallery |
 | `bruecke/` | Bridge between Rogue and Godot (C) |
-| `patches/` | Our changes to Rogue and to NetHack 3.6.7 (the probe `wah_sonde.c`) |
+| `patches/` | Our changes to Rogue, Hack 1.0.3 (Windows port and probe) and NetHack 3.6.7 (the probe `wah_sonde.c`) |
 | `nethack-monster/`, `hack-monster/` | Monster name mapping and the prompts used to create the images |
 | `lizenzen/` | Licences of all third-party parts |
 | `setup.nsi`, `paket-bauen.bat` | Building the Windows installer (NSIS) |
@@ -78,7 +78,7 @@ Most file and variable names are in German, sorry about that.
 ## Licences
 
 - Our own code: MIT, see [LICENSE](LICENSE).
-- Rogue: BSD-style licence. NetHack: NetHack General Public License; this is a **modified
+- Rogue and Hack: BSD-style licences. NetHack: NetHack General Public License; this is a **modified
   version of NetHack**, our NetHack changes stay under the NetHack licence, and the installer
   contains the full NetHack source. NetHack is © the NetHack DevTeam; this is a fan project,
   not an official release.

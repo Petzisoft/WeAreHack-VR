@@ -1,4 +1,4 @@
-; Setup fuer "We Are Hack" (Startmenue: Rogue (1980), Hack (1982) kommt spaeter, NetHack (1987)).
+; Setup fuer "We Are Hack" (Startmenue: Rogue (1980), Hack (1982), NetHack (1987)).
 ; Bauen: erst paket-bauen.bat, dann C:\msys64\ucrt64\bin\makensis.exe setup.nsi
 ; Entfernt beim Installieren die fruehere Installation "Rogue (1980) VR" (Ordner Rogue1980VR).
 ; Spielstaende (Speicherplaetze) liegen im Benutzerordner von Godot und bleiben erhalten.
@@ -33,6 +33,7 @@ Section
   RMDir /r "${ALT_DIR}"
   SetOutPath "$INSTDIR"
   File /r "paket\WeAreHack\*.*"
+  CreateDirectory "$INSTDIR\hack-spiel\save"
   SetOutPath "$INSTDIR"
   CreateShortcut "$DESKTOP\We Are Hack.lnk" "${GODOT}" "${MONITOR}"
   CreateShortcut "$DESKTOP\We Are Hack VR.lnk" "${GODOT}" "${VR}"

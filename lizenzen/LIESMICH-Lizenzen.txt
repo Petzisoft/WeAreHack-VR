@@ -12,8 +12,12 @@ NetHack.exe          NetHack 3.6, NetHack General Public License -> NetHack-Lize
                      erweitert. Vollstaendiger Quelltext: quelltext\nethack, Aenderungen: quelltext\patches
                      Dies ist eine veränderte Fassung von NetHack, nicht die Fassung des NetHack DevTeams.
                      Die geaenderten Dateien tragen einen Hinweis mit Datum (NetHack-Lizenz 2a).
+hack.exe             Hack 1.0.3, BSD-artige Lizenz  -> Hack-Lizenz.txt
+(hack-spiel\)        (c) 1982 Jay Fenlason, (c) 1985 Stichting Centrum voor Wiskunde en Informatica
+                     Quelle: NetBSD src/games/hack, fuer Windows angepasst und um die Werte-Meldung
+                     an die 3D-Ansicht erweitert. Quelltext: quelltext\hack, Aenderungen: quelltext\patches\hack
 godot\...exe         Godot Engine 4.7.2, MIT        -> Godot-Lizenz.txt
 rogue-bruecke.exe,   eigener Code des Projekts
 rogue-godot\         "We Are Hack"
 
-Die Namen der Rogue- und NetHack-Autoren werden nicht zur Werbung fuer dieses Projekt verwendet.
+Die Namen der Rogue-, Hack- und NetHack-Autoren werden nicht zur Werbung fuer dieses Projekt verwendet.

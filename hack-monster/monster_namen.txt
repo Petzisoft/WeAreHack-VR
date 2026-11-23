@@ -1,0 +1,68 @@
+# Hack (1982): englischer Name (wie in hack-src/hack.monst.c, hack.dog.c, hack.vault.c)|Quelle (hack, rogue, nethack)|Schlüssel|Größe in Metern
+# hack = hack-monster/3d (von Peter abgenommen), rogue = Rogue-Modell (Buchstabe), nethack = Ersatz aus nethack-monster/3d,
+# wo es weder ein Hack- noch ein Rogue-Modell gibt (wumpus, ghost, giant eel, guard, mail daemon).
+# Größen wie in nethack-monster/monster_namen.txt; die abgenommenen Größen/Kippwinkel (GROESSE_PETER, KIPPEN) gelten vorrangig.
+bat|rogue|B|0.5
+gnome|hack|G_Gnom|1.0
+hobgoblin|rogue|H|1.8
+jackal|hack|J_Schakal|1.0
+kobold|rogue|L|1.0
+leprechaun|rogue|L|0.5
+giant rat|hack|r_Riesenratte|0.5
+acid blob|hack|a_Saeureklumpen|0.5
+floating eye|hack|E_SchwebendesAuge|1.0
+homunculus|hack|h_Homunkulus|0.5
+imp|hack|i_Imp|0.5
+orc|rogue|O|1.8
+yellow light|hack|y_GelbesLicht|1.0
+zombie|rogue|Z|1.8
+giant ant|hack|A_Riesenameise|0.5
+fog cloud|hack|f_Nebelwolke|3.6
+nymph|rogue|N|1.8
+piercer|hack|p_Durchbohrer|1.0
+quasit|hack|Q_Quasit|1.0
+quivering blob|hack|q_Zitterklumpen|1.0
+violet fungi|hack|v_VioletterPilz|1.0
+giant beetle|hack|b_Riesenkaefer|2.6
+centaur|rogue|C|2.6
+cockatrice|hack|c_Cockatrice|1.0
+gelatinous cube|hack|g_Gallertwuerfel|2.6
+jaguar|hack|j_Jaguar|2.6
+killer bee|hack|k_Killerbiene|0.5
+snake|rogue|S|1.0
+freezing sphere|hack|F_Frostkugel|1.0
+owlbear|hack|o_Eulenbaer|2.6
+rust monster|hack|R_Rostmonster|1.8
+scorpion|hack|s_Skorpion|1.0
+tengu|hack|t_Tengu|1.0
+wraith|rogue|W|1.8
+wumpus|nethack|q_Wumpus|2.6
+long worm|hack|w_Langwurm|4.6
+large dog|hack|d3_GrosserHund|1.8
+leocrotta|hack|l_Leocrotta|2.6
+mimic|rogue|X|1.8
+troll|rogue|T|2.6
+unicorn|rogue|U|2.6
+yeti|rogue|Y|2.6
+stalker|hack|I_Pirscher|2.6
+umber hulk|hack|U_UmberHulk|2.6
+vampire|rogue|V|1.8
+xorn|hack|X_Xorn|1.8
+xan|hack|x_Xan|0.5
+zruty|hack|z_Zruty|2.6
+chameleon|hack|Doppelpunkt_Chamaeleon|0.5
+dragon|rogue|D|2.6
+ettin|hack|e_Ettin|3.6
+lurker above|hack|Tilde_LauererVonOben|3.6
+nurse|hack|n_Krankenschwester|1.8
+trapper|hack|Komma_Fallensteller|3.6
+purple worm|hack|P_Purpurwurm|4.6
+demon|hack|Und_Daemon|1.8
+minotaur|hack|m_Minotaurus|2.6
+shopkeeper|hack|At_Ladenbesitzer|1.8
+ghost|nethack|X_Geist|1.8
+mail daemon|nethack|Und_Postdaemon|1.8
+giant eel|nethack|Tilde_Riesenaal|3.6
+little dog|hack|d1_KleinerHund|1.0
+dog|hack|d2_Hund|1.8
+guard|nethack|At_Wache|1.8

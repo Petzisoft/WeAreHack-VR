@@ -515,6 +515,7 @@ func befehlsmenue() -> void:
 		["Gehen ohne aufzuheben (dann Richtung)", "m"],
 		[tr("Dauerlaufen beim Halten: ") + tr("AN" if dauerlaufen else "AUS"), "#dauer"],
 		[tr("WASD zum Laufen (F5): ") + tr("AN" if wasd_modus else "AUS"), "#wasd"],
+		[tr("Gegenstandsnamen: ") + tr("AN" if Spielstand.gegenstandsnamen() else "AUS"), "#namen"],
 		["Karte oben rechts ein/aus", "#karte"],
 		["Original-Textbild ein/aus", "#text"],
 		["Hilfe anzeigen", "#hilfe"],
@@ -550,6 +551,7 @@ func _gewaehlt() -> void:
 				"#dauer": dauerlaufen = not dauerlaufen
 				"#wasd": wasd_umschalten()
 				"#karte": d.karte_umschalten()
+				"#namen": Spielstand.gegenstandsnamen_umschalten(get_tree())
 				"#text": d.textbild_umschalten()
 				"#hilfe": d.anzeigen.hilfe_kasten.visible = true
 				"#original": Spielstand.original_umschalten()
@@ -559,7 +561,7 @@ func _gewaehlt() -> void:
 					for c in str(w):
 						d.taste_senden(c.unicode_at(0))
 		"gegenstand", "menue":
-			if not Spiel.ist_nethack() and not _frage_sichtbar():
+			if not Spiel.mit_sonde() and not _frage_sichtbar():
 				d.taste_senden(ord(" "))   # Rogues Liste steht noch: erst schließen ...
 			d.taste_senden(ord(str(w)))   # ... dann den Buchstaben schicken (NetHack-Menü: Buchstabe wählt direkt)
 			if Spiel.ist_nethack() and _wahl_art == "menue":
@@ -596,7 +598,7 @@ func _gewaehlt() -> void:
 ## Inventar oder Liste des Spiels schließen (Rogue: Leertaste, NetHack: Esc).
 func _textseite_schliessen() -> void:
 	if d.textseite:
-		d.taste_senden(27 if Spiel.ist_nethack() else 32)
+		d.taste_senden(27 if Spiel.mit_sonde() else 32)
 
 
 ## Befehle, die zu einem Gegenstand passen (nach Wörtern im Namen), die übrigen dahinter.
@@ -605,7 +607,7 @@ func _aktionen_fuer(name: String) -> Array:
 	var alle := [["Essen", "e"], ["Trinken", "q"], ["Lesen", "r"], ["In die Hand nehmen (Waffe)", "w"],
 			["Anziehen (Rüstung)", "W"], ["Ausziehen", "T"], ["Anstecken (Ring, Amulett)", "P"], ["Abnehmen", "R"],
 			["Werfen", "t"], ["Zappen (Zauberstab)", "z"], ["Ablegen", "d"]]
-	if Spiel.ist_nethack():
+	if Spiel.mit_sonde():
 		alle.insert(3, ["Anwenden (Werkzeug)", "a"])
 	var passt := []
 	var wort := {"e": ["food", "ration", "apple", "egg", "corpse", "melon", "orange", "banana", "carrot", "pear", "cookie", "pancake", "tin", "meat", "slime mold", "lembas", "cram", "candy", "garlic", "jelly", "kelp", "pie"],
@@ -630,14 +632,14 @@ func _frage_sichtbar() -> bool:
 
 ## Fragt das Spiel nach einem Gegenstand? Rogue: "... (* for list):", NetHack: "... [abc or ?*]".
 static func liste_frage(m: String) -> bool:
-	if Spiel.ist_nethack():
+	if Spiel.mit_sonde():
 		return "?*]" in m
 	return "(* for list)" in m
 
 
 ## Taste, mit der das Spiel die passenden Gegenstände auflistet (Rogue *, NetHack ?).
 static func _liste_taste() -> int:
-	return ord("?") if Spiel.ist_nethack() else ord("*")
+	return ord("?") if Spiel.mit_sonde() else ord("*")
 
 
 ## NetHack: Auswahlmenü auf dem Bild (Figur wählen, Aufheben ...), aber nicht das Inventar (i).
@@ -656,7 +658,7 @@ func _abbrechen() -> void:
 		"inventar", "aktion":
 			_textseite_schliessen()
 		"gegenstand", "menue":
-			if not Spiel.ist_nethack() and not _frage_sichtbar():
+			if not Spiel.mit_sonde() and not _frage_sichtbar():
 				d.taste_senden(ord(" "))
 			d.taste_senden(27)
 		"janein":
@@ -715,7 +717,7 @@ func _bild() -> void:
 					_wahl_art = "menue"
 					_wahl_zustand = "wahl"
 					_liste_zeigen(_wahl_frage, liste)
-			elif Spiel.ist_nethack() and zuletzt_controller and RegEx.create_from_string("\\[yn[aq]*\\]").search(m):
+			elif Spiel.mit_sonde() and zuletzt_controller and RegEx.create_from_string("\\[yn[aq]*\\]").search(m):
 				_wahl_art = "janein"
 				_wahl_zustand = "wahl"
 				auswahl.zeigen(m.get_slice("[", 0).strip_edges(), [["Ja (y)", "y"], ["Nein (n)", "n"]])
@@ -751,7 +753,7 @@ func _liste_zu() -> void:
 func _eintraege_lesen() -> Array:
 	var liste := []
 	var re := RegEx.create_from_string("([a-z])\\) (.+)")
-	if Spiel.ist_nethack():
+	if Spiel.mit_sonde():
 		re = RegEx.create_from_string("(?:^|\\s)([a-zA-Z]) - (.+)")   # NetHack-Menüs: "a - Archeologist"
 	for z in d.rogue.raster:
 		var t: String = z.replace("--More--", "").replace("--Press space to continue--", "")

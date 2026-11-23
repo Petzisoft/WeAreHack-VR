@@ -1,0 +1,192 @@
+From 663286f4a9a6d54d137031abc2f003c1b91783ba Mon Sep 17 00:00:00 2001
+From: Quameda <50173018+Quameda@users.noreply.github.com>
+Date: Mon, 23 Nov 2026 06:48:37 +0100
+Subject: [PATCH 2/2] We Are Hack: Sonde wah/wah_sonde.c
+ (%TEMP%\wearehack_hack.txt), ein Aufruf in hack.main.c
+
+---
+ hack.main.c     |   5 ++
+ wah/wah_sonde.c | 148 ++++++++++++++++++++++++++++++++++++++++++++++++
+ 2 files changed, 153 insertions(+)
+ create mode 100644 wah/wah_sonde.c
+
+diff --git a/hack.main.c b/hack.main.c
+index 5083a36..7a77aeb 100644
+--- a/hack.main.c
++++ b/hack.main.c
+@@ -61,6 +61,10 @@
+  * ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+  */
+ 
++/* Changed for We Are Hack, 2026-11-23: added one call to wah_sonde() (3D/VR view) before each
++ * player command. This is not the original Hack 1.0.3. */
++void wah_sonde(void);
++
+ #include <sys/cdefs.h>
+ #ifndef lint
+ __RCSID("$NetBSD: hack.main.c,v 1.17 2011/08/06 20:42:43 dholland Exp $");
+@@ -471,6 +475,7 @@ not_recovered:
+ #ifdef MAIL
+ 			ckmailstatus();
+ #endif
++			wah_sonde();	/* We Are Hack: values for the 3D/VR view */
+ 			rhack(NULL);
+ 		}
+ 		if (multi && multi % 7 == 0)
+diff --git a/wah/wah_sonde.c b/wah/wah_sonde.c
+new file mode 100644
+index 0000000..6f27fd9
+--- /dev/null
++++ b/wah/wah_sonde.c
+@@ -0,0 +1,148 @@
++/* We Are Hack, 2026-11-23: probe for the 3D/VR view, added to Hack 1.0.3 (NetBSD src/games/hack).
++ * Distributed under the same licence as Hack (see COPYRIGHT). Not part of the original Hack.
++ *
++ * Sonde fuer "Hack (1982)" in We Are Hack: schreibt vor jedem Befehl des Spielers die Werte von
++ * Spieler, Monstern und Gegenstaenden dieser Ebene nach %TEMP%\wearehack_hack.txt.
++ * Gleiches Format wie die NetHack-Sonde (nethack-src/src/wah_sonde.c), damit die Godot-Seite
++ * (nethack_uebersetzer.gd) beide Spiele gleich lesen kann. Sie liest nur, am Spiel aendert sich nichts.
++ * Koordinaten: Bildschirmspalte/-zeile der Konsole (Spalte = x-1, Zeile = y+1), wie Hack sie zeichnet.
++ *
++ * Zeilen:
++ *   ebene <dlevel> zweig 0 held 0 hp <aktuell> <max> zug <moves>
++ *   spieler <x> <y> stufe <lvl> erf <exp> gold <n> rk <ac> st <str> ge 0 ko 0 in 0 we 0 ch 0 hunger <uhs> energie 0 0
++ *   ort dunkel <0|1>
++ *   ausruestung waffe <0 keine|1 nah|2 Fernwaffe> <name>
++ *   karte <zeile> <79 Zeichen>   ' ' unbekannt  - Wand  + Tuer/Durchgang  . Boden  # Gang  < > Treppe  } Wasser  ^ Falle
++ *   ding <x> <y> <klassenzeichen> <gesehen 0|1> <name>
++ *   je Monster: <x> <y> <zeichen> <lp> <max_lp> <flags 8192=wach> <tarnung> <nr> <zahm> <friedlich> <sichtbar> <name>
++ */
++#include <stdarg.h>
++#include "hack.h"
++#include "extern.h"
++#include "def.trap.h"
++
++extern const struct permonst mons[];
++
++static char wah_buf[65536];
++static int wah_len;
++
++static void
++wah_put(const char *fmt, ...)
++{
++	va_list ap;
++	int n, frei = (int) sizeof wah_buf - wah_len;
++	if (frei < 300)
++		return;
++	va_start(ap, fmt);
++	n = vsnprintf(wah_buf + wah_len, (size_t) frei, fmt, ap);
++	va_end(ap);
++	if (n > 0 && n < frei)
++		wah_len += n;
++}
++
++static void
++wah_name(char *dst, const char *src, int n)
++{
++	int i;
++	for (i = 0; src && src[i] && i < n - 1; i++)
++		dst[i] = (src[i] == ' ') ? '_' : src[i];
++	dst[i] = '\0';
++	if (!i)
++		strcpy(dst, "?");
++}
++
++static char
++wah_feld(int x, int y)
++{
++	struct rm *r = &levl[x][y];
++	if (!r->seen)
++		return ' ';
++	switch (r->typ) {
++	case HWALL: case VWALL: case SDOOR:
++		return '-';
++	case LDOOR: case DOOR:
++		return '+';
++	case POOL:
++		return '}';
++	case CORR:
++		return '#';
++	case ROOM:
++		return '.';
++	case STAIRS:
++		return (x == xdnstair && y == ydnstair) ? '>' : '<';
++	default:
++		return ' ';
++	}
++}
++
++void
++wah_sonde(void)
++{
++	static char pfad[512] = "";
++	char nm[64];
++	char karte[ROWNO][COLNO + 1];
++	struct monst *mtmp;
++	struct obj *otmp;
++	struct trap *t;
++	FILE *f;
++	int x, y;
++
++	wah_len = 0;
++	if (!pfad[0]) {
++		const char *tmp = getenv("TEMP");
++		snprintf(pfad, sizeof pfad, "%.480s\\wearehack_hack.txt", tmp ? tmp : ".");
++	}
++
++	wah_put("ebene %d zweig 0 held 0 hp %d %d zug %ld\n", (int) dlevel, (int) u.uhp, (int) u.uhpmax, moves);
++	wah_put("spieler %d %d stufe %d erf %ld gold %ld rk %d st %d ge 0 ko 0 in 0 we 0 ch 0 hunger %d energie 0 0\n",
++	    u.ux - 1, u.uy + 1, (int) u.ulevel, u.uexp, u.ugold, (int) u.uac, (int) u.ustr, (int) u.uhs);
++	wah_put("ort dunkel %d\n", levl[u.ux][u.uy].lit ? 0 : 1);
++	if (uwep) {
++		const char *n = objects[uwep->otyp].oc_name;
++		wah_name(nm, n, (int) sizeof nm);
++		wah_put("ausruestung waffe %d %s\n",
++		    (n && (strstr(n, "bow") || strstr(n, "sling"))) ? 2 : 1, nm);
++	} else {
++		wah_put("ausruestung waffe 0 keine\n");
++	}
++
++	for (y = 0; y < ROWNO; y++) {
++		for (x = 1; x < COLNO; x++)
++			karte[y][x - 1] = wah_feld(x, y);
++		karte[y][COLNO - 1] = '\0';
++	}
++	for (t = ftrap; t; t = t->ntrap)
++		if (t->tseen && t->tx >= 1 && t->tx < COLNO && t->ty >= 0 && t->ty < ROWNO)
++			karte[t->ty][t->tx - 1] = '^';
++	for (y = 0; y < ROWNO; y++)
++		wah_put("karte %d %s\n", y + 1, karte[y]);
++
++	for (otmp = fobj; otmp; otmp = otmp->nobj) {
++		wah_name(nm, objects[otmp->otyp].oc_name, (int) sizeof nm);
++		wah_put("ding %d %d %c %d %s\n", otmp->ox - 1, otmp->oy + 1, otmp->olet,
++		    levl[otmp->ox][otmp->oy].scrsym == otmp->olet ? 1 : 0, nm);
++	}
++
++	for (mtmp = fmon; mtmp; mtmp = mtmp->nmon) {
++		int wach, tarnung = 0, nr;
++		if (!mtmp->mx || mtmp->mhp <= 0)
++			continue;
++		wach = (!mtmp->msleep && !mtmp->mfroz) ? 8192 : 0;
++		if (mtmp->mimic)
++			tarnung = (mtmp->mappearance == '+') ? 1 : 2;
++		nr = (int) (mtmp->data - mons);   /* Hund, Haendler, Waechter stehen ausserhalb von mons[]: -1 */
++		if (nr < 0 || nr > CMNUM + 1)
++			nr = -1;
++		wah_name(nm, mtmp->data->mname, (int) sizeof nm);
++		wah_put("%d %d %c %d %d %d %d %d %d %d %d %s\n",
++		    mtmp->mx - 1, mtmp->my + 1, mtmp->data->mlet, (int) mtmp->mhp, (int) mtmp->mhpmax, wach, tarnung,
++		    nr, (int) mtmp->mtame, mtmp->mpeaceful ? 1 : 0,
++		    canseemon(mtmp) ? 1 : 0, nm);
++	}
++
++	f = fopen(pfad, "wb");
++	if (f) {
++		fwrite(wah_buf, 1, (size_t) wah_len, f);
++		fclose(f);
++	}
++}
+-- 
+2.49.0.windows.1
+

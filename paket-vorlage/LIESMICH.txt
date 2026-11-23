@@ -1,9 +1,9 @@
-WE ARE HACK - Rogue (1980) und NetHack (1987) als 3D- und VR-Dungeon (Vorschau)
-================================================================================
+WE ARE HACK - Rogue (1980), Hack (1982) und NetHack (1987) als 3D- und VR-Dungeon
+===================================================================================
 
 Beim Start waehlt man im Menue das Spiel:
   Rogue (1980)    von Michael Toy, Ken Arnold und Glenn Wichman
-  Hack (1982)     kommt bald
+  Hack (1982)     von Jay Fenlason und Andries Brouwer
   NetHack (1987)  von Mike Stephenson und dem NetHack DevTeam
 Gespielt wird in Ego-Perspektive, am Bildschirm und in VR. Die Spielregeln sind die
 der Originale. Die Spiele melden nur ihre Werte an die 3D-Ansicht.
@@ -47,6 +47,7 @@ STEUERUNG (F1 im Spiel zeigt die Hilfe)
 LIZENZEN
   Siehe Ordner "lizenzen". Rogue steht unter BSD-Lizenz, NetHack unter der
   NetHack General Public License, Godot unter MIT-Lizenz, PDCurses ist gemeinfrei.
+  Hack steht unter einer BSD-artigen Lizenz.
   Texturen, Gegenstaende, Toene und Musik sind CC0 (gemeinfrei). Die KI-Monster
   duerfen weitergegeben werden (Lizenzen von Krea 2, Z-Image/Apache 2.0,
   TRELLIS.2/MIT). Alles im Ordner lizenzen.

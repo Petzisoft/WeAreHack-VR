@@ -1,0 +1,458 @@
+From 803e3595333f942723eab436a82ae51d9e71f318 Mon Sep 17 00:00:00 2001
+From: Quameda <50173018+Quameda@users.noreply.github.com>
+Date: Mon, 23 Nov 2026 06:45:48 +0100
+Subject: [PATCH 1/2] We Are Hack: Windows-Anpassung in wah/ (Konsole mit ANSI,
+ rohe Tasten, link/kill/getlogin, Pfade), Original unveraendert
+
+---
+ wah/sys/wait.h   |   6 ++
+ wah/term.h       |  17 ++++
+ wah/termcap.h    |   5 +
+ wah/termios.h    |  37 ++++++++
+ wah/wah_compat.h | 102 +++++++++++++++++++++
+ wah/wah_term.c   | 231 +++++++++++++++++++++++++++++++++++++++++++++++
+ 6 files changed, 398 insertions(+)
+ create mode 100644 wah/sys/wait.h
+ create mode 100644 wah/term.h
+ create mode 100644 wah/termcap.h
+ create mode 100644 wah/termios.h
+ create mode 100644 wah/wah_compat.h
+ create mode 100644 wah/wah_term.c
+
+diff --git a/wah/sys/wait.h b/wah/sys/wait.h
+new file mode 100644
+index 0000000..3818ab7
+--- /dev/null
++++ b/wah/sys/wait.h
+@@ -0,0 +1,6 @@
++/* We Are Hack, 2026-11-23: <sys/wait.h> stand-in (Hack 1.0.3 port); wait() is in wah_compat.h. */
++#ifndef WAH_SYS_WAIT_H
++#define WAH_SYS_WAIT_H
++#define WIFEXITED(s) 1
++#define WEXITSTATUS(s) 0
++#endif
+diff --git a/wah/term.h b/wah/term.h
+new file mode 100644
+index 0000000..b26d7fb
+--- /dev/null
++++ b/wah/term.h
+@@ -0,0 +1,17 @@
++/* We Are Hack, 2026-11-23: minimal terminfo <term.h> for Windows (Hack 1.0.3 port). Not part of the original Hack.
++ * The capabilities are fixed ANSI/VT sequences; the Windows console understands them once
++ * ENABLE_VIRTUAL_TERMINAL_PROCESSING is on (set in setupterm, wah_term.c). The screen therefore
++ * lands in a real console buffer, which the We Are Hack bridge reads (80x25). */
++#ifndef WAH_TERM_H
++#define WAH_TERM_H
++
++extern int columns, lines;
++extern const char *clear_screen, *cursor_address, *cursor_up, *cursor_home, *cursor_right,
++	*cursor_left, *clr_eol, *clr_eos, *enter_standout_mode, *exit_standout_mode;
++extern int over_strike, magic_cookie_glitch;
++
++int setupterm(const char *term, int fd, int *err);
++int tputs(const char *s, int affcnt, int (*outc)(int));
++char *tiparm(const char *cap, ...);
++
++#endif
+diff --git a/wah/termcap.h b/wah/termcap.h
+new file mode 100644
+index 0000000..527dfac
+--- /dev/null
++++ b/wah/termcap.h
+@@ -0,0 +1,5 @@
++/* We Are Hack, 2026-11-23: <termcap.h> stand-in (Hack 1.0.3 port); only ospeed is used. */
++#ifndef WAH_TERMCAP_H
++#define WAH_TERMCAP_H
++extern short ospeed;
++#endif
+diff --git a/wah/termios.h b/wah/termios.h
+new file mode 100644
+index 0000000..45fe28c
+--- /dev/null
++++ b/wah/termios.h
+@@ -0,0 +1,37 @@
++/* We Are Hack, 2026-11-23: minimal <termios.h> for Windows (Hack 1.0.3 port). Not part of the original Hack.
++ * Only what hack.tty.c and hack.ioctl.c use. ECHO and ICANON are mapped onto the console input mode
++ * (ENABLE_ECHO_INPUT, ENABLE_LINE_INPUT) in wah_term.c. */
++#ifndef WAH_TERMIOS_H
++#define WAH_TERMIOS_H
++
++typedef unsigned int tcflag_t;
++typedef unsigned char cc_t;
++typedef unsigned int speed_t;
++
++#define NCCS 20
++struct termios {
++	tcflag_t c_iflag, c_oflag, c_cflag, c_lflag;
++	cc_t c_cc[NCCS];
++	speed_t c_ispeed, c_ospeed;
++};
++
++#define ECHO	0x0008
++#define ICANON	0x0100
++#define OXTABS	0x0004
++#define VERASE	3
++#define VKILL	5
++#define VMIN	16
++#define VTIME	17
++#define VINTR	8
++#define VQUIT	9
++#define VSUSP	10
++#define VDSUSP	11
++#define TCSANOW	0
++#define TCSADRAIN 1
++#define _POSIX_VDISABLE 0xff
++
++int tcgetattr(int fd, struct termios *t);
++int tcsetattr(int fd, int how, const struct termios *t);
++speed_t cfgetospeed(const struct termios *t);
++
++#endif
+diff --git a/wah/wah_compat.h b/wah/wah_compat.h
+new file mode 100644
+index 0000000..87f30d5
+--- /dev/null
++++ b/wah/wah_compat.h
+@@ -0,0 +1,102 @@
++/* We Are Hack, 2026-11-23: Windows compatibility layer for Hack 1.0.3 (NetBSD src/games/hack).
++ * Distributed under the same licence as Hack (see COPYRIGHT). Not part of the original Hack.
++ *
++ * Included in front of every source file (gcc -include wah/wah_compat.h). Supplies the BSD/Unix
++ * pieces that MinGW-w64 (MSYS2 UCRT64) lacks: BSD cdefs macros, uid/gid, link(), kill(pid, 0),
++ * getlogin(), missing signals, fork/exec/wait stubs. Terminal output and keyboard input are in
++ * wah_term.c (ANSI sequences into a real Windows console, raw key input), see termios.h/term.h here.
++ */
++#ifndef WAH_COMPAT_H
++#define WAH_COMPAT_H
++
++#include <sys/types.h>
++#include <sys/cdefs.h>
++#include <signal.h>
++#include <stdio.h>
++/* stdlib.h declares itoa(), which Hack defines itself (hack.end.c): rename the stdlib declaration */
++#define itoa wah_ms_itoa
++#include <stdlib.h>
++#undef itoa
++#include <string.h>
++#include <stdint.h>
++/* io.h declares eof(), which Hack uses as a variable name: rename the io.h declaration */
++#define eof wah_io_eof
++#include <io.h>
++#include <process.h>
++#include <direct.h>
++#include <fcntl.h>
++#include <unistd.h>
++#undef eof
++#include <errno.h>
++
++/* BSD <sys/cdefs.h> extras */
++#ifndef __RCSID
++#define __RCSID(x)
++#endif
++#ifndef __COPYRIGHT
++#define __COPYRIGHT(x)
++#endif
++#ifndef __dead
++#define __dead __attribute__((__noreturn__))
++#endif
++#ifndef __printflike
++#define __printflike(a, b) __attribute__((__format__(__printf__, a, b)))
++#endif
++#ifndef __unused
++#define __unused __attribute__((__unused__))
++#endif
++
++/* Signals that Windows does not have: values that signal() simply rejects */
++#ifndef SIGHUP
++#define SIGHUP 1
++#endif
++#ifndef SIGQUIT
++#define SIGQUIT 3
++#endif
++typedef void (*sig_t)(int);
++
++#ifndef ESRCH
++#define ESRCH 3
++#endif
++
++/* One player per Windows account: uid/gid are constants */
++static inline int getuid(void) { return 0; }
++static inline int getgid(void) { return 0; }
++static inline int setuid(int u) { (void) u; return 0; }
++static inline int setgid(int g) { (void) g; return 0; }
++
++/* "/dev/null" -> "NUL" (Hack checks at start that fds 0-2 are open) */
++int wah_open(const char *path, int flags, ...);
++#define open wah_open
++/* UCRT rejects Unix permission bits like 0660 in creat(); open() above masks them */
++#define creat(p, m) wah_open(p, O_WRONLY | O_CREAT | O_TRUNC, m)
++
++int wah_link(const char *from, const char *to);
++#define link(a, b) wah_link(a, b)
++int wah_kill(int pid, int sig);
++#define kill(p, s) wah_kill(p, s)
++char *wah_getlogin(void);
++#define getlogin() wah_getlogin()
++
++/* No shell, no subprocesses: '!' and the external pager report that they are unavailable */
++static inline int fork(void) { errno = ENOSYS; return -1; }
++static inline int wait(int *s) { (void) s; return -1; }
++#define execl(...) (-1)
++
++#ifndef __UNCONST
++#define __UNCONST(a) ((void *)(uintptr_t)(const void *)(a))
++#endif
++
++/* BSD string and random functions (wah_term.c) */
++size_t strlcpy(char *dst, const char *src, size_t size);
++size_t strlcat(char *dst, const char *src, size_t size);
++long wah_random(void);
++void wah_srandom(unsigned int seed);
++#define random() wah_random()
++#define srandom(s) wah_srandom(s)
++
++#ifndef O_BINARY
++#define O_BINARY 0
++#endif
++
++#endif
+diff --git a/wah/wah_term.c b/wah/wah_term.c
+new file mode 100644
+index 0000000..56585fd
+--- /dev/null
++++ b/wah/wah_term.c
+@@ -0,0 +1,231 @@
++/* We Are Hack, 2026-11-23: Windows terminal and system layer for Hack 1.0.3 (NetBSD src/games/hack).
++ * Distributed under the same licence as Hack (see COPYRIGHT). Not part of the original Hack.
++ *
++ * - terminfo: fixed ANSI/VT sequences, written to a real Windows console with
++ *   ENABLE_VIRTUAL_TERMINAL_PROCESSING (the We Are Hack bridge reads the console buffer);
++ * - termios: ECHO/ICANON switch the console input mode, keys arrive raw without echo;
++ * - link() as NTFS hard link (Hack's lock files rely on "link fails if the name exists"),
++ *   kill(pid, 0) via OpenProcess, getlogin() from %USERNAME%;
++ * - HACKDIR defaults to the folder of hack.exe (data, help, rumors, record, save\ live there),
++ *   files are opened in binary mode (save and level files are binary).
++ */
++#define WIN32_LEAN_AND_MEAN
++#include <windows.h>
++#include <stdarg.h>
++#include <stdio.h>
++#include <stdlib.h>
++#include <string.h>
++#include <fcntl.h>
++#include <io.h>
++#include <sys/stat.h>
++#include "termios.h"
++#include "term.h"
++
++int columns = 80, lines = 24;
++const char *clear_screen = "\033[H\033[2J";
++const char *cursor_address = "\033[%d;%dH";   /* tiparm(cursor_address, row, col), 0-based */
++const char *cursor_up = "\033[A";
++const char *cursor_home = "\033[H";
++const char *cursor_right = "\033[C";
++const char *cursor_left = "\033[D";
++const char *clr_eol = "\033[K";
++const char *clr_eos = "\033[J";
++const char *enter_standout_mode = "\033[7m";
++const char *exit_standout_mode = "\033[0m";
++int over_strike = 0, magic_cookie_glitch = 0;
++short ospeed = 0;
++
++static int lflag = ECHO | ICANON;
++
++static void
++input_mode(void)
++{
++	HANDLE h = GetStdHandle(STD_INPUT_HANDLE);
++	DWORD m = ENABLE_EXTENDED_FLAGS;
++	if (lflag & ICANON)
++		m |= ENABLE_LINE_INPUT | ENABLE_PROCESSED_INPUT | ((lflag & ECHO) ? ENABLE_ECHO_INPUT : 0);
++	SetConsoleMode(h, m);
++}
++
++/* Runs before main(): binary files, unbuffered keyboard, HACKDIR = folder of hack.exe */
++__attribute__((constructor)) static void
++wah_init(void)
++{
++	char dir[MAX_PATH], *p;
++	_fmode = _O_BINARY;
++	setvbuf(stdin, NULL, _IONBF, 0);
++	if (!getenv("HACKDIR") && GetModuleFileNameA(NULL, dir, sizeof dir)) {
++		if ((p = strrchr(dir, '\\')) != NULL)
++			*p = '\0';
++		SetEnvironmentVariableA("HACKDIR", dir);
++		_putenv_s("HACKDIR", dir);
++	}
++}
++
++int
++setupterm(const char *term, int fd, int *err)
++{
++	HANDLE out = GetStdHandle(STD_OUTPUT_HANDLE);
++	DWORD m = 0;
++	CONSOLE_SCREEN_BUFFER_INFO info;
++	(void) term; (void) fd;
++	if (GetConsoleMode(out, &m))
++		SetConsoleMode(out, m | ENABLE_PROCESSED_OUTPUT | ENABLE_VIRTUAL_TERMINAL_PROCESSING);
++	if (GetConsoleScreenBufferInfo(out, &info)) {
++		columns = info.srWindow.Right - info.srWindow.Left + 1;
++		lines = info.srWindow.Bottom - info.srWindow.Top + 1;
++	}
++	if (columns < 80)
++		columns = 80;
++	if (lines < 24)
++		lines = 24;
++	setvbuf(stdout, NULL, _IOFBF, 8192);   /* Hack flushes itself before waiting for a key */
++	if (err)
++		*err = 1;
++	return 0;
++}
++
++int
++tputs(const char *s, int affcnt, int (*outc)(int))
++{
++	(void) affcnt;
++	if (s)
++		while (*s)
++			outc((unsigned char) *s++);
++	return 0;
++}
++
++char *
++tiparm(const char *cap, ...)
++{
++	static char buf[32];
++	va_list ap;
++	int a, b;
++	va_start(ap, cap);
++	a = va_arg(ap, int);
++	b = va_arg(ap, int);
++	va_end(ap);
++	if (cap == cursor_address) {
++		snprintf(buf, sizeof buf, cursor_address, a + 1, b + 1);
++		return buf;
++	}
++	return NULL;
++}
++
++int
++tcgetattr(int fd, struct termios *t)
++{
++	(void) fd;
++	memset(t, 0, sizeof *t);
++	t->c_lflag = lflag;
++	t->c_cc[VERASE] = '\b';
++	t->c_cc[VKILL] = 21;   /* ^U */
++	t->c_cc[VINTR] = 3;
++	t->c_cc[VQUIT] = 28;
++	return 0;
++}
++
++int
++tcsetattr(int fd, int how, const struct termios *t)
++{
++	(void) fd; (void) how;
++	lflag = t->c_lflag & (ECHO | ICANON);
++	input_mode();
++	return 0;
++}
++
++speed_t
++cfgetospeed(const struct termios *t)
++{
++	(void) t;
++	return 38400;
++}
++
++int
++wah_link(const char *from, const char *to)
++{
++	if (CreateHardLinkA(to, from, NULL))
++		return 0;
++	errno = (GetLastError() == ERROR_ALREADY_EXISTS) ? EEXIST : ENOENT;
++	return -1;
++}
++
++int
++wah_kill(int pid, int sig)
++{
++	HANDLE h;
++	DWORD code = 0;
++	(void) sig;
++	h = OpenProcess(PROCESS_QUERY_LIMITED_INFORMATION, FALSE, (DWORD) pid);
++	if (!h) {
++		errno = 3;   /* ESRCH */
++		return -1;
++	}
++	GetExitCodeProcess(h, &code);
++	CloseHandle(h);
++	if (code != STILL_ACTIVE) {
++		errno = 3;
++		return -1;
++	}
++	return 0;
++}
++
++int
++wah_open(const char *path, int flags, ...)
++{
++	va_list ap;
++	int mode = 0666;
++	if (flags & _O_CREAT) {
++		va_start(ap, flags);
++		mode = va_arg(ap, int);
++		va_end(ap);
++	}
++	if (strcmp(path, "/dev/null") == 0)
++		path = "NUL";
++	return _open(path, flags | _O_BINARY, mode & (_S_IREAD | _S_IWRITE) ? (_S_IREAD | _S_IWRITE) : _S_IREAD);
++}
++
++char *
++wah_getlogin(void)
++{
++	return getenv("USERNAME");
++}
++
++size_t
++strlcpy(char *dst, const char *src, size_t size)
++{
++	size_t n = strlen(src);
++	if (size) {
++		size_t k = n >= size ? size - 1 : n;
++		memcpy(dst, src, k);
++		dst[k] = '\0';
++	}
++	return n;
++}
++
++size_t
++strlcat(char *dst, const char *src, size_t size)
++{
++	size_t d = strnlen(dst, size);
++	if (d == size)
++		return size + strlen(src);
++	return d + strlcpy(dst + d, src, size - d);
++}
++
++/* random()/srandom() like BSD: 31-bit results (Windows rand() only gives 15 bits) */
++static unsigned long long rng_state = 0x2545F4914F6CDD1DULL;
++
++void
++wah_srandom(unsigned int seed)
++{
++	rng_state = 0x9E3779B97F4A7C15ULL ^ ((unsigned long long) seed << 1 | 1);
++}
++
++long
++wah_random(void)
++{
++	rng_state ^= rng_state >> 12;
++	rng_state ^= rng_state << 25;
++	rng_state ^= rng_state >> 27;
++	return (long) ((rng_state * 0x2545F4914F6CDD1DULL) >> 33);
++}
+-- 
+2.49.0.windows.1
+

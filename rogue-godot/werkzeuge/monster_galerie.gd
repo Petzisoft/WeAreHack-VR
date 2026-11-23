@@ -80,6 +80,9 @@ var _maus_r := false
 var _rad_zeit := 0.0               # nach dem Mausrad kurz warten, dann speichern   # leuchtend grüner Ring unter der Figur, die gerade aufgestellt wird
 var _aufst_d := {}          # laufende Änderung, noch nicht gespeichert: kipp (Vector3 Grad), hoch (cm), schieb (Vector2 m Welt)
 var _portraits := false     # Porträt-Fotos laufen: nichts nachladen
+# Für Aufnahmen (werkzeuge/reddit_aufnahme.gd): vor dem Einhängen setzen
+var nur: Array = []         # nur diese Kennungen ("nh:D_RoterDrache" ...), in dieser Reihenfolge
+var englisch := false       # Schilder nur mit dem englischen Originalnamen
 
 
 func _ready() -> void:
@@ -87,7 +90,12 @@ func _ready() -> void:
 		if a.begins_with("--spiel="):
 			spiel = a.substr(8)
 	_eintraege_lesen()
-	zwei_reihen = eintraege.size() > 30
+	if not nur.is_empty():
+		var nach := {}
+		for e in eintraege:
+			nach[e.c] = e
+		eintraege = nur.filter(func(c): return nach.has(c)).map(func(c): return nach[c])
+	zwei_reihen = eintraege.size() > 30 or not nur.is_empty()
 	breite = BREITE2 if zwei_reihen else BREITE1
 	weg_x = 0.0 if zwei_reihen else WEG_X1
 	plaetze = ceili(eintraege.size() / 2.0) if zwei_reihen else eintraege.size()
@@ -122,7 +130,7 @@ func _ready() -> void:
 		kamera.make_current()
 		gier = 0.0 if zwei_reihen else -0.35
 		spieler.rotation.y = gier
-		if not "--fotos" in OS.get_cmdline_user_args():
+		if not "--fotos" in OS.get_cmdline_user_args() and nur.is_empty():
 			Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	_hinweis()
 	if "--fotos" in OS.get_cmdline_user_args():
@@ -217,7 +225,9 @@ func _schilder() -> void:
 		var rechts_seite: bool = e.ort.x > 0
 		var l := Label3D.new()
 		l.text = "%s\n%s · %s m%s" % [e.titel, e.unter, str(snappedf(e.meter, 0.01)).replace(".", ","), " (geschätzt)" if e.get("geschaetzt", false) else ""]
-		if zwei_reihen:
+		if englisch:
+			l.text = str(e.unter).capitalize() if spiel != "rogue" else str(e.unter).capitalize()
+		elif zwei_reihen:
 			l.text = "%d  %s" % [i + 1, l.text]
 		l.font_size = 64
 		l.pixel_size = 0.004

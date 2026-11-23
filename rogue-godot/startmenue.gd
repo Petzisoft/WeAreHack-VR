@@ -10,6 +10,7 @@ extends Node3D
 
 const Spiel = preload("res://spiel.gd")
 const Sprache = preload("res://sprache.gd")
+const Spielstand = preload("res://spielstand.gd")
 const GOLD := Color(0.95, 0.8, 0.45)
 const TAFEL_ABSTAND := 1.2
 const NAME := "We Are Hack"   # vorläufig (Peter kann ihn noch ändern)
@@ -17,8 +18,9 @@ const NAME := "We Are Hack"   # vorläufig (Peter kann ihn noch ändern)
 # [Anzeigetext, Spiel-Kennung oder "" (ausgegraut) oder "ende", Zusatz]
 const EINTRAEGE := [
 	["Rogue (1980)", "rogue", ""],
-	["Hack (1982)", "", "kommt bald"],
+	["Hack (1982)", "hack", ""],
 	["NetHack (1987)", "nethack", ""],
+	["Gegenstandsnamen", "namen", ""],
 	["Language / Sprache", "sprache", ""],
 	["Beenden", "ende", ""],
 ]
@@ -54,6 +56,9 @@ func _ready() -> void:
 	_markieren(0)
 	if "--menuetest" in OS.get_cmdline_user_args():
 		load("res://werkzeuge/startmenue_test.gd").laufen(self)
+	for arg in OS.get_cmdline_user_args():
+		if arg.begins_with("--reddit="):
+			load("res://werkzeuge/reddit_aufnahme.gd").laufen(self)
 
 
 func _bauen() -> Control:
@@ -75,7 +80,7 @@ func _bauen() -> Control:
 		b.size_flags_horizontal = Control.SIZE_SHRINK_CENTER
 		b.focus_mode = Control.FOCUS_NONE   # Auswahl führt das Menü selbst (auch für VR)
 		b.add_theme_font_override("font", _schrift())
-		b.add_theme_font_size_override("font_size", 30 if e[1] in ["ende", "sprache"] else 40)
+		b.add_theme_font_size_override("font_size", 30 if e[1] in ["ende", "sprache", "namen"] else 40)
 		b.disabled = e[1] == ""
 		for zustand in ["normal", "hover", "pressed", "disabled"]:
 			b.add_theme_stylebox_override(zustand, _kasten(false))
@@ -156,6 +161,8 @@ func _texte() -> void:
 		b.auto_translate_mode = Node.AUTO_TRANSLATE_MODE_DISABLED
 		if e[1] == "sprache":
 			b.text = "Language:  English" if Sprache.englisch() else "Sprache:  Deutsch"
+		elif e[1] == "namen":
+			b.text = Sprache.t("Gegenstandsnamen: ") + Sprache.t("AN" if Spielstand.gegenstandsnamen() else "AUS")
 		else:
 			b.text = Sprache.t(e[0]) + ("   – " + Sprache.t(e[2]) if e[2] != "" else "")
 
@@ -172,6 +179,10 @@ func waehlen() -> void:
 		return
 	if EINTRAEGE[index][1] == "sprache":
 		sprache_umschalten()
+		return
+	if EINTRAEGE[index][1] == "namen":
+		Spielstand.gegenstandsnamen_umschalten()
+		_texte()
 		return
 	gewaehlt = EINTRAEGE[index][1]
 	var tw := create_tween()

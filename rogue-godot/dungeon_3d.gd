@@ -35,7 +35,7 @@ const RICHTUNG_TASTE := {
 const GELAENDE := "-|.#+%^wli"   # w l i: Wasser, Lava, Eis (nur NetHack, nethack_uebersetzer.gd)
 
 var rogue := RogueVerbindung.new()
-var nethack: NethackUebersetzer = NethackUebersetzer.new() if Spiel.ist_nethack() else null
+var nethack: NethackUebersetzer = NethackUebersetzer.new() if Spiel.mit_sonde() else null   # NetHack und Hack
 var spieler := Node3D.new()
 var kamera := Camera3D.new()
 var figuren := Node3D.new()
@@ -101,6 +101,8 @@ func _ready() -> void:
 		load("res://werkzeuge/selbsttest.gd").laufen(self)
 	if "--nethacktest" in OS.get_cmdline_user_args():
 		load("res://werkzeuge/nethack_test.gd").laufen(self)
+	if "--hacktest" in OS.get_cmdline_user_args():
+		load("res://werkzeuge/hack_test.gd").laufen(self)
 	if "--spielstandtest" in OS.get_cmdline_user_args():
 		load("res://werkzeuge/spielstand_test.gd").laufen(self)
 
@@ -182,7 +184,7 @@ func _rogue_starten(argumente: Array = []) -> void:
 	if nethack:
 		nethack.zuruecksetzen()
 		# Wie bei Rogue ("Hello admin"): Windows-Benutzername als Spielername, sonst fragt NetHack "Who are you?"
-		if OS.get_environment("NETHACKOPTIONS") == "":
+		if Spiel.ist_nethack() and OS.get_environment("NETHACKOPTIONS") == "":
 			# number_pad:0 = Laufen mit h j k l y u b n wie bei Rogue (die Windows-Vorlage stellt sonst den Ziffernblock ein,
 			# dann heißt l "Loot", Protokoll 21.11.); ohne Lebensbalken im Namen; Gold automatisch aufheben
 			OS.set_environment("NETHACKOPTIONS", "name:" + OS.get_environment("USERNAME")
@@ -223,7 +225,9 @@ func speichern(platz: int) -> void:
 	_speichern_ebene = ebene.get_slice("/", 0)
 	rogue.taste(ord("S"))
 	await get_tree().create_timer(0.4).timeout
-	if nethack:
+	if Spiel.ist_hack():
+		pass   # Hack speichert mit S sofort
+	elif nethack:
 		rogue.taste(ord("y"))   # NetHack: "Really save? [yn]"
 	else:
 		# Rogue: "save file (Dokumente/rogue.save)?" -> n, dann eigenen Dateinamen tippen (spielstand.gd)
@@ -249,7 +253,7 @@ func laden(platz: int) -> void:
 		return
 	rogue.stoppen()
 	await get_tree().create_timer(0.8).timeout   # bis das Spiel wirklich beendet ist
-	if nethack and not Spielstand.nethack_sperren_weg():
+	if Spiel.ist_nethack() and not Spielstand.nethack_sperren_weg():
 		steuerung.kurz_zeigen("Laden ging nicht: ein anderes NetHack läuft noch")
 		_rogue_starten()
 		return
@@ -304,9 +308,10 @@ func _bild_neu() -> void:
 	a.status_label.text = r[status_zeile].strip_edges()
 	var karte_bis := status_zeile   # Kartenzeilen: 1 .. karte_bis-1
 	if nethack:
-		# NetHack hat zwei Statuszeilen (Name und Werte, darunter Ebene und Gold)
-		karte_bis = status_zeile - 1
-		a.status_label.text = (r[status_zeile - 1].strip_edges() + "\n" + r[status_zeile].strip_edges()).strip_edges()
+		if Spiel.ist_nethack():
+			# NetHack hat zwei Statuszeilen (Name und Werte, darunter Ebene und Gold); Hack nur eine
+			karte_bis = status_zeile - 1
+			a.status_label.text = (r[status_zeile - 1].strip_edges() + "\n" + r[status_zeile].strip_edges()).strip_edges()
 		r = nethack.uebersetzen(r, karte_bis)
 	a.status_kasten.visible = a.status_label.text != ""
 	Protokoll.bild(meldung, a.status_label.text.replace("\n", "  "))
@@ -320,7 +325,7 @@ func _bild_neu() -> void:
 	# Inventar, Hilfe, Grabstein usw. sind Textseiten -> Originalbild zeigen
 	var menue := at.x < 0
 	for z in r:
-		if "Press space" in z:
+		if "Press space" in z or "Hit space to continue" in z:
 			menue = true
 	if nethack and (not nethack.gueltig or _nethack_textseite(roh)):
 		menue = true

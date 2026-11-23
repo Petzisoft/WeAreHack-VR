@@ -6,7 +6,7 @@ rem   C:\msys64\ucrt64\bin\makensis.exe setup.nsi
 cd /d "%~dp0"
 set Z=paket\WeAreHack
 if exist paket rmdir /s /q paket
-mkdir "%Z%\godot" "%Z%\bruecke" "%Z%\build" "%Z%\rogue-godot" "%Z%\lizenzen" "%Z%\nethack-spiel" "%Z%\nethack-monster\3d" "%Z%\hack-monster\3d"
+mkdir "%Z%\godot" "%Z%\bruecke" "%Z%\build" "%Z%\rogue-godot" "%Z%\lizenzen" "%Z%\nethack-spiel" "%Z%\nethack-monster\3d" "%Z%\hack-monster\3d" "%Z%\hack-spiel\save"
 copy /y godot\Godot_v4.7.2-stable_win64.exe "%Z%\godot\" >nul
 copy /y bruecke\rogue-bruecke.exe "%Z%\bruecke\" >nul
 copy /y build\rogue.exe "%Z%\build\" >nul
@@ -29,10 +29,17 @@ for %%f in (NetHack.exe nhdat367 license Guidebook.txt opthelp symbols sysconf s
 type nul > "%Z%\nethack-spiel\record"
 type nul > "%Z%\nethack-spiel\logfile"
 type nul > "%Z%\nethack-spiel\xlogfile"
+rem Hack (1982): Programm und Datendateien, leere Bestenliste und Sperrdatei, Ordner save\ (mit Hinweisdatei,
+rem sonst laesst ZIP/Setup den leeren Ordner weg)
+for %%f in (hack.exe data help hh rumors) do copy /y "hack-spiel\%%f" "%Z%\hack-spiel\" >nul
+type nul > "%Z%\hack-spiel\record"
+type nul > "%Z%\hack-spiel\perm"
+echo Hier legt Hack seine Spielstaende ab. > "%Z%\hack-spiel\save\LIESMICH.txt"
 rem 3D-Monster fuer NetHack und Hack: nur die aktiven Modelle (keine alt_-Ordner, keine Rohbilder)
 copy /y nethack-monster\3d\*.glb "%Z%\nethack-monster\3d\" >nul
 copy /y nethack-monster\monster_namen.txt "%Z%\nethack-monster\" >nul
 copy /y hack-monster\3d\*.glb "%Z%\hack-monster\3d\" >nul
+copy /y hack-monster\monster_namen.txt "%Z%\hack-monster\" >nul
 rem Texturen in den KI-Modellen als JPEG statt PNG (nur im Paket), sonst wird das Setup groesser als 2 GB
 python werkzeuge\glb_verkleinern.py "%Z%\nethack-monster\3d" "%Z%\hack-monster\3d"
 if errorlevel 1 echo FEHLER: glb_verkleinern.py (Python mit Pillow noetig) & pause & exit /b 1
@@ -40,13 +47,17 @@ copy /y lizenzen\*.txt "%Z%\lizenzen\" >nul
 rem NetHack-Lizenz.txt liegt in lizenzen\ (oben mitkopiert); englische Uebersicht THIRD_PARTY_NOTICES.md kommt aus paket-vorlage\
 rem Quelltext zum Weitergeben (NetHack-Lizenz verlangt ihn): NetHack 3.6.7 und Rogue 5.4.4 mit unseren Aenderungen,
 rem genau der committete Stand (git archive, keine Bau-Ausgaben), dazu die Aenderungen einzeln als Patch
-mkdir "%Z%\quelltext\nethack" "%Z%\quelltext\rogue" "%Z%\quelltext\patches"
+mkdir "%Z%\quelltext\nethack" "%Z%\quelltext\rogue" "%Z%\quelltext\hack" "%Z%\quelltext\patches"
 git -C nethack-src archive --format=tar HEAD | tar -x -C "%Z%\quelltext\nethack"
 if errorlevel 1 echo FEHLER: NetHack-Quelltext & pause & exit /b 1
 git -C rogue-src archive --format=tar HEAD | tar -x -C "%Z%\quelltext\rogue"
 if errorlevel 1 echo FEHLER: Rogue-Quelltext & pause & exit /b 1
+git -C hack-src archive --format=tar HEAD | tar -x -C "%Z%\quelltext\hack"
+if errorlevel 1 echo FEHLER: Hack-Quelltext & pause & exit /b 1
+if errorlevel 1 echo FEHLER: Rogue-Quelltext & pause & exit /b 1
 xcopy /e /i /q /y patches\nethack "%Z%\quelltext\patches\nethack" >nul
 xcopy /e /i /q /y patches\rogue "%Z%\quelltext\patches\rogue" >nul
+xcopy /e /i /q /y patches\hack "%Z%\quelltext\patches\hack" >nul
 copy /y "paket-vorlage\*" "%Z%\" >nul
 echo Packe ZIP-Datei, bitte warten ...
 powershell -NoProfile -Command "Compress-Archive -Path 'paket\WeAreHack' -DestinationPath 'paket\WeAreHack.zip' -Force"

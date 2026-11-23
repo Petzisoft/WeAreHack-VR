@@ -95,6 +95,11 @@ func bauen(c: String, p: Vector2i, name := "") -> Node3D:
 	k.add_child(mi)
 	var schild := Label3D.new()
 	schild.text = text
+	# Gegenstände: Namensschild nur, wenn eingeschaltet (Startmenü/Befehlsmenü, Standard aus).
+	# Monster ohne Modell, Treppe, Falle und Gelände (Brunnen, Altar ...) behalten ihr Schild.
+	if not (code >= 65 and code <= 90) and not c in "%~^":
+		schild.add_to_group("gegenstandsname")
+		schild.visible = preload("res://spielstand.gd").gegenstandsnamen()
 	schild.billboard = BaseMaterial3D.BILLBOARD_ENABLED
 	schild.font_size = 64
 	schild.outline_size = 14

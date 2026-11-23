@@ -1,4 +1,4 @@
-## Test für das Startmenü: klickt per Tastatur und Gamepad durch (Hack muss übersprungen werden), startet NetHack
+## Test für das Startmenü: klickt per Tastatur und Gamepad durch (Rogue, Hack, NetHack, Sprache, Beenden), startet NetHack
 ## und prüft, dass dungeon.tscn mit NetHack und dessen Vorspann läuft. Fotos: startmenue_test_*.png im Projektordner.
 ## Aufruf: Godot --path rogue-godot res://start.tscn -- --menuetest
 extends RefCounted
@@ -11,36 +11,45 @@ static func laufen(m) -> void:
 	var baum: SceneTree = m.get_tree()
 	await baum.create_timer(1.0).timeout
 	await _foto(baum, 1)
-	print("MENUETEST start index=", m.index, " hack_aus=", m.knoepfe[1].disabled)
+	print("MENUETEST start index=", m.index, " hack_frei=", not m.knoepfe[1].disabled)
 	_taste(KEY_DOWN)
-	print("MENUETEST runter (Hack übersprungen) index=", m.index, " ok=", m.index == 2)
+	print("MENUETEST runter (Hack) index=", m.index, " ok=", m.index == 1)
 	_taste(KEY_UP)
 	print("MENUETEST hoch index=", m.index, " ok=", m.index == 0)
 	_taste(KEY_UP)
-	print("MENUETEST hoch rundum (Beenden) index=", m.index, " ok=", m.index == 4)
-	# Sprache umschalten (Eintrag 3), Text prüfen, Foto, wieder zurück
+	print("MENUETEST hoch rundum (Beenden) index=", m.index, " ok=", m.index == 5)
+	# Sprache umschalten (Eintrag 4), Text prüfen, Foto, wieder zurück
 	var vorher: bool = Sprache.englisch()
 	_taste(KEY_UP)
-	print("MENUETEST Sprache-Eintrag index=", m.index, " ok=", m.index == 3)
+	print("MENUETEST Sprache-Eintrag index=", m.index, " ok=", m.index == 4)
 	_taste(KEY_ENTER)
 	await baum.process_frame
-	print("MENUETEST umgeschaltet englisch=", Sprache.englisch(), " text=", m.knoepfe[3].text, " titel=", Sprache.t("Welches Spiel?"),
+	print("MENUETEST umgeschaltet englisch=", Sprache.englisch(), " text=", m.knoepfe[4].text, " titel=", Sprache.t("Welches Spiel?"),
 			" ok=", Sprache.englisch() != vorher)
 	await _foto(baum, 4)
 	_taste(KEY_ENTER)
 	await baum.process_frame
 	print("MENUETEST zurück englisch=", Sprache.englisch(), " ok=", Sprache.englisch() == vorher)
+	# Gegenstandsnamen (Eintrag 3): umschalten und zurück
+	_taste(KEY_UP)
+	var namen_vorher: bool = load("res://spielstand.gd").gegenstandsnamen()
+	_taste(KEY_ENTER)
+	await baum.process_frame
+	print("MENUETEST Gegenstandsnamen index=", m.index, " text=", m.knoepfe[3].text,
+			" ok=", load("res://spielstand.gd").gegenstandsnamen() != namen_vorher)
+	_taste(KEY_ENTER)
+	await baum.process_frame
 	_pad(JOY_BUTTON_DPAD_UP)
 	await baum.process_frame
 	print("MENUETEST Gamepad hoch index=", m.index, " ok=", m.index == 2)
 	await _foto(baum, 2)
 	_pad(JOY_BUTTON_A)
-	await baum.create_timer(1.5).timeout
+	await baum.create_timer(1.2).timeout
 	var s := baum.current_scene
+	var v = load("res://vorspann.gd").aktiv(s) if s else null
 	print("MENUETEST szene=", s.name if s else "?", " spiel=", Spiel.welches(),
 			" ok=", s != null and s.name == "Dungeon3D" and Spiel.welches() == "nethack")
-	await baum.create_timer(2.5).timeout
-	var v = load("res://vorspann.gd").aktiv(baum.current_scene)
+	await baum.create_timer(1.0).timeout
 	if v:
 		print("MENUETEST vorspann_text=", v.get_child(0).get_child(1).text, " -> ", v.get_child(0).get_child(1).atr(v.get_child(0).get_child(1).text))
 	print("MENUETEST vorspann=", v != null)

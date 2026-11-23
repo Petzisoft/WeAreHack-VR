@@ -970,7 +970,9 @@ func _wah(teil: String) -> String:
 ## Kennung der Figur zum englischen NetHack-Namen ("" = keine Figur, dann Platzhalter).
 func nh_kennung(name: String) -> String:
 	if _nh_karte.is_empty():
-		var txt := FileAccess.get_file_as_string(_wah("nethack-monster/monster_namen.txt"))
+		# Hack hat eine eigene Tabelle (Hack-Figuren, Rogue-Modelle, wenige NetHack-Ersatzfiguren)
+		var hack: bool = preload("res://spiel.gd").ist_hack()
+		var txt := FileAccess.get_file_as_string(_wah("hack-monster/monster_namen.txt" if hack else "nethack-monster/monster_namen.txt"))
 		for z in txt.split("\n", false):
 			var t := z.strip_edges().split("|")
 			if z.begins_with("#") or t.size() < 4:
@@ -984,7 +986,7 @@ func nh_kennung(name: String) -> String:
 		return ""
 	var kennung: String = e[0]
 	if not kennung.begins_with("nh:") and not kennung.begins_with("hk:"):
-		if NH_ROGUE_GROESSE.has(kennung):
+		if NH_ROGUE_GROESSE.has(kennung) and not preload("res://spiel.gd").ist_hack():
 			_nh_rogue_groesse[kennung] = NH_ROGUE_GROESSE[kennung]
 		return kennung   # Rogue-Monster: Buchstabe, eigene Größe aus MONSTER_GROESSE (in NetHack ggf. NH_ROGUE_GROESSE)
 	_nh_meter[kennung] = e[1]

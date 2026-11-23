@@ -1,6 +1,6 @@
 # Third-party notices
 
-We Are Hack is a fan project. It is not affiliated with or endorsed by the authors of Rogue,
+We Are Hack is a fan project. It is not affiliated with or endorsed by the authors of Rogue and Hack,
 the NetHack DevTeam, the Godot project or any of the creators listed below. Their names are
 used only to give credit, never to promote this project.
 
@@ -11,6 +11,7 @@ The full licence texts are in the folder [`lizenzen/`](lizenzen/).
 | Part | Copyright | Licence | What we did |
 |---|---|---|---|
 | **Rogue 5.4.4** | © 1980–1983, 1985, 1999 Michael Toy, Ken Arnold, Glenn Wichman (source via [Davidslv/rogue](https://github.com/Davidslv/rogue)) | BSD-style, `lizenzen/Rogue-Lizenz.txt` | Small additions so the 3D view can read the screen, see `patches/rogue/` |
+| **Hack 1.0.3** | © 1982 Jay Fenlason, © 1985 Stichting Centrum voor Wiskunde en Informatica (source: NetBSD `src/games/hack`) | BSD-style, `lizenzen/Hack-Lizenz.txt` | Windows port (new files only, `wah/`) and a read-only probe with one call in `hack.main.c`, see `patches/hack/`; source in `quelltext\hack`. Game rules are unchanged. |
 | **NetHack 3.6.7** | © Stichting Mathematisch Centrum, M. Stephenson and the NetHack DevTeam ([nethack.org](https://www.nethack.org)) | NetHack General Public License, `lizenzen/NetHack-Lizenz.txt` | Added a read-only probe (`wah_sonde.c`) and one call to it, see `patches/nethack/`. Game rules are unchanged. |
 
 **This is a modified version of NetHack, not the version distributed by the NetHack DevTeam.**

@@ -23,7 +23,7 @@ const BESONDERS := {
 	"T": "Baum", "B": "Gitter", "D": "Tür (zu)",
 }
 
-var pfad := OS.get_environment("TEMP").path_join("wearehack_nethack.txt")
+var pfad := OS.get_environment("TEMP").path_join(preload("res://spiel.gd").wert("fuehler"))   # NetHack oder Hack (gleiches Format)
 var monster_namen := {}   # Vector2i -> Name (englisch, aus NetHack)
 var besonders := {}       # Vector2i -> Text für Namensschild (Brunnen, Altar ...)
 var spieler := Vector2i(-1, -1)

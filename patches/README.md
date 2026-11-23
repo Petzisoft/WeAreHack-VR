@@ -65,3 +65,12 @@ copy patches\unirig\eigene-skripte\*.py werkzeuge\UniRig\
 
 Dateien aus NetBSD `src/games/hack`, kein Git, bisher unverändert –
 daher kein Patch.
+
+## hack/ – Hack 1.0.3 (für `hack-src\`)
+
+- Quelle: NetBSD `src/games/hack` (Hack 1.0.3 von Jay Fenlason, Andries Brouwer u. a.), Lizenz siehe `hack-src/COPYRIGHT`
+- `hack-src\` ist ein eigenes lokales Git (Basis-Commit `9648e02` = Original, unverändert). **Nicht pushen.**
+- Unsere Commits: `803e359` – Windows-Anpassung nur in neuen Dateien `wah/` (Konsole mit ANSI-Folgen, rohe Tasten,
+  link/kill/getlogin, HACKDIR = Ordner von hack.exe); `663286f` – Sonde `wah/wah_sonde.c`, ein Aufruf in `hack.main.c` (mit Hinweis).
+- Erzeugt mit: `git -C hack-src format-patch 9648e02 -o ../patches/hack`
+- Bauen: `hack-bauen.bat` (MSYS2 UCRT64) → `hack-spiel\hack.exe`

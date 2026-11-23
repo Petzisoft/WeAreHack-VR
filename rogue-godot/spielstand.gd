@@ -19,6 +19,25 @@ static func original_modus() -> bool:
 	return bool(cfg.get_value(Spiel.welches(), "original_modus", false))
 
 
+## Namensschilder über Gegenständen im Dungeon (Peter 23.11.: Standard aus; gilt für alle drei Spiele).
+static func gegenstandsnamen() -> bool:
+	var cfg := ConfigFile.new()
+	cfg.load(EINSTELLUNGEN)
+	return bool(cfg.get_value("allgemein", "gegenstandsnamen", false))
+
+
+## Umschalten, speichern und die Schilder der laufenden Ebene sofort zeigen/verbergen.
+static func gegenstandsnamen_umschalten(baum: SceneTree = null) -> void:
+	var cfg := ConfigFile.new()
+	cfg.load(EINSTELLUNGEN)
+	var an := not gegenstandsnamen()
+	cfg.set_value("allgemein", "gegenstandsnamen", an)
+	cfg.save(EINSTELLUNGEN)
+	if baum:
+		for s in baum.get_nodes_in_group("gegenstandsname"):
+			s.visible = an
+
+
 static func original_umschalten() -> void:
 	var cfg := ConfigFile.new()
 	cfg.load(EINSTELLUNGEN)
@@ -30,6 +49,9 @@ static func original_umschalten() -> void:
 static func spieldatei() -> String:
 	if Spiel.ist_nethack():
 		return OS.get_environment("LOCALAPPDATA").path_join("NetHack/3.6/%s.NetHack-saved-game" % OS.get_environment("USERNAME"))
+	if Spiel.ist_hack():
+		# Hack: save/<uid><name> im Ordner von hack.exe (uid ist unter Windows immer 0, Name = Windows-Benutzer)
+		return ProjectSettings.globalize_path("res://").path_join("../hack-spiel/save/0" + OS.get_environment("USERNAME")).simplify_path()
 	# Rogue: eigener Dateiname statt Dokumente/rogue.save (dort liegt evtl. ein alter Spielstand von Peter, nicht anfassen)
 	# Rogue liest höchstens 50 Zeichen ein: kurzer Name, liegt im Ordner von rogue.exe (dort startet die Brücke Rogue)
 	return ProjectSettings.globalize_path("res://").path_join("../build/" + ROGUE_DATEI).simplify_path()
@@ -96,6 +118,6 @@ static func nethack_sperren_weg() -> bool:
 
 ## Programm-Argumente zum Laden: Rogue bekommt die Datei mit, NetHack findet sie selbst.
 static func lade_argumente() -> Array:
-	if Spiel.ist_nethack():
-		return []
+	if Spiel.mit_sonde():
+		return []   # NetHack und Hack finden ihren Spielstand selbst
 	return [spieldatei()] if FileAccess.file_exists(spieldatei()) else []

@@ -6,6 +6,7 @@ extends RefCounted
 
 const ROGUE := "rogue"
 const NETHACK := "nethack"
+const HACK := "hack"
 
 const DATEN := {
 	ROGUE: {
@@ -16,6 +17,15 @@ const DATEN := {
 		"fuehler": "wearehack_monster.txt",
 		"status": "Level:", "ebene": "Level:\\s*(\\d+)",
 		"musik": "res://modelle/ton/vorspann/musik",
+	},
+	HACK: {
+		"name": "Hack (1982)", "name_vr": "Hack (1982) VR",
+		# Copyright 1982 Jay Fenlason (hack-src/COPYRIGHT-JF), Hack 1.0 von Andries Brouwer (CWI, hack-src/COPYRIGHT)
+		"original": "Das Original von 1982", "autoren": "von Jay Fenlason und Andries Brouwer",
+		"programm": "../hack-spiel/hack.exe",
+		"fuehler": "wearehack_hack.txt",
+		"status": "Level ", "ebene": "Level\\s+(\\d+)",
+		"musik": "res://modelle/ton/vorspann/hack/musik",
 	},
 	NETHACK: {
 		"name": "NetHack (1987)", "name_vr": "NetHack (1987) VR",
@@ -51,6 +61,16 @@ static func setzen(s: String) -> void:
 
 static func ist_nethack() -> bool:
 	return welches() == NETHACK
+
+
+static func ist_hack() -> bool:
+	return welches() == HACK
+
+
+## Spiele mit Sonde und NetHack-artiger Bedienung (Hack und NetHack): Gelände und Monster kommen aus der Sonde,
+## Gegenstandsfragen enden auf "?*]", Textseiten schließt Esc.
+static func mit_sonde() -> bool:
+	return welches() == NETHACK or welches() == HACK
 
 
 static func wert(schluessel: String) -> String:
