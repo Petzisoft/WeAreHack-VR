@@ -49,7 +49,11 @@ Most file and variable names are in German, sorry about that.
 ## Licences
 
 - Our own code: MIT, see [LICENSE](LICENSE).
-- Rogue: BSD-style licence, see `lizenzen/Rogue-Lizenz.txt`.
-- NetHack: NetHack General Public License. The installer contains the full NetHack source with
-  our patch. NetHack is © the NetHack DevTeam; this is a fan project, not an official release.
-- Godot: MIT. Textures, sounds and music: CC0. Details in `lizenzen/`.
+- Rogue: BSD-style licence. NetHack: NetHack General Public License; this is a **modified
+  version of NetHack**, our NetHack changes stay under the NetHack licence, and the installer
+  contains the full NetHack source. NetHack is © the NetHack DevTeam; this is a fan project,
+  not an official release.
+- Godot: MIT. Textures, item models, sounds and music: CC0.
+- Monster images and 3D models are AI-generated.
+
+Everything in detail, with credits: [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md).
