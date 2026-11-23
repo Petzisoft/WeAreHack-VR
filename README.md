@@ -4,7 +4,15 @@
 **Rogue (1980)**, **Hack (1982)** and **NetHack 3.6.7 (1987)** and shows it as a 3D dungeon
 you can walk through, on a monitor or in VR with controller support.
 
-<!-- Screenshots and video go here -->
+![NetHack in the Gnomish Mines: a minotaur blocks the corridor](media/05_nethack_mines_minotaur.jpg)
+
+▶ **[Watch the trailer (MP4, 45 s)](media/trailer.mp4)**
+
+| | |
+|---|---|
+| ![Start menu](media/01_start_menu.jpg) | ![Rogue: a snake in the corridor](media/03_rogue_snake.jpg) |
+| ![NetHack: ogre king, owlbear and your kitten](media/04_nethack_ogre_king_owlbear_kitten.jpg) | ![NetHack: a pit fiend in Gehennom](media/06_nethack_gehennom_pit_fiend.jpg) |
+| ![Monster gallery](media/07_gallery_overview.jpg) | ![Red dragon in the monster gallery](media/08_gallery_red_dragon.jpg) |
 
 ## How it works
 

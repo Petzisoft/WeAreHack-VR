@@ -1,7 +1,5 @@
 .godot/
 *.glb
-*.png
-*.jpg
 *.exe
 *.zip
 build/
