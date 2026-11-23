@@ -1,0 +1,190 @@
+From 6d2b1690baa6deca31bfc08c48fe4f2c99767383 Mon Sep 17 00:00:00 2001
+From: We Are Hack <wearehack@localhost>
+Date: Sun, 22 Nov 2026 08:39:03 +0100
+Subject: [PATCH] We Are Hack: Sonde (wah_sonde.c) fuer die 3D-/VR-Ansicht
+
+Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>
+---
+ src/allmain.c   |   3 +
+ src/wah_sonde.c | 148 ++++++++++++++++++++++++++++++++++++++++++++++++
+ 2 files changed, 151 insertions(+)
+ create mode 100644 src/wah_sonde.c
+
+diff --git a/src/allmain.c b/src/allmain.c
+index 5111c69..0812dde 100644
+--- a/src/allmain.c
++++ b/src/allmain.c
+@@ -6,6 +6,8 @@
+ /* various code that was replicated in *main.c */
+ 
+ #include "hack.h"
++
++extern void NDECL(wah_sonde); /* We Are Hack, wah_sonde.c */
+ #include <ctype.h>
+ 
+ #ifndef NO_SIGNAL
+@@ -408,6 +410,7 @@ boolean resuming;
+         cliparound(u.ux, u.uy);
+ #endif
+ 
++        wah_sonde(); /* We Are Hack: Werte fuer die 3D-Ansicht (nur lesen) */
+         u.umoved = FALSE;
+ 
+         if (multi > 0) {
+diff --git a/src/wah_sonde.c b/src/wah_sonde.c
+new file mode 100644
+index 0000000..00f3b3c
+--- /dev/null
++++ b/src/wah_sonde.c
+@@ -0,0 +1,148 @@
++/* We Are Hack: Sonde fuer die 3D-/VR-Ansicht ("NetHack (1987) VR").
++ *
++ * Schreibt vor jedem Befehl des Spielers die Werte von Spieler, Monstern und
++ * Gegenstaenden dieser Ebene nach %TEMP%\wearehack_nethack.txt.
++ * Am Spielablauf aendert die Sonde nichts: sie liest nur.
++ * Koordinaten sind Bildschirmspalte/-zeile der Konsole (Spalte = x-1, Zeile = y+1),
++ * genau wie bei der Rogue-Sonde.
++ *
++ * Zeilen:
++ *   ebene <tiefe> zweig <dnum> held <0|1> hp <aktuell> <max> zug <moves>
++ *   spieler <x> <y> stufe <lvl> erf <exp> gold <n> rk <ac> st <str> ge <dex> ko <con>
++ *           in <int> we <wis> ch <cha> hunger <uhs> energie <en> <max>
++ *   ort dunkel <0|1>
++ *   ausruestung waffe <0 keine|1 nah|2 Fernwaffe> <name>
++ *   karte <zeile> <79 Zeichen ab Spalte 0>  Gelaende, wie der Held es kennt:
++ *     ' ' unbekannt/Fels  - Wand  + Durchgang ohne Tuer  o offene Tuer  D geschlossene Tuer
++ *     . Boden  # Gang  < > Treppe/Leiter  B Gitter  T Baum  _ Altar  G Grab  \ Thron
++ *     S Spuele  { Brunnen  } Wasser  I Eis  L Lava  = Zugbruecke offen  ^ Falle
++ *   ding <x> <y> <klassenzeichen> <gesehen 0|1> <name>
++ *   je Monster: <x> <y> <zeichen> <lp> <max_lp> <flags> <tarnung> <nr> <zahm> <friedlich> <sichtbar> <name>
++ *     flags: 8192 = wach (wie ISRUN bei Rogue), sonst schlaeft/gelaehmt
++ *     nr = Index in mons[] (fuer Bild und 3D-Figur), Name mit _ statt Leerzeichen
++ */
++#include "hack.h"
++#include <stdarg.h>
++
++static char wah_buf[65536];
++static int wah_len;
++
++/* haengt eine Zeile an den Puffer an (zu viel wird einfach weggelassen) */
++static void
++wah_put(const char *fmt, ...)
++{
++    va_list ap;
++    int n, frei = (int) sizeof wah_buf - wah_len;
++    if (frei < 300)
++        return;
++    va_start(ap, fmt);
++    n = vsnprintf(wah_buf + wah_len, (size_t) frei, fmt, ap);
++    va_end(ap);
++    if (n > 0 && n < frei)
++        wah_len += n;
++}
++
++#define WAH_WACH 8192
++
++static void
++wah_name(dst, src, n)
++char *dst;
++const char *src;
++int n;
++{
++    int i;
++    for (i = 0; src && src[i] && i < n - 1; i++)
++        dst[i] = (src[i] == ' ') ? '_' : src[i];
++    dst[i] = '\0';
++    if (!i)
++        Strcpy(dst, "?");
++}
++
++/* Gelaendezeichen fuer cmap-Index 0..S_water (siehe Kopf) */
++static const char wah_gelaende[] = " -----------+ooDDBT..##<><>_G\\S{}IL==--  }";
++
++static char
++wah_feld(x, y)
++int x, y;
++{
++    int glyph = levl[x][y].glyph, i;
++    if (!glyph_is_cmap(glyph)) {
++        if (!levl[x][y].seenv)
++            return ' ';
++        glyph = back_to_glyph(x, y);
++        if (!glyph_is_cmap(glyph))
++            return ' ';
++    }
++    i = glyph_to_cmap(glyph);
++    if (i >= 0 && i < (int) sizeof wah_gelaende - 1)
++        return wah_gelaende[i];
++    if (is_cmap_trap(i))
++        return '^';
++    return ' ';
++}
++
++void
++wah_sonde()
++{
++    static char pfad[512] = "";
++    char nm[64];
++    struct monst *mtmp;
++    struct obj *otmp;
++    FILE *f;
++    int x, y;
++
++    wah_len = 0;
++    if (!pfad[0]) {
++        const char *t = getenv("TEMP");
++        Sprintf(pfad, "%.480s\\wearehack_nethack.txt", t ? t : ".");
++    }
++
++    wah_put("ebene %d zweig %d held %d hp %d %d zug %ld\n",
++            (int) depth(&u.uz), (int) u.uz.dnum, Upolyd ? 1 : 0,
++            Upolyd ? u.mh : u.uhp, Upolyd ? u.mhmax : u.uhpmax, moves);
++    wah_put("spieler %d %d stufe %d erf %ld gold %ld rk %d st %d ge %d ko %d in %d we %d ch %d hunger %d energie %d %d\n",
++            u.ux - 1, u.uy + 1, u.ulevel, u.uexp, money_cnt(invent), u.uac,
++            ACURR(A_STR), ACURR(A_DEX), ACURR(A_CON), ACURR(A_INT),
++            ACURR(A_WIS), ACURR(A_CHA), u.uhs, u.uen, u.uenmax);
++    wah_put("ort dunkel %d\n", levl[u.ux][u.uy].lit ? 0 : 1);
++    if (uwep) {
++        wah_name(nm, OBJ_NAME(objects[uwep->otyp]), (int) sizeof nm);
++        wah_put("ausruestung waffe %d %s\n", is_launcher(uwep) ? 2 : 1, nm);
++    } else {
++        wah_put("ausruestung waffe 0 keine\n");
++    }
++
++    for (y = 0; y < ROWNO; y++) {
++        char zeile[COLNO + 1];
++        for (x = 1; x < COLNO; x++)
++            zeile[x - 1] = wah_feld(x, y);
++        zeile[COLNO - 1] = '\0';
++        wah_put("karte %d %s\n", y + 1, zeile);
++    }
++
++    for (otmp = fobj; otmp; otmp = otmp->nobj) {
++        wah_name(nm, OBJ_NAME(objects[otmp->otyp]), (int) sizeof nm);
++        wah_put("ding %d %d %c %d %s\n", otmp->ox - 1, otmp->oy + 1,
++                def_oc_syms[(int) otmp->oclass].sym,
++                glyph_is_object(levl[otmp->ox][otmp->oy].glyph) ? 1 : 0, nm);
++    }
++
++    for (mtmp = fmon; mtmp; mtmp = mtmp->nmon) {
++        int wach;
++        if (DEADMONSTER(mtmp) || !mtmp->mx)
++            continue;
++        wach = (!mtmp->msleeping && mtmp->mcanmove) ? WAH_WACH : 0;
++        wah_name(nm, mtmp->data->mname, (int) sizeof nm);
++        wah_put("%d %d %c %d %d %d %d %d %d %d %d %s\n",
++                mtmp->mx - 1, mtmp->my + 1, def_monsyms[(int) mtmp->data->mlet].sym,
++                mtmp->mhp, mtmp->mhpmax, wach, (int) M_AP_TYPE(mtmp),
++                monsndx(mtmp->data), (int) mtmp->mtame, mtmp->mpeaceful ? 1 : 0,
++                canspotmon(mtmp) ? 1 : 0, nm);
++    }
++
++    f = fopen(pfad, "wb");
++    if (f) {
++        fwrite(wah_buf, 1, (size_t) wah_len, f);
++        fclose(f);
++    }
++}
+-- 
+2.49.0.windows.1
+

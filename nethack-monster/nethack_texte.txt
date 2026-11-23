@@ -1,0 +1,333 @@
+# NetHack-3.6.7-Monster, die weder in Rogue noch in unseren Hack-Bildern vorkommen.
+# Format: Klasse|Schlüssel|Stil|Deutscher Name|englischer Bildtext
+# Stil: S = stehend (wie Rogue), F = fliegend, T = nicht humanoid, W = Frau (Z-Image, bekleidet)
+ANT|a_SoldatenAmeise|S|Soldatenameise|giant soldier ant the size of a large dog, glossy dark blue-black armored body, huge serrated mandibles, venomous stinger on the abdomen, six legs
+ANT|a_FeuerAmeise|S|Feuerameise|giant fire ant the size of a dog, glowing red-orange armored body, mandibles dripping molten fire, heat shimmer and embers around it, six legs
+ANT|a_Bienenkoenigin|F|Bienenkönigin|giant queen bee the size of a wolf, huge bloated black and gold striped abdomen, translucent wings, crown-like spiky head, long dripping stinger
+COCKATRICE|c_Chickatrice|S|Chickatrice|chickatrice, a small baby cockatrice like a scrawny featherless chick with a scaly serpent tail and tiny bat wings, deadly glaring eyes, standing on clawed legs
+COCKATRICE|c_Pyrolisk|S|Pyrolisk|pyrolisk, a rooster-like monster with burning red and orange feathers, leathery bat wings, a scaly lizard tail, eyes glowing with fire, flames licking off its body, standing on clawed bird legs
+DOG|d_Fuchs|V|Fuchs|feral red fox, mangy fur, sharp teeth bared, cunning glowing eyes
+DOG|d_Kojote|V|Kojote|feral coyote, scraggly grey-brown fur lying smooth along a straight back with no ridge and no spikes, thin and hungry, snarling, normal bushy tail hanging down
+DOG|d_Werschakal|S|Werschakal (Tier)|werejackal, a lean half-man half-jackal beast standing hunched and half upright on its digitigrade hind legs, long thin arms with claws, a jackal head with pointed ears, yellow eyes and bared fangs, patchy sandy fur, scraps of torn human clothes, menacing
+DOG|d_Dingo|V|Dingo|wild dingo, sandy yellow coat, lean and muscular, snarling with bared fangs
+DOG|d_Wolf|V|Wolf|large grey wolf, thick shaggy fur lying smooth along a straight back with no ridge and no spikes, yellow eyes, lips pulled back over long fangs, normal bushy wolf tail hanging down
+DOG|d_Werwolf|S|Werwolf (Tier)|werewolf, a huge half-man half-wolf beast standing hunched and half upright on its digitigrade hind legs, long muscular arms with claws hanging almost to the ground, a wolf head with burning yellow eyes and drooling fangs, ragged black fur, scraps of torn human clothes, menacing
+DOG|d_WinterwolfJunges|V|Winterwolf-Junges|winter wolf cub, a young white wolf with smooth frost-covered fur and a straight back without any ridge or spikes, icy blue eyes, freezing breath mist from its mouth, normal fluffy tail
+DOG|d_Warg|V|Warg|warg, a monstrous wolf as big as a pony, dark matted fur, huge head with massive jaws, evil red eyes
+DOG|d_Winterwolf|V|Winterwolf|winter wolf, a huge white wolf with smooth thick fur and a straight back without any ridge or spikes, a few ice crystals in the fur, glowing pale blue eyes, frost breath from its jaws, normal bushy tail
+DOG|d_HoellenhundJunges|V|Höllenhund-Junges|hell hound pup, a young demonic dog with charred black skin and red cracks of glowing fire, burning eyes, smoke from its nostrils
+DOG|d_Hoellenhund|V|Höllenhund|hell hound, a large lean demonic hound with short charred black and rust-red hide, cracks of glowing magma on its body, burning eyes, fire dripping from its jaws, a normal thin dog tail, clean hindquarters
+DOG|d_Zerberus|V|Zerberus|Cerberus, a gigantic three-headed demonic hound, three snarling dog heads with burning eyes, short black scarred hide, a normal long dog tail
+EYE|e_Gassporen|T|Gassporen|gas spore, a floating grey bloated fungal sphere covered in veins and pustules, faint grey gas leaking out, dull and diseased
+EYE|e_Flammenkugel|T|Flammenkugel|flaming sphere, a floating orb of roaring fire and molten light, flames swirling around it
+EYE|e_Blitzkugel|T|Blitzkugel|shocking sphere, a floating orb of crackling blue-white electricity with lightning arcs jumping out of it
+EYE|e_Betrachter|T|Betrachter|beholder, a floating spherical monster with one huge central eye, a wide mouth full of teeth below it, and many writhing eyestalks on top, leathery mottled skin
+FELINE|f_Kaetzchen|V|Kätzchen|small scruffy black and grey kitten, the companion of a dungeon adventurer, wide yellow eyes, ears back, hissing
+FELINE|f_Hauskatze|V|Hauskatze|lean battle-scarred tabby housecat, torn ear, glowing green eyes, hissing with fangs
+FELINE|f_Luchs|V|Luchs|lynx, thick spotted grey-brown fur, tufted black ears, short tail, snarling
+FELINE|f_Panther|V|Panther|black panther, sleek glossy black fur, yellow eyes, muscular, crouched and snarling
+FELINE|f_Grosskatze|V|Großkatze|large feral wildcat the size of a big dog, mottled tawny fur, scarred face, snarling
+FELINE|f_Tiger|V|Tiger|huge tiger, orange fur with black stripes, scarred muzzle, snarling with long fangs
+GNOME|G_Gnomenfuerst|S|Gnomenfürst|gnome lord, a small wizened gnome in a ragged red-brown tunic and a pointed leather cap, long grey beard, beady glowing eyes, holding a short crossbow
+GNOME|G_Gnomenzauberer|S|Gnomenzauberer|gnomish wizard, a small wrinkled gnome in a tattered dark robe covered with runes, long white beard, holding a gnarled staff with a glowing tip
+GNOME|G_Gnomenkoenig|S|Gnomenkönig|gnome king, a small old gnome with a long braided beard, a crude iron crown, a heavy fur cloak, holding a war hammer, cruel eyes
+GREMLIN|g_Gremlin|S|Gremlin|gremlin, a small hunched hairless imp with grey-green warty leathery skin, small flat pointed ears close to the head, a long thin tail, sunken red eyes, a lipless mouth with needle teeth, long bony clawed fingers, wet and slimy, crouching
+GREMLIN|g_Gargoyle|S|Gargoyle|gargoyle, a crouching humanoid monster of grey stone with a horned demonic face, sharp stone claws, wings folded, cracked stone skin
+GREMLIN|g_GefluegelteGargoyle|F|Geflügelte Gargoyle|winged gargoyle, a demonic humanoid monster of dark grey stone with large stone bat wings spread, horns, fangs, sharp claws
+HUMANOID|h_Hobbit|S|Hobbit|hobbit, a small grim fat old halfling with a bald head, grey stubble and a broken nose, bare hairy feet, a stained brown leather apron over a dirty shirt, holding a heavy cudgel, hostile stare
+HUMANOID|h_Zwerg|S|Zwerg|dwarf warrior, short and broad, long braided red beard, iron helmet, chainmail, holding a heavy mattock, fierce eyes
+HUMANOID|h_Grottenschrat|S|Grottenschrat|bugbear, a large hairy goblinoid brute with a bear-like snout, yellow-brown fur, pointed ears, fangs, crude leather armor, holding a spiked morning star
+HUMANOID|h_Zwergenfuerst|S|Zwergenfürst|dwarf lord, short and broad, long braided grey beard with iron rings, ornate iron helmet, heavy armor, holding a battle axe
+HUMANOID|h_Zwergenkoenig|S|Zwergenkönig|dwarf king, short and broad, long white braided beard, golden crown on a war helmet, rich fur cloak over plate armor, holding a great war hammer
+HUMANOID|h_Gedankenschinder|S|Gedankenschinder|mind flayer, a tall gaunt humanoid with purple-grey slimy skin and a head like an octopus with four long writhing tentacles around its mouth, pupil-less white eyes, dark high-collared robe, long clawed fingers
+HUMANOID|h_MeisterGedankenschinder|S|Meister-Gedankenschinder|master mind flayer, a tall gaunt humanoid with dark violet slimy skin and an octopus head with six long writhing tentacles, glowing white eyes, an ornate black robe with a high collar
+IMP|i_Manes|S|Manes|manes, a small pale grey demonic creature, emaciated, with a bloated belly, long claws, a hairless head with empty white eyes and a toothy grin
+IMP|i_Lemure|S|Lemure|lemure, a hunched man-sized demon made of soft melting pink-grey flesh, a clear humanoid upper body with drooping arms and a moaning face, the lower body melting into a thick puddle of flesh on the ground, seen in a three-quarter view
+JELLY|j_BlaueGallerte|T|Blaue Gallerte|blue jelly, a large shapeless mound of translucent icy blue jelly, cold frost on its surface, quivering
+JELLY|j_GefleckteGallerte|T|Gefleckte Gallerte|spotted jelly, a large shapeless mound of translucent green jelly with dark acid spots, dripping and bubbling
+JELLY|j_OckerGallerte|T|Ockergallerte|ochre jelly, a compact shapeless mound of ochre-yellow slime with short pseudopods, half-digested bones inside, small in the frame with a wide margin
+KOBOLD|k_GrosserKobold|S|Großer Kobold|large kobold, a reptilian dog-like humanoid with rust-red scales, small horns, a snout with sharp teeth, ragged leather armor, holding a crude spear
+KOBOLD|k_Koboldfuerst|S|Koboldfürst|kobold lord, a reptilian dog-like humanoid with dark red scales, horns, a bone necklace and a crude iron crown, holding a jagged sword
+KOBOLD|k_Koboldschamane|S|Koboldschamane|kobold shaman, a reptilian dog-like humanoid with rust-red scales, a feathered mask, bone charms, holding a staff with a glowing skull
+NYMPH|n_Wassernymphe|W|Wassernymphe|a seductive and sinister water nymph woman with long wet dark-green hair woven with water lilies, pale skin with a faint shimmer of scales, hypnotic sea-green eyes, wearing an opaque dark green high-necked corset dress made of thick woven seaweed that fully covers her chest and torso, a short skirt, bare arms and bare legs, water dripping
+NYMPH|n_Bergnymphe|W|Bergnymphe|a seductive and sinister mountain nymph woman with long wild silver-grey hair, pale skin, hypnotic grey eyes, wearing an opaque short dress of thick grey fur and leather that fully covers her chest and torso, a crystal pendant, bare arms and bare legs, mist around her
+ORC|o_Goblin|S|Goblin|goblin, a small wiry green-grey humanoid with long pointed ears, a big crooked nose, yellow eyes, sharp teeth, ragged leather, holding a rusty knife
+ORC|o_Huegelork|S|Hügelork|hill orc, a brutish orc with yellowish-brown skin, tusks, shaggy black hair, crude hide and leather armor, holding a heavy club
+ORC|o_MordorOrk|S|Mordor-Ork|mordor orc, a black-skinned brutal orc with tusks, red eyes, black iron armor, a crude scimitar and a round black shield
+ORC|o_UrukHai|S|Uruk-hai|uruk-hai, a tall muscular black orc warrior, heavy dark plate armor, white war paint on the face, broad falchion and black shield, fierce glare
+ORC|o_OrkSchamane|S|Orkschamane|orc shaman, a hunched old orc with green-grey skin, tusks, bone and feather fetishes, tattered hide robes, holding a staff with a skull
+ORC|o_OrkHauptmann|S|Orkhauptmann|orc captain, a huge scarred orc warlord with tusks, heavy spiked black armor, a horned helmet, a great axe
+ORC|o_Goblinkoenig|S|Goblinkönig|goblin king, a fat bloated goblin with warty green skin, a crude bone crown, rotting rich robes, a cruel grin, holding a scepter
+PIERCER|p_Eisendurchbohrer|T|Eisendurchbohrer|iron piercer, a creature shaped like a pointed stalactite of rusted iron, pointed tip downward, a hidden toothed maw and two small eyes near the tip, the whole creature visible floating in the middle of the image
+PIERCER|p_Glasdurchbohrer|T|Glasdurchbohrer|glass piercer, a creature shaped like a pointed translucent crystal stalactite, pointed tip downward, a hidden toothed maw and small eyes near the tip, the whole creature floating in the center with a wide empty margin above and below
+QUADRUPED|q_Rothe|V|Rothe|rothe, a musk-ox-like beast with shaggy dark blue-black fur, a broad head with curved horns, small red eyes, a mouth with sharp teeth
+QUADRUPED|q_Mumak|V|Mumak|mumak, a colossal war elephant far bigger than a normal elephant, with four huge long tusks (two upper and two lower), thick grey scarred wrinkled hide, small mean red eyes, ragged ears, crude spiked armor plates and chains on its body
+QUADRUPED|q_Wumpus|V|Wumpus|wumpus, a large bloated blue-furred beast with a huge mouth full of teeth, suction-cup feet, small eyes
+QUADRUPED|q_Titanothere|V|Titanothere|titanothere, a huge prehistoric rhinoceros-like beast with a forked blunt horn on its nose, thick grey hide
+QUADRUPED|q_Baluchitherium|V|Baluchitherium|baluchitherium, a gigantic prehistoric hornless rhinoceros with a long neck, towering, thick grey hide
+QUADRUPED|q_Mastodon|V|Mastodon|mastodon, a prehistoric elephant-like beast, stocky and long-bodied with short legs, short coarse reddish-brown hair (not shaggy), a low flat skull, two long nearly straight forward-pointing tusks
+RODENT|r_Kanalratte|V|Kanalratte|sewer rat, a filthy brown rat with wet matted fur, a naked tail and red eyes
+RODENT|r_TollwutRatte|V|Tollwütige Ratte|rabid rat, a large mangy grey rat with foam dripping from its mouth, crazed red eyes
+RODENT|r_Werratte|V|Werratte (Tier)|wererat in animal form, an unnaturally large black rat with human-like intelligent eyes
+RODENT|r_Felsmaulwurf|V|Felsmaulwurf|rock mole, a large grey mole the size of a dog with rocky skin, huge digging claws, tiny eyes, a toothy snout
+RODENT|r_Murmeltier|S|Murmeltier|woodchuck, a fat brown groundhog with big yellow teeth, standing upright on its hind legs, eerie glassy eyes
+SPIDER|s_Hoehlenspinne|S|Höhlenspinne|cave spider, a pale grey hairy spider the size of a cat, many glistening eyes, standing on eight legs
+SPIDER|s_Hundertfuesser|S|Hundertfüßer|giant centipede, a long segmented reddish-brown centipede with many legs and venomous pincers, head raised
+SPIDER|s_Riesenspinne|S|Riesenspinne|giant spider the size of a horse, black hairy body with red markings, eight long legs, a cluster of shining eyes, dripping fangs
+SPIDER|s_Scorpius|S|Scorpius|Scorpius, a gigantic ancient scorpion with black and dark red armor engraved with glowing runes, huge pincers, a curled tail with a dripping stinger
+UNICORN|u_Pony|V|Pony|small shaggy dark pony with a wild mane, saddle-worn, intelligent dark eyes
+UNICORN|u_WeissesEinhorn|V|Weißes Einhorn|white unicorn, a white stallion with a long sharp spiraled horn, wild mane, fierce glowing blue eyes, battle scars
+UNICORN|u_GrauesEinhorn|V|Graues Einhorn|gray unicorn, a grey stallion with a long sharp spiraled horn, misty mane, cold eyes
+UNICORN|u_Pferd|V|Pferd|dark brown horse with a wild black mane, saddle-worn, scarred
+UNICORN|u_Kriegspferd|V|Kriegspferd|huge black warhorse in scarred barding armor, wild mane, steam from its nostrils
+VORTEX|v_Staubwirbel|T|Staubwirbel|dust vortex, a swirling tornado of brown dust and grit with a menacing shape
+VORTEX|v_Eiswirbel|T|Eiswirbel|ice vortex, a swirling tornado of ice crystals and freezing white mist
+VORTEX|v_Energiewirbel|T|Energiewirbel|energy vortex, a swirling tornado of crackling blue electric energy and lightning
+VORTEX|v_Dampfwirbel|T|Dampfwirbel|steam vortex, a swirling tornado of hot white steam
+VORTEX|v_Feuerwirbel|T|Feuerwirbel|fire vortex, a swirling tornado of roaring orange flames and embers
+WORM|w_JungerLangwurm|T|Junger Langwurm|baby long worm, a pale pinkish-grey segmented worm as long as a man lying coiled with its head raised, round mouth with teeth
+WORM|w_JungerPurpurwurm|T|Junger Purpurwurm|baby purple worm, a violet segmented worm as long as a man with a round mouth full of teeth, coiled
+XAN|x_Gitterkaefer|S|Gitterkäfer|grid bug, a small glowing electric purple insect made of straight lines like a wire grid, crackling with electricity, standing on legs
+LIGHT|y_SchwarzesLicht|T|Schwarzes Licht|black light, a floating sphere of darkness with a dim purple glowing edge, an unsettling void hovering in the air
+ANGEL|A_Couatl|F|Couatl|couatl, a feathered serpent with brilliant rainbow-colored feathered wings and a long scaled body, golden eyes
+ANGEL|A_Aleax|S|Aleax|aleax, a stern angelic warrior with golden skin, white feathered wings, a glowing halo, plate armor and a long sword, cold eyes
+ANGEL|A_Engel|S|Engel|angel, a tall terrifying angelic warrior with huge white feathered wings, glowing white eyes, radiant armor and a flaming sword
+ANGEL|A_KiRin|V|Ki-rin|ki-rin, a celestial horned horse-like creature with golden scales, a flowing mane, a single horn, hooves wreathed in clouds
+ANGEL|A_Archon|S|Archon|archon, a towering angelic being of light in golden armor with six white wings, a blinding radiant face, a huge glowing sword
+BAT|B_Riesenfledermaus|F|Riesenfledermaus|giant bat with a wingspan of a man, leathery dark wings, ugly wrinkled face with fangs, red eyes
+BAT|B_Rabe|F|Rabe|huge black raven with spread wings, sharp hooked beak, glossy feathers, cruel black eyes
+BAT|B_Vampirfledermaus|F|Vampirfledermaus|vampire bat, a large black bat with blood on its fangs, glowing red eyes, leathery wings spread
+CENTAUR|C_Waldzentaur|V|Waldzentaur|forest centaur, a grim centaur warrior with a human torso, long hair woven with leaves, brown horse body, longbow
+CENTAUR|C_Bergzentaur|V|Bergzentaur|mountain centaur, a massive centaur warrior with a hairy muscular human torso, fur and hide armor, grey horse body, holding a big club
+DRAGON|D_JungerGrauerDrache|S|Junger grauer Drache|baby gray dragon, a young dragon the size of a large dog with dull grey scales, small wings, big head, sharp teeth
+DRAGON|D_JungerSilberdrache|S|Junger Silberdrache|baby silver dragon, a young dragon the size of a large dog with shining silver scales, small wings, sharp teeth
+DRAGON|D_JungerSchillerdrache|S|Junger Schillerdrache|baby shimmering dragon, a young dragon the size of a large dog with iridescent shimmering scales that bend the light, small wings
+DRAGON|D_JungerRoterDrache|S|Junger roter Drache|baby red dragon, a young dragon the size of a large dog with crimson scales, small wings, smoke from its nostrils
+DRAGON|D_JungerWeisserDrache|S|Junger weißer Drache|baby white dragon, a young dragon the size of a large dog with white frosty scales, small wings, icy breath
+DRAGON|D_JungerOrangeDrache|S|Junger orange Drache|baby orange dragon, a young dragon the size of a large dog with bright orange scales, small wings, drowsy menacing eyes
+DRAGON|D_JungerSchwarzerDrache|S|Junger schwarzer Drache|baby black dragon, a young dragon the size of a large dog, gaunt and bony with glossy black scales and jagged spines, a narrow skull-like crocodile head with small cruel slitted yellow eyes, many crooked fangs, acid dripping from its jaws, ragged small wings, scarred, not cute
+DRAGON|D_JungerBlauerDrache|S|Junger blauer Drache|baby blue dragon, a young dragon the size of a large dog with deep blue scales, small wings, sparks of electricity on its horns
+DRAGON|D_JungerGruenerDrache|S|Junger grüner Drache|baby green dragon, a young dragon the size of a large dog with poison-green scales, small wings, green vapor from its mouth
+DRAGON|D_JungerGelberDrache|S|Junger gelber Drache|baby yellow dragon, a young dragon the size of a large dog with sulfur-yellow scales, small wings, acid dripping
+DRAGON|D_GrauerDrache|S|Grauer Drache|huge ancient gray dragon, slate grey scales, massive horned head, wings half folded, glowing eyes, huge talons
+DRAGON|D_Silberdrache|S|Silberdrache|huge ancient silver dragon, gleaming silver mirror-like scales, massive horned head, wings half folded, cold eyes, huge talons
+DRAGON|D_Schillerdrache|S|Schillerdrache|huge ancient shimmering dragon, iridescent rainbow-shimmering scales, massive horned head, wings half folded, huge talons
+DRAGON|D_RoterDrache|S|Roter Drache|huge ancient red dragon, blood-red scales, massive horned head, fire glowing in its throat, wings half folded, huge talons
+DRAGON|D_WeisserDrache|S|Weißer Drache|huge ancient white dragon, frost-white scales covered with ice, massive horned head, freezing breath, wings half folded
+DRAGON|D_OrangeDrache|S|Orange Drache|huge ancient orange dragon, burnt orange scales, massive horned head, wings half folded, hypnotic eyes, huge talons
+DRAGON|D_SchwarzerDrache|S|Schwarzer Drache|huge ancient black dragon, glossy black scales, skull-like horned head, acid dripping from its jaws, wings half folded
+DRAGON|D_BlauerDrache|S|Blauer Drache|huge ancient blue dragon, deep blue scales, a single great horn on its nose, lightning crackling around its jaws, wings half folded
+DRAGON|D_GruenerDrache|S|Grüner Drache|huge ancient green dragon, poison-green scales, frilled horned head, green poisonous mist from its mouth, wings half folded
+DRAGON|D_GelberDrache|S|Gelber Drache|huge ancient yellow dragon, sulfur-yellow scales, massive horned head, acid dripping, wings half folded
+DRAGON|D_ChromatischerDrache|S|Chromatischer Drache|Chromatic Dragon, a colossal five-headed dragon goddess, each head a different color red, blue, green, white and black, huge wings folded close to the body, massive scaled body, small in the frame with a wide margin
+DRAGON|D_Ixoth|S|Ixoth|Ixoth, a huge ancient red dragon demon with black horns and scars, burning eyes, smoke and fire, ragged wings
+ELEMENTAL|E_Luftelementar|S|Luftelementar|air elemental, a huge swirling vortex of wind and clouds shaped like a towering humanoid with glowing eyes
+ELEMENTAL|E_Feuerelementar|S|Feuerelementar|fire elemental, a towering humanoid shape made of roaring fire and flames with burning white eyes
+ELEMENTAL|E_Erdelementar|S|Erdelementar|earth elemental, a towering hulking humanoid shape made of rock, soil and boulders with glowing gem eyes
+ELEMENTAL|E_Wasserelementar|S|Wasserelementar|water elemental, a towering humanoid shape made of churning dark water and foam with glowing eyes
+FUNGUS|F_Flechte|T|Flechte|lichen, a sticky flat patch of pale grey-green lichen fungus with tendrils reaching out, slimy and creeping
+FUNGUS|F_BraunerSchimmel|T|Brauner Schimmel|brown mold, a large furry patch of brown mold fungus on a stone, cold frost around it
+FUNGUS|F_GelberSchimmel|T|Gelber Schimmel|yellow mold, a flat furry patch of yellow mold fungus growing on a flat stone, releasing a cloud of stinging spores, no body, no limbs
+FUNGUS|F_GruenerSchimmel|T|Grüner Schimmel|green mold, a flat furry patch of acidic green mold fungus growing on a flat stone, dripping and smoking, no body, no limbs
+FUNGUS|F_RoterSchimmel|T|Roter Schimmel|red mold, a flat furry patch of red mold fungus growing on a flat stone, a hot glow and wisps of flame, no body, no limbs
+FUNGUS|F_Kreischer|T|Kreischer|shrieker, a man-sized purple mushroom with a pale stalk and a wide cap with a gaping mouth-like slit, screaming
+GIANT|H_Riese|S|Riese|giant, a huge brutish giant man in crude furs and leather, long matted hair, holding a tree-trunk club
+GIANT|H_Steinriese|S|Steinriese|stone giant, a huge giant with smooth grey stone-like skin, bald head, wearing rough hides, holding a boulder
+GIANT|H_Huegelriese|S|Hügelriese|hill giant, a huge ugly giant with a fat belly, dirty brown skin, crude animal skins, holding a big club
+GIANT|H_Feuerriese|S|Feuerriese|fire giant, a huge giant with coal-black skin and flaming red hair and beard, heavy black iron armor, holding a great sword
+GIANT|H_Frostriese|S|Frostriese|frost giant, a huge giant with pale blue skin and white braided hair and beard, furs and chainmail, holding a great axe, icicles
+GIANT|H_Sturmriese|S|Sturmriese|storm giant, a huge giant with violet-tinged skin and dark hair, bronze armor, holding a great sword crackling with lightning
+GIANT|H_Titan|S|Titan|titan, a colossal godlike giant with a perfect muscular body, golden armor, a stern face, crackling with power
+GIANT|H_Zyklop|S|Zyklop|cyclops, a huge one-eyed giant with a single great eye in the middle of his forehead, crude armor, holding a giant club
+GIANT|H_LordSurtur|S|Lord Surtur|Lord Surtur, a gigantic fire giant king with a burning crown, flaming beard, black iron armor, holding a great flaming sword
+JABBERWOCK|J_VorpalJabberwock|S|Vorpal-Jabberwock|vorpal jabberwock, a nightmarish beast with a long serpentine neck, leathery bat wings, insect-like jaws with long teeth, whiskered fish-like head, glowing eyes, scales gleaming like sharp blades
+KOP|K_Polizist|S|Keystone Kop|keystone kop, a grim ghostly old-fashioned policeman in a dark blue uniform and tall helmet, pale undead face, holding a wooden club
+KOP|K_KopSergeant|S|Kop-Sergeant|kop sergeant, a grim ghostly old-fashioned policeman sergeant in a dark blue uniform with stripes and tall helmet, pale undead face, holding a club
+KOP|K_KopLeutnant|S|Kop-Leutnant|kop lieutenant, a grim ghostly old-fashioned police lieutenant in a dark blue uniform and cap, pale undead face, holding a club
+KOP|K_KopKapitaen|S|Kop-Kapitän|kop kaptain, a grim ghostly old-fashioned police captain in a dark blue uniform with gold buttons and cap, pale undead face, holding a club
+LICH|L_Lich|S|Lich|lich, a skeletal undead sorcerer with dried skin on its skull, glowing eye sockets, tattered black robes, a crown, bony hands glowing with magic
+LICH|L_Demilich|S|Demilich|demilich, only a single ancient floating human skull without any body, glowing gemstones set in its eye sockets, golden teeth, ghostly dust swirling around it, the skull fills the middle of the image, no skeleton, no robe
+LICH|L_Meisterlich|S|Meisterlich|master lich, a tall skeletal undead sorcerer in rich decayed purple robes, a jeweled crown, glowing red eyes, a staff of bone
+LICH|L_Erzlich|S|Erzlich|arch-lich, a towering skeletal undead archmage in black and gold robes, a dark crown, blazing eyes, swirling dark magic around it
+MUMMY|M_Koboldmumie|S|Koboldmumie|kobold mummy, a small reptilian kobold wrapped in rotting linen bandages, dried scaly skin showing, glowing eyes
+MUMMY|M_Gnomenmumie|S|Gnomenmumie|gnome mummy, a small gnome wrapped in rotting linen bandages, a beard sticking out, glowing eyes
+MUMMY|M_Orkmumie|S|Orkmumie|orc mummy, an orc wrapped in rotting linen bandages, tusks showing, glowing eyes
+MUMMY|M_Zwergenmumie|S|Zwergenmumie|dwarf mummy, a short broad dwarf wrapped in rotting linen bandages, a braided beard showing, glowing eyes
+MUMMY|M_Elfenmumie|S|Elfenmumie|elf mummy, a tall thin elf wrapped in rotting linen bandages, pointed ears showing, glowing eyes
+MUMMY|M_Menschenmumie|S|Menschenmumie|human mummy, an ancient human wrapped in rotting linen bandages, dried brown skin showing, empty glowing eyes, arms reaching
+MUMMY|M_Ettinmumie|S|Ettinmumie|ettin mummy, a huge two-headed giant wrapped in rotting linen bandages, both heads with glowing eyes
+MUMMY|M_Riesenmumie|S|Riesenmumie|giant mummy, a huge giant wrapped in rotting linen bandages, dried skin showing, glowing eyes
+NAGA|N_JungeRoteNaga|T|Junge rote Naga|red naga hatchling, a young snake with a human-like face, red scales, coiled
+NAGA|N_JungeSchwarzeNaga|T|Junge schwarze Naga|black naga hatchling, a young snake with a human-like face, black scales, coiled
+NAGA|N_JungeGoldeneNaga|T|Junge goldene Naga|golden naga hatchling, a young snake with a human-like face, golden scales, coiled
+NAGA|N_JungeWaechterNaga|T|Junge Wächternaga|guardian naga hatchling, a young snake with a human-like face, green scales, coiled
+NAGA|N_RoteNaga|T|Rote Naga|red naga, a huge red-scaled serpent with a cruel human-like face and burning eyes, coiled and raised
+NAGA|N_SchwarzeNaga|T|Schwarze Naga|black naga, a huge black-scaled serpent with a cold human-like face, acid dripping from its mouth, coiled and raised
+NAGA|N_GoldeneNaga|T|Goldene Naga|golden naga, a huge golden-scaled serpent with a noble human-like face, coiled and raised
+NAGA|N_WaechterNaga|T|Wächternaga|guardian naga, a huge green-scaled serpent with a stern human-like face and a hood like a cobra, coiled and raised
+OGRE|O_Oger|S|Oger|ogre, a huge brutish ogre with warty yellowish skin, a big belly, filthy hides, small cruel eyes, holding a huge club
+OGRE|O_Ogerfuerst|S|Ogerfürst|ogre lord, a huge brutish ogre with scarred skin, crude iron armor pieces, a bone necklace, holding a spiked club
+OGRE|O_Ogerkoenig|S|Ogerkönig|ogre king, a gigantic brutish ogre with a crude iron crown, a fur cloak, heavy armor, holding a massive spiked club
+PUDDING|P_GrauerSchleim|T|Grauer Schleim|gray ooze, a large flat puddle of grey slime that looks like wet stone, bubbling
+PUDDING|P_BraunerPudding|T|Brauner Pudding|brown pudding, a large blob of brown sludge like rotting mud, oozing
+PUDDING|P_GruenerSchleim|T|Grüner Schleim|green slime, a low wide shapeless puddle of glowing bright green slime spreading on the ground, bubbling and dripping, dissolving bones inside, no body shape, no face, no limbs
+PUDDING|P_SchwarzerPudding|T|Schwarzer Pudding|black pudding, a low wide heaving mound of glossy black sludge on the ground with a few short pseudopods, bubbling, dissolving bones inside, no body shape, no face, no limbs
+QUANTMECH|Q_Quantenmechaniker|S|Quantenmechaniker|quantum mechanic, an eerie flickering humanoid in a tattered lab coat whose body seems to exist in several places at once, blurred duplicate outlines, glowing eyes
+RUSTMONST|R_Entzauberer|S|Entzauberer|disenchanter, a gaunt bony creature like a bright blue dromedary camel with one hump, thin long legs with cloven hooves, mottled glowing blue hide, a long flexible trunk-like snout reaching forward, small malicious eyes, faint sparkles of magic drawn into the snout, standing on four legs
+SNAKE|S_Strumpfbandnatter|T|Strumpfbandnatter|garter snake, a long thin striped green and yellow snake, coiled, tongue out
+SNAKE|S_Wassermokassin|T|Wassermokassin|water moccasin, a thick dark brown venomous snake with a wide white open mouth showing fangs, coiled
+SNAKE|S_Python|T|Python|huge python, thick body with brown and gold patterns, coiled, head raised
+SNAKE|S_Grubenotter|T|Grubenotter|pit viper, a venomous viper with a triangular head and heat pits, green and black scales, coiled to strike
+SNAKE|S_Kobra|T|Kobra|king cobra, hood spread wide, raised high, dark scales, fangs showing
+TROLL|T_Eistroll|S|Eistroll|ice troll, a towering troll with pale blue frost-covered skin, icicles in its hair, long arms with claws, cruel eyes
+TROLL|T_Felstroll|S|Felstroll|rock troll, a towering troll with grey rock-like hide, a huge jaw with tusks, long arms, holding a stone club
+TROLL|T_Wassertroll|S|Wassertroll|water troll, a towering troll with dark green slimy skin, webbed hands and feet, seaweed hanging off it, gills
+TROLL|T_OlogHai|S|Olog-hai|olog-hai, a huge armored black troll warrior in dark iron plate, a heavy round shield and a great club, glowing eyes
+VAMPIRE|V_Vampirfuerst|S|Vampirfürst|vampire lord, a tall pale noble vampire in a black and crimson cloak with a high collar, long fangs, glowing red eyes, clawed hands
+VAMPIRE|V_Vampirmagier|S|Vampirmagier|vampire mage, a gaunt pale vampire sorcerer in dark robes, long fangs, red eyes, dark magic swirling in his hands
+VAMPIRE|V_VladDerPfaehler|S|Vlad der Pfähler|Vlad the Impaler, a pale long-haired medieval prince-vampire in an ornate red and black outfit with a fur-trimmed cape and a jeweled cap, long mustache, blood-red eyes, long fangs
+WRAITH|W_Grabunhold|S|Grabunhold|barrow wight, an undead warrior in ancient rusted armor and a tattered cloak, a skeletal face with cold glowing eyes, a crown of tarnished gold, holding an old sword
+WRAITH|W_Nazgul|S|Nazgul|nazgul, a tall black-robed ringwraith with an empty dark hood, armored gauntlets, a long sword, a faint cold glow, menacing
+YETI|Y_Affe|S|Affe|feral monkey, mangy brown fur, bared fangs, crazy eyes, crouching
+YETI|Y_MenschenAffe|S|Menschenaffe|large ape, dark grey fur, massive arms, bared fangs, standing hunched
+YETI|Y_Fleischfresseraffe|S|Fleischfresser-Affe|carnivorous ape, a huge black ape with blood-stained fur and long fangs, roaring
+YETI|Y_Sasquatch|S|Sasquatch|sasquatch, a towering hairy humanoid ape with dark brown matted fur, a heavy brow, huge feet, roaring
+ZOMBIE|Z_Koboldzombie|S|Koboldzombie|kobold zombie, a small rotting reptilian kobold with peeling scales, exposed bones, empty eyes
+ZOMBIE|Z_Gnomenzombie|S|Gnomenzombie|gnome zombie, a small rotting gnome with grey flesh and a tattered beard, exposed bones, empty eyes
+ZOMBIE|Z_Orkzombie|S|Orkzombie|orc zombie, a rotting orc with greenish decaying flesh, broken tusks, torn armor, empty eyes
+ZOMBIE|Z_Zwergenzombie|S|Zwergenzombie|dwarf zombie, a rotting dwarf with grey flesh, a tattered beard, a rusty helmet, empty eyes
+ZOMBIE|Z_Elfenzombie|S|Elfenzombie|elf zombie, a rotting tall elf with pale decaying flesh, long tangled hair, pointed ears, tattered fine clothes, empty eyes
+ZOMBIE|Z_Ettinzombie|S|Ettinzombie|ettin zombie, a huge rotting two-headed giant with decaying flesh and exposed bones
+ZOMBIE|Z_Ghul|S|Ghul|ghoul, a gaunt hunched corpse-eating undead with grey stretched skin, long claws, a mouth full of sharp teeth, glowing eyes
+ZOMBIE|Z_Riesenzombie|S|Riesenzombie|giant zombie, a huge rotting giant with decaying flesh, exposed ribs, empty eyes
+ZOMBIE|Z_Skelett|S|Skelett|skeleton warrior, an animated human skeleton in rusty armor pieces, holding a notched sword and a shield, glowing eye sockets
+GOLEM|Golem_Strohgolem|S|Strohgolem|straw golem, a humanoid figure made of bundled straw and twine, a sackcloth face, menacing
+GOLEM|Golem_Papiergolem|S|Papiergolem|paper golem, a humanoid figure made of folded and crumpled old paper with writing on it, menacing
+GOLEM|Golem_Seilgolem|S|Seilgolem|rope golem, a humanoid figure made of knotted coiled ropes, menacing
+GOLEM|Golem_Goldgolem|S|Goldgolem|gold golem, a large heavy humanoid figure made of gleaming gold, filling most of the image height, menacing
+GOLEM|Golem_Ledergolem|S|Ledergolem|leather golem, a humanoid figure made of stitched old leather pieces with crude seams, menacing
+GOLEM|Golem_Holzgolem|S|Holzgolem|wood golem, a humanoid figure carved from dark wood with joints and grain, menacing
+GOLEM|Golem_Fleischgolem|S|Fleischgolem|flesh golem, a huge humanoid stitched together from corpses, grey and pink flesh with crude stitches and scars, menacing
+GOLEM|Golem_Lehmgolem|S|Lehmgolem|clay golem, a huge humanoid figure made of grey-brown clay with runes carved on its forehead, menacing
+GOLEM|Golem_Steingolem|S|Steingolem|stone golem, a huge humanoid figure carved from grey stone blocks, menacing
+GOLEM|Golem_Glasgolem|S|Glasgolem|glass golem, a humanoid figure made of translucent glass with sharp edges, light refracting through it, menacing
+GOLEM|Golem_Eisengolem|S|Eisengolem|iron golem, a huge humanoid figure made of dark riveted iron plates, glowing eyes, menacing
+HUMAN|At_Mensch|S|Mensch|grim human dungeon wanderer in a ragged cloak and leather, hollow cheeks, wary eyes, holding a dagger
+HUMAN|At_Werratte|S|Werratte (Mensch)|wererat in human form, a thin twitchy man with rodent-like features, greasy hair, sharp front teeth, ragged clothes
+HUMAN|At_Werschakal|S|Werschakal (Mensch)|werejackal in human form, a lean feral man with pointed features, wild hair, yellow eyes, ragged clothes
+HUMAN|At_Werwolf|S|Werwolf (Mensch)|werewolf in human form, a big hairy wild man with a heavy brow, yellow eyes, sharp teeth, torn clothes
+HUMAN|At_Elf|S|Elf|elf, a tall slender pale elf with long hair and pointed ears, a green hooded cloak, holding a bow, cold eyes
+HUMAN|At_Waldelf|S|Waldelf|woodland-elf, a slender elf with brown hair and pointed ears in leather and leaf-green clothes, holding an elven bow
+HUMAN|At_Gruenelf|S|Grünelf|green-elf, a slender elf with dark hair and pointed ears in deep green clothes and a green cloak, holding an elven spear
+HUMAN|At_Grauelf|S|Grauelf|grey-elf, a tall slender elf with silver hair and pointed ears in grey robes and a silver mail shirt, holding an elven sword
+HUMAN|At_Elfenfuerst|S|Elfenfürst|elf-lord, a tall proud elf with long silver hair and pointed ears, ornate elven armor, holding a long elven sword
+HUMAN|At_Elfenkoenig|S|Elfenkönig|elvenking, a tall regal elf with long white hair, a silver crown, rich robes over elven armor, holding a sword, ageless cold eyes
+HUMAN|At_Doppelgaenger|S|Doppelgänger|doppelganger, a grey featureless humanoid whose face and body are melting and shifting into another person's shape, unsettling
+HUMAN|At_Wache|S|Wache|vault guard, a big stern man in heavy steel plate armor and a closed helmet, holding a halberd
+HUMAN|At_Gefangener|S|Gefangener|prisoner, a gaunt ragged prisoner in torn clothes with chains on the wrists, dirty and desperate
+HUMAN|At_Orakel|S|Orakel|the oracle, a mysterious old woman seer in flowing grey robes and a hood, blind milky eyes, sitting surrounded by smoke
+HUMAN|At_Priester|S|Priester|aligned priest, a stern temple priest in dark ceremonial robes with a holy symbol, holding a mace
+HUMAN|At_Hohepriester|S|Hohepriester|high priest, an imposing elderly priest in rich black and gold robes, a tall mitre, holding a golden staff, burning eyes
+HUMAN|At_Soldat|S|Soldat|soldier, a grim medieval soldier in chainmail and a helmet, holding a spear and a shield
+HUMAN|At_Feldwebel|S|Feldwebel|sergeant, a tough medieval soldier with a scarred face, chainmail and a helmet with a red plume, holding a flail
+HUMAN|At_Leutnant|S|Leutnant|lieutenant, a medieval officer in plate armor and a helmet, holding a broadsword
+HUMAN|At_Hauptmann|S|Hauptmann|captain, a hardened medieval captain in heavy plate armor with a red cloak, holding a long sword
+HUMAN|At_Waechter|S|Wächter|watchman, a town watchman in a leather armor and a dark tabard, holding a lantern and a halberd
+HUMAN|At_Wachhauptmann|S|Wachhauptmann|watch captain, a big town watch captain in chainmail and a dark tabard with insignia, holding a sword
+HUMAN|At_ZaubererVonYendor|S|Zauberer von Yendor|the Wizard of Yendor, an ancient terrifying archmage in dark star-covered robes, a long grey beard, burning eyes, holding a staff, dark magic swirling
+HUMAN|At_Kroesus|S|Krösus|croesus, a fat greedy king in gold robes and a heavy gold crown, rings on every finger, holding a golden scepter
+HUMAN|At_Charon|S|Charon|charon, the ferryman of the dead, a tall skeletal figure in a dark hooded robe, holding a long pole, glowing eyes
+HUMAN|At_Archaeologe|S|Archäologe|archeologist, a gaunt grim tomb explorer with a shaved head and a dusty face scarf, a sleeveless canvas field vest with many pockets, heavy boots, holding a pick-axe and a lantern
+HUMAN|At_Barbar|S|Barbar|barbarian, a huge muscular warrior with wild hair, fur loincloth and leather straps, holding a two-handed sword, filling most of the image height
+HUMAN|At_Hoehlenmensch|S|Höhlenmensch|caveman, a big primitive man with wild hair and beard, animal furs, holding a big wooden club
+HUMAN|At_Hoehlenfrau|S|Höhlenfrau|cavewoman, a strong primitive woman with wild hair, animal furs, holding a big wooden club
+HUMAN|At_Heiler|S|Heiler|healer, a calm robed healer with a satchel of herbs, holding a scalpel and a glowing potion
+HUMAN|At_Ritter|S|Ritter|knight, an armored medieval knight in full plate armor with a closed helmet, holding a lance and a shield
+HUMAN|At_Moench|S|Mönch|monk, a bald martial arts monk in a simple orange robe, bare hands raised in a fighting stance
+HUMAN|At_Priesterin|S|Priesterin|priestess, a stern temple priestess in dark ceremonial robes with a holy symbol, holding a mace
+HUMAN|At_Waldlaeufer|S|Waldläufer|ranger, a hooded ranger in a green cloak and leather armor, holding a longbow, quiver on the back
+HUMAN|At_Schurke|S|Schurke|rogue, a sly thief in dark leather armor and a hood, holding two daggers
+HUMAN|At_Samurai|S|Samurai|samurai, a japanese samurai in dark lacquered armor and a demon face mask, holding a katana
+HUMAN|At_Tourist|S|Tourist|tourist, a nervous man in a loud hawaiian shirt, shorts, a straw hat and a camera, lost in a dark dungeon
+HUMAN|At_Walkuere|S|Walküre|valkyrie, a tall strong viking warrior woman with blonde braids, a winged helmet, chainmail, holding a long sword and a round shield
+HUMAN|At_Zauberer|S|Zauberer|wizard, a gaunt wizard in a dark blue robe and a pointed hat, long beard, holding a quarterstaff, glowing hand
+HUMAN|At_LordCarnarvon|S|Lord Carnarvon|lord carnarvon, an aristocratic old explorer in a pith helmet and khaki clothes, holding a cane
+HUMAN|At_Pelias|S|Pelias|pelias, an old greek king in a white chiton and a golden crown, stern face, holding a scepter
+HUMAN|At_SchamaneKarnov|S|Schamane Karnov|shaman karnov, a primitive tribal shaman in furs and feathers, bone necklaces, face paint, holding a staff
+HUMAN|At_Earendil|S|Earendil|earendil, a legendary elven mariner in shining silver armor and a blue cloak, a bright jewel glowing on his brow
+HUMAN|At_Elwing|S|Elwing|elwing, an elven lady in a white flowing gown, long dark hair, a glowing jewel on her necklace
+HUMAN|At_Hippokrates|S|Hippokrates|hippocrates, an old greek physician with a white beard in a white toga, holding a staff with a serpent
+HUMAN|At_KoenigArtus|S|König Artus|king arthur, a medieval king in plate armor and a red cloak, a golden crown, holding a shining sword
+HUMAN|At_Grossmeister|S|Großmeister|grand master, an old martial arts master in a simple grey robe, long white beard, calm but deadly stance
+HUMAN|At_Erzpriester|S|Erzpriester|arch priest, an elderly high priest in white and gold robes, a tall mitre, holding a golden holy symbol
+HUMAN|At_Orion|S|Orion|orion, a giant mythical hunter with a lion skin cloak, holding a huge bow, filling most of the image height
+HUMAN|At_MeisterDerDiebe|S|Meister der Diebe|master of thieves, a sly man in fine dark leather and a dark cape, a gold chain, holding a jeweled dagger
+HUMAN|At_LordSato|S|Lord Sato|lord sato, an old japanese daimyo in ornate lacquered samurai armor, holding a katana
+HUMAN|At_Twoflower|S|Twoflower|twoflower, a small nervous tourist in strange bright foreign robes, thick round spectacles, holding a big wooden box camera on a strap, lost in a dark dungeon, realistic person
+HUMAN|At_Norn|S|Norn|norn, an ancient norse seeress in a grey hooded robe, holding a spindle, glowing white eyes
+HUMAN|At_NeferetDieGruene|S|Neferet die Grüne|neferet the green, an egyptian sorceress in green robes and gold jewelry, dark kohl eyes, holding a staff
+HUMAN|At_ThothAmon|S|Thoth Amon|thoth amon, an evil egyptian sorcerer with a shaved head, dark robes, a serpent ring, dark magic in his hands
+HUMAN|At_MeisterKaen|S|Meister Kaen|master kaen, an evil martial arts master in a black robe, shaved head, cruel face, fighting stance
+HUMAN|At_Meisterassassine|S|Meisterassassine|master assassin, a masked killer in black leather and a hood, holding two curved daggers
+HUMAN|At_AshikagaTakauji|S|Ashikaga Takauji|ashikaga takauji, a japanese shogun warlord in dark red samurai armor with a horned helmet, holding a katana
+HUMAN|At_DerDunkleEine|S|Der Dunkle Eine|the dark one, a tall figure in black robes and a hood, a pale cruel face, eyes glowing red, dark magic around him
+HUMAN|At_Student|S|Student|student, a young nervous archeology student with a satchel and a lantern
+HUMAN|At_Haeuptling|S|Häuptling|chieftain, a huge barbarian chieftain in furs with a horned helmet, holding a great axe
+HUMAN|At_Neandertaler|S|Neandertaler|neanderthal, a primitive heavy-browed man in furs, holding a stone club
+HUMAN|At_Hochelf|S|Hochelf|high-elf, a tall noble elf in white and gold, long golden hair, pointed ears, holding an elven sword
+HUMAN|At_Diener|S|Diener|attendant, a young temple attendant in a simple white robe with a bag of herbs
+HUMAN|At_Page|S|Page|page, a young knight's squire in a tunic with a coat of arms, holding a short sword
+HUMAN|At_Abt|S|Abt|abbot, an elderly monk in a brown robe with a hood, a rope belt, stern face
+HUMAN|At_Akolyth|S|Akolyth|acolyte, a young priest in a grey robe with a holy symbol
+HUMAN|At_Jaeger|S|Jäger|hunter, a rugged grim hunter in fur and leather, holding a bow, filling most of the image height
+HUMAN|At_Schlaeger|S|Schläger|thug, a big brutal street thug with a scarred face, leather vest, holding a club, filling most of the image height
+HUMAN|At_Ninja|S|Ninja|ninja, a masked ninja in black clothes, holding a short sword
+HUMAN|At_Roshi|S|Roshi|roshi, an old japanese zen master in simple robes, holding a wooden staff
+HUMAN|At_Fuehrer|S|Führer|guide, a weathered tour guide in practical clothes, holding a lantern and a map
+HUMAN|At_Krieger|S|Krieger|warrior, a strong norse warrior in chainmail and a helmet, holding an axe and a round shield
+HUMAN|At_Lehrling|S|Lehrling|apprentice, a young wizard apprentice in a plain robe, holding a book and a small wand
+GHOST|X_Geist|S|Gespenst|ghost, a translucent pale grey human spirit in tattered burial clothes, hollow dark eyes, floating above the ground
+GHOST|X_Schatten|S|Schatten|shade, a dark translucent shadow of a human figure, darkness flowing off it, faint glowing eyes, floating
+DEMON|Und_Wasserdaemon|S|Wasserdämon|water demon, a demonic humanoid with dark blue-green scales, webbed claws, fins, a fish-like fanged face, dripping water
+DEMON|Und_Sukkubus|W|Sukkubus|a seductive and sinister succubus demon woman with small curved horns, dark leathery bat wings folded behind her, a thin pointed tail, glowing red eyes, long black hair, wearing an opaque tight black leather corset dress that fully covers her chest, bare arms and legs, black boots
+DEMON|Und_GehoernterTeufel|S|Gehörnter Teufel|horned devil, a tall demonic devil with dark red scales, large curved horns, leathery wings, a spiked tail, holding a fork
+DEMON|Und_Inkubus|S|Inkubus|incubus, a handsome but sinister male demon with small horns, bat wings, a pointed tail, glowing red eyes, dark clothes
+DEMON|Und_Erinnye|S|Erinnye|erinys, a fierce winged female fury in black armor with feathered black wings, burning eyes, holding a sword and a rope
+DEMON|Und_Stachelteufel|S|Stachelteufel|barbed devil, a tall demonic devil covered with sharp barbs and spikes all over its reddish body, claws, glowing eyes
+DEMON|Und_Marilith|S|Marilith|marilith, a demon with a woman's upper body with six arms each holding a sword, and the long scaly body of a giant snake below, fierce face, armored
+DEMON|Und_Vrock|S|Vrock|vrock, a demon like a giant vulture-humanoid with grey feathered wings, a vulture head, long claws, muscular
+DEMON|Und_Hezrou|S|Hezrou|hezrou, a huge toad-like demon with warty dark skin, a wide mouth full of teeth, clawed arms, standing upright
+DEMON|Und_Knochenteufel|S|Knochenteufel|bone devil, a tall skeletal demon with dry grey skin over bones, a scorpion tail, glowing eyes
+DEMON|Und_Eisteufel|S|Eisteufel|ice devil, a tall insect-like demon with pale blue chitin, mandibles, a spiked tail, frost around it
+DEMON|Und_Nalfeshnee|S|Nalfeshnee|nalfeshnee, a huge fat demon with the head of a boar, small feathered wings, a gorilla-like body, glowing eyes
+DEMON|Und_Grubenunhold|S|Grubenunhold|pit fiend, a giant red scaled devil with huge bat wings, horns, fangs, a long tail, fire around it
+DEMON|Und_Sandestin|S|Sandestin|sandestin, a shapeshifting demon whose body is half grey human and half shifting into other forms, glowing eyes
+DEMON|Und_Balrog|S|Balrog|balrog, a huge demon of fire and shadow with large horns, burning eyes, dark wings folded close to its body, holding a flaming whip coiled at its side, small in the frame with a wide margin
+DEMON|Und_Juiblex|T|Juiblex|juiblex, the demon lord of slime, a heaving mound of foul green and black slime with many glowing red eyes, small in the frame with a wide margin
+DEMON|Und_Yeenoghu|S|Yeenoghu|yeenoghu, the demon lord of gnolls, a tall gaunt hyena-headed demon with mangy fur, holding a triple flail
+DEMON|Und_Orcus|S|Orcus|orcus, the demon prince of the undead, a huge goat-headed demon with bat wings, a bloated body, holding a skull-topped wand
+DEMON|Und_Geryon|S|Geryon|geryon, an arch-devil with the upper body of a huge horned man and the body of a giant serpent below, wings
+DEMON|Und_Dispater|S|Dispater|dispater, an arch-devil, a tall handsome devil with small horns, red skin, dark rich robes, holding an iron staff
+DEMON|Und_Baalzebub|S|Baalzebub|baalzebub, the lord of the flies, a huge demon with the head of a fly, insect wings, a bloated body, swarms of flies
+DEMON|Und_Asmodeus|S|Asmodeus|asmodeus, the king of hell, a tall imposing devil with red skin, large horns, a cruel handsome face, black robes, holding a scepter
+DEMON|Und_Demogorgon|S|Demogorgon|demogorgon, a huge demon prince with two baboon-like heads, tentacle arms, a reptilian body, a forked tail
+DEMON|Und_Tod|S|Tod|death, the horseman, a tall skeletal figure in a black hooded robe, holding a scythe
+DEMON|Und_Pestilenz|S|Pestilenz|pestilence, the horseman, a rotting diseased figure in a green hooded robe, flies around him, pustules
+DEMON|Und_Hunger|S|Hunger|famine, the horseman, an extremely emaciated skeletal figure in a brown hooded robe, holding scales
+DEMON|Und_Postdaemon|S|Postdämon|mail daemon, a demon in a dark postman uniform and cap, red skin, small horns, bat wings, holding a letter, grinning, filling most of the image height
+DEMON|Und_Dschinn|S|Dschinn|djinni, a powerful genie with blue skin, muscular upper body, the lower body a swirling smoke tail, a turban, golden bracelets
+DEMON|Und_DienerHuhetotls|S|Diener Huhetotls|minion of huhetotl, an aztec demon with a jaguar-like face, feathered headdress, obsidian claws
+DEMON|Und_Nalzok|S|Nalzok|nalzok, a huge dark demon with horns, burning eyes, black scales, wings, holding a black sword
+EEL|Tilde_Qualle|T|Qualle|giant jellyfish, translucent bell with glowing purple veins and long stinging tentacles, floating
+EEL|Tilde_Piranha|T|Piranha|piranha, a vicious fish with a protruding jaw full of razor teeth, silver and red scales
+EEL|Tilde_Hai|T|Hai|great shark, grey body, open jaws with rows of teeth, black eyes
+EEL|Tilde_Riesenaal|T|Riesenaal|giant eel, a long dark slimy eel with a gaping mouth full of teeth, coiled
+EEL|Tilde_Zitteraal|T|Zitteraal|electric eel, a long dark slimy eel curled in an S-shape crackling with blue electricity, open mouth with teeth
+EEL|Tilde_Krake|T|Krake|kraken, a gigantic squid-like sea monster with huge tentacles and a beak, glowing eyes
+LIZARD|Doppelpunkt_Molch|V|Molch|newt, a small slimy yellow-orange newt, crawling
+LIZARD|Doppelpunkt_Gecko|V|Gecko|gecko, a small spotted gecko with big eyes, crawling
+LIZARD|Doppelpunkt_Leguan|V|Leguan|iguana, a large green iguana with spiky crest and dewlap
+LIZARD|Doppelpunkt_JungesKrokodil|V|Junges Krokodil|baby crocodile, a young crocodile with dark green scales, mouth open showing teeth
+LIZARD|Doppelpunkt_Eidechse|V|Eidechse|lizard, a large grey-green lizard with rough scales and a forked tongue
+LIZARD|Doppelpunkt_Krokodil|V|Krokodil|huge crocodile, armored dark green scales, jaws wide open with many teeth
+LIZARD|Doppelpunkt_Salamander|V|Salamander|salamander, a large fiery red-orange lizard wreathed in flames

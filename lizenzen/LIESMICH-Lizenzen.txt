@@ -1,0 +1,17 @@
+We Are Hack - verwendete Fremdsoftware
+
+rogue.exe            Rogue 5.4.4, BSD-Lizenz        -> Rogue-Lizenz.txt
+                     (c) Michael Toy, Ken Arnold, Glenn Wichman
+                     Quelle: https://github.com/Davidslv/rogue, mit unseren Aenderungen: quelltext\rogue
+                     Uebersetzt mit PDCurses        -> PDCurses-Hinweis.txt
+                     und MinGW-w64                  -> MinGW-w64-Laufzeit-Lizenz.txt,
+                                                       winpthreads-Lizenz.txt
+NetHack.exe          NetHack 3.6, NetHack General Public License -> NetHack-Lizenz.txt
+(nethack-spiel\)     (c) Stichting Mathematisch Centrum, M. Stephenson und NetHack DevTeam
+                     Quelle: https://www.nethack.org, nur um die Werte-Meldung an die 3D-Ansicht
+                     erweitert. Vollstaendiger Quelltext: quelltext\nethack, Aenderungen: quelltext\patches
+godot\...exe         Godot Engine 4.7.2, MIT        -> Godot-Lizenz.txt
+rogue-bruecke.exe,   eigener Code des Projekts
+rogue-godot\         "We Are Hack"
+
+Die Namen der Rogue- und NetHack-Autoren werden nicht zur Werbung fuer dieses Projekt verwendet.

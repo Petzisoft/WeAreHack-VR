@@ -1,0 +1,114 @@
+GRAFIK-QUELLEN UND LIZENZEN (We Are Hack)
+=========================================
+
+Alle Grafiken in diesem Paket sind frei verwendbar. Es sind keine Grafiken
+aus anderen Spielen enthalten.
+
+1) Stein-, Boden-, Fels- und Holztexturen  (Ordner rogue-godot\texturen)
+   Quelle:  Poly Haven, https://polyhaven.com/textures
+   Lizenz:  CC0 1.0 (gemeinfrei), https://creativecommons.org/publicdomain/zero/1.0/
+   Verwendet (je Farbbild, Normalmap, AO/Rauheit/Metall, Hoehe in 2K):
+     castle_brick_07, castle_brick_01, medieval_blocks_02, medieval_blocks_03,
+     medieval_wall_01, stone_wall, stone_wall_04, old_stone_wall, defense_wall,
+     castle_wall_slates, rustic_stone_wall, mossy_stone_wall, dark_brick_wall,
+     large_sandstone_blocks, stone_block_wall, stacked_stone_wall,
+     cobblestone_floor_04, cobblestone_floor_08, monastery_stone_floor,
+     stone_tiles_02, medieval_blocks_05, rock_tile_floor, worn_tile_floor,
+     patterned_cobblestone, rocky_trail, rock_ground, stony_dirt_path,
+     rock_wall, rock_face, quarry_wall, dark_rock, wooden_gate, rough_pine_door
+   Danke an das Poly-Haven-Team und die Fotografen.
+
+2) Licht und Nebel
+   Selbst gebaut im Programmcode (rogue-godot\grafik.gd), keine fremden Dateien.
+
+3) Gegenstaende (Ordner rogue-godot\modelle\gegenstaende)
+   a) Quaternius "Ultimate RPG Items" (Dateien q_*.glb), ueber poly.pizza
+      Quelle:  https://quaternius.com  /  https://poly.pizza/bundle/Ultimate-RPG-Items-Bundle-h8mhlZ0dG8
+      Lizenz:  CC0 1.0 (gemeinfrei)
+   b) Kay Lousberg "KayKit Dungeon Remastered 1.0" (Dateien k_*.glb)
+      Quelle:  https://kaylousberg.itch.io/kaykit-dungeon-remastered
+               https://github.com/KayKit-Game-Assets/KayKit-Dungeon-Remastered-1.0
+      Lizenz:  CC0 1.0 (gemeinfrei), siehe LIZENZ-KayKit-Dungeon.txt
+   c) Kay Lousberg "KayKit Adventurers Character Pack 1.0" (wand, staff,
+      axe_1handed, sword_1handed, dagger, crossbow_1handed, *_texture.png)
+      Quelle:  https://github.com/KayKit-Game-Assets/KayKit-Character-Pack-Adventures-1.0
+      Lizenz:  CC0 1.0 (gemeinfrei), siehe LIZENZ-KayKit-Adventurers.txt
+   Danke an Quaternius und Kay Lousberg (www.kaylousberg.com).
+
+4) Ring, Treppe, Fackeln
+   Selbst gebaut im Programmcode (rogue-godot\grafik.gd).
+
+5) Weitere Texturen fuer die Optik nach Tiefe (Poly Haven, CC0, wie unter 1):
+   raw_plank_wall, weathered_planks, old_planks_02, wood_planks_dirt, dark_planks,
+   excavated_soil_wall, dirt, brown_mud_02, stone_floor, rock_ground_02
+
+6) Monster (rogue-godot\modelle\monster und modelle\monster3d)
+   KI-erzeugt nach eigenen Vorgaben und Beschreibungen des Autors, lokal mit ComfyUI.
+   Keine Figuren aus anderen Spielen oder Filmen.
+   a) Monster-Standbilder (monster\*.png ausser M und N):
+      Modell: Krea 2 Turbo (Krea AI), Krea 2 Community License,
+      https://huggingface.co/krea/krea-2-turbo
+      Laut Lizenz (Abschnitt 5.3) gehoeren die erzeugten Bilder dem Nutzer; Krea
+      beansprucht keine Rechte daran. Hinweis nach Abschnitt 4.3: Diese Bilder sind
+      mit kuenstlicher Intelligenz erzeugt.
+   b) Medusa (M) und Nymphe (N):
+      Modell: Z-Image Turbo (Tongyi-MAI), Apache License 2.0,
+      https://huggingface.co/Tongyi-MAI/Z-Image-Turbo
+   c) 3D-Monster (monster3d\*.glb), aus den Standbildern erzeugt:
+      Modelle: TRELLIS.2 (Microsoft) und Pixal3D, MIT-Lizenz,
+      https://huggingface.co/microsoft/TRELLIS.2-4B , https://huggingface.co/Comfy-Org/Pixal3D
+      Hilfsmodelle: MoGe-2 (MIT), BiRefNet zum Freistellen (MIT).
+   d) Freistellen der Standbilder: BiRefNet (MIT).
+   Nicht enthalten: fruehere Monsterfilme und Monstertoene (MiniMax H3) und Bilder
+   aus Qwen Image 2.1, deren Lizenzen eine Weitergabe nicht erlauben.
+
+7) Waffentoene (rogue-godot\modelle\ton\waffe), echte Aufnahmen, CC0 1.0
+   Alle 19 Toene. Die frueheren KI-Waffentoene (MiniMax) sind vollstaendig ersetzt.
+   Geschnitten, gefiltert und im Pegel angeglichen (grafik-test\waffen-quellen\seite_bauen.py).
+   faust.mp3   <- "hit32" aus 37 Hits/Punches, https://opengameart.org/content/37-hitspunches
+   schwert.mp3 <- "Sabre Swing" (Teil 20) aus Medieval Sound Effects: Weapon Textures, https://opengameart.org/content/medieval-sound-effects-weapon-textures
+   schwert_treffer.mp3 <- "hit11" (Teil 0 (0.13-0.619 s)), https://opengameart.org/content/37-hitspunches
+   kolben.mp3 <- "metal_swing1" (Teil 0 (0.0-0.374 s)), https://opengameart.org/content/metal-interactions
+   kolben_treffer.mp3 <- "hit02" (Teil 0 (0.1-0.838 s)), https://opengameart.org/content/37-hitspunches
+   zweihaender_treffer.mp3 <- "hit07" (Teil 0 (0.05-0.823 s)), https://opengameart.org/content/37-hitspunches
+   dolch.mp3 <- "swing3" (Teil 0 (0.005-0.138 s)), https://opengameart.org/content/rpg-sound-pack
+   dolch_treffer.mp3 <- "blade_02" (Teil 0 (0.0-0.313 s)), https://opengameart.org/content/80-cc0-rpg-sfx
+   speer.mp3 <- "Scythian Recurve Heavy Arrow Pass" (Teil 2 (1.407-1.826 s)), https://opengameart.org/content/medieval-sound-effects-weapon-textures
+   speer_treffer.mp3 <- "hit14" (Teil 0 (0.08-0.534 s)), https://opengameart.org/content/37-hitspunches
+   bogen.mp3 <- "Scythian Recurve Heavy Arrow Pass" (Teil 5 (3.387-4.008 s)), https://opengameart.org/content/medieval-sound-effects-weapon-textures
+   pfeil_treffer.mp3 <- "bfh1_hit_08" (Teil 0 (0.0-0.39 s)), https://opengameart.org/content/75-cc0-breaking-falling-hit-sfx
+   wurfpfeil.mp3 <- "tin-whistle-whoosh-02" (Teil 0 (0.11-0.324 s)), https://opengameart.org/content/fantasy-sound-effects-tinysized-sfx
+   wurfpfeil_treffer.mp3 <- "bfh1_wood_hit_01" (Teil 0 (0.0-0.248 s)), https://opengameart.org/content/75-cc0-breaking-falling-hit-sfx
+   shuriken.mp3 <- "Scythian Recurve Arrow Passby" (Teil 2 (1.836-2.19 s)), https://opengameart.org/content/medieval-sound-effects-weapon-textures
+   shuriken_treffer.mp3 <- "blade_03" (Teil 0 (0.0-0.396 s)), https://opengameart.org/content/80-cc0-rpg-sfx
+   stab.mp3 <- "Retro Electric Sparks 01_s05" (Teil 0 (0.04-0.903 s)), https://opengameart.org/content/150-combat-sound-effects
+   wand.mp3 <- "bfh1_metal_falling_01" (Teil 0 (0.04-0.903 s)), https://opengameart.org/content/75-cc0-breaking-falling-hit-sfx
+   zweihaender.mp3 <- "Axe Swing" (Teil 5 (5.14-5.4 s), auf 35 % verlangsamt, dadurch tiefer und länger), https://opengameart.org/content/medieval-sound-effects-weapon-textures
+
+8) Vorspann-Fanfare (rogue-godot\modelle\ton\vorspann\fanfare.mp3), CC0 1.0
+   "Fantasy Choir 1" von cesisco (Cesar da Rocha) aus "Fantasy Choir - 3 orchestral pieces",
+   https://opengameart.org/node/53447 - Ausschnitt 22,8 bis 30,8 s, ein- und ausgeblendet,
+   Pegel angeglichen (grafik-test\vorspann-quellen). Namensnennung nicht verlangt.
+
+9) Vorspann-Musik Hack (1982) VR (rogue-godot\modelle\ton\vorspann\hack\musik.ogg), CC0 1.0
+   "Fantasy Choir 2" von cesisco (Cesar da Rocha) aus "Fantasy Choir - 3 orchestral pieces",
+   https://opengameart.org/node/53447 - ganzes Stueck (2:06), Pegel angeglichen (loudnorm -16 LUFS),
+   in Schleife bis OK. Peters Wahl 21.11.2026. Namensnennung nicht verlangt.
+
+10) Vorspann-Musik NetHack (1987) VR (rogue-godot\modelle\ton\vorspann\nethack\musik.ogg), CC0 1.0
+   "Epic Endgame Cinematic" (Datei ChoirChordsBassMaster) von cynicmusic (OpenGameArt),
+   https://opengameart.org/content/epic-endgame-cinematic - ganzes Stueck (1:31), Pegel angeglichen
+   (loudnorm -16 LUFS), in Schleife bis OK. Peters Wahl 21.11.2026. Namensnennung nicht verlangt.
+
+11) Texturen fuer NetHack-Sondergebiete (Poly Haven, CC0, wie unter 1; werkzeuge\texturen\polyhaven_holen.py, 2k):
+   Gnomenminen: cliff_side, rock_boulder_cracked, mossy_rock, rock_pitted_mossy, brown_mud_rocks_01, red_laterite_soil_stones
+   Sokoban: granite_wall, white_sandstone_blocks_02, sandstone_blocks_08, granite_tile, marble_tiles
+   Gehennom: red_sandstone_wall, terrain_red_01, burned_ground_01, cracked_red_ground, red_mud_stones
+
+12) Monster fuer NetHack (1987) und Hack (1982) (nethack-monster\3d, hack-monster\3d)
+   Wie unter 6: KI-erzeugt nach eigenen Vorgaben des Autors, lokal mit ComfyUI.
+   Standbilder mit Krea 2 Turbo (Krea 2 Community License), einige Frauenfiguren mit
+   Z-Image Turbo (Apache 2.0), freigestellt mit BiRefNet (MIT), daraus 3D mit TRELLIS.2 (MIT).
+   Im Paket sind nur die 3D-Modelle; ihre Texturen sind fuers Paket als JPEG gespeichert.
+   Hinweis: Diese Figuren sind mit kuenstlicher Intelligenz erzeugt.
+   Keine Bilder aus Qwen Image 2.1 und keine MiniMax-Inhalte.

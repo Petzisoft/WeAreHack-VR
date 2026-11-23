@@ -1,0 +1,52 @@
+WE ARE HACK - Rogue (1980) und NetHack (1987) als 3D- und VR-Dungeon (Vorschau)
+================================================================================
+
+Beim Start waehlt man im Menue das Spiel:
+  Rogue (1980)    von Michael Toy, Ken Arnold und Glenn Wichman
+  Hack (1982)     kommt bald
+  NetHack (1987)  von Mike Stephenson und dem NetHack DevTeam
+Gespielt wird in Ego-Perspektive, am Bildschirm und in VR. Die Spielregeln sind die
+der Originale. Die Spiele melden nur ihre Werte an die 3D-Ansicht.
+
+HINWEIS KI: Die Monster-Bilder und die 3D-Monster sind mit KI-Modellen erzeugt
+(Krea 2, Z-Image, TRELLIS.2), nach eigenen Vorgaben des Autors. Details und
+Lizenzen im Ordner "lizenzen" (Grafik-Quellen.txt).
+
+INSTALLIEREN UND STARTEN
+  1. WeAreHack-Setup.exe doppelklicken. Falls Windows warnt ("Der Computer wurde
+     durch Windows geschuetzt"): auf "Weitere Informationen" und dann "Trotzdem
+     ausfuehren" klicken. Die Programme sind nicht signiert, deshalb diese Warnung.
+     Das Setup braucht keine Administratorrechte. Eine fruehere Installation
+     "Rogue (1980) VR" wird dabei entfernt (Spielstaende bleiben erhalten).
+  2. Am Bildschirm spielen: Desktop-Verknuepfung "We Are Hack".
+  3. In VR spielen: zuerst die VR-Software starten (z. B. SteamVR, Meta Quest Link
+     oder eine andere OpenXR-Laufzeit) und die Brille aufsetzen, dann die
+     Desktop-Verknuepfung "We Are Hack VR".
+  Im Startmenue: Maus, Pfeiltasten + Enter, Controller (Steuerkreuz + A) oder in VR
+  Stick hoch/runter + A oder Abzug.
+  Wer die ZIP-Datei statt des Setups hat: entpacken und "We Are Hack starten.bat"
+  bzw. "We Are Hack VR starten.bat" doppelklicken.
+  Deinstallieren: Windows-Einstellungen > Apps > "We Are Hack".
+
+VORAUSSETZUNGEN
+  Windows 10 oder 11 (64 Bit), Grafikkarte mit Vulkan (empfohlen: RTX 3090 oder besser).
+  Ein Xbox-kompatibler Controller ist optional.
+
+STEUERUNG (F1 im Spiel zeigt die Hilfe)
+  Maus             umsehen (Esc oder F4 = Mauszeiger frei, Klick = wieder umsehen)
+  Pfeiltasten      vor / zurueck / um 90 Grad drehen (halten = weiterlaufen)
+  Ziffernblock     8 Richtungen, 5 = ausruhen
+  Umschalt + Pfeil rennen
+  Buchstaben       alle Befehle wie im Original (F5 = WASD-Laufen)
+  Tab              Befehlsmenue (essen, trinken, Ruestung ...)
+  i                Inventar
+
+  Controller: linker Stick gehen, rechter Stick umsehen, A weiter/aufheben,
+  B abbrechen, X suchen, Y Inventar, Start Befehlsmenue, Back Hilfe.
+
+LIZENZEN
+  Siehe Ordner "lizenzen". Rogue steht unter BSD-Lizenz, NetHack unter der
+  NetHack General Public License, Godot unter MIT-Lizenz, PDCurses ist gemeinfrei.
+  Texturen, Gegenstaende, Toene und Musik sind CC0 (gemeinfrei). Die KI-Monster
+  duerfen weitergegeben werden (Lizenzen von Krea 2, Z-Image/Apache 2.0,
+  TRELLIS.2/MIT). Alles im Ordner lizenzen.

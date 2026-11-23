@@ -1,0 +1,2 @@
+# Von Hand aufgestellte Figuren (Galerie, Taste T): Kennung|kippen x|y|z (Grad)|Höhe (cm)|verschoben rechts|hinten (cm)
+hk:b_Riesenkaefer|4.9|44.9|-0.2|4.8|1.9|12.9

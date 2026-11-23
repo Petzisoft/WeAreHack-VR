@@ -1,0 +1,5 @@
+PDCurses (https://pdcurses.org)
+
+Rogue wurde mit der Bibliothek PDCurses uebersetzt. Der Kern von PDCurses
+ist gemeinfrei (public domain); einzelne kleine Teile stehen unter anderen
+freien Lizenzen. Details: https://github.com/wmcbrine/PDCurses

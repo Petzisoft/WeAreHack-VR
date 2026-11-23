@@ -1,0 +1,14 @@
+Golem_Seilgolem|S|rope golem, a humanoid figure made entirely of thick coiled and knotted hemp ropes, rope strands wound around the limbs and torso, a head of tangled knots, loose rope ends dangling, clearly made of rope, menacing
+Golem_Glasgolem|S|glass golem, a humanoid figure made of clear transparent glass, you can see through its body, faceted sharp edges, light refracting and sparkling inside, faint cracks, menacing
+X_Schatten|S|shade, a ghostly shadow of a dead human, a tall wavering figure of black smoke and darkness in a tattered shroud, the outline frays into drifting black wisps and tendrils, hollow face with two faint pale glowing eyes, long thin shadowy fingers, floating above the ground with no feet, eerie
+Und_Knochenteufel|S|bone devil, a tall gaunt hunched devil whose dry yellowish-grey skin is stretched tightly over its bones, a skull-like head with fanged jaws and burning eyes, long clawed fingers, a large segmented scorpion tail with a venomous stinger curled up high over its head, clearly a demon, not a plain skeleton
+X_Geist|S|ghost, a classic translucent pale grey-white ghost of a dead person in a long flowing hooded burial shroud, the hood hiding a gaunt face with hollow dark eyes, the body semi-transparent and glowing faintly, the lower part fading into mist, floating above the ground, eerie
+d_Kojote|V|feral coyote, lean body with short smooth grey-brown fur lying flat and sleek along a straight smooth back, no raised fur, no ridge, no spikes, thin and hungry, snarling, bushy tail hanging down
+At_Elfenfuerst|A|elf-lord, a tall proud elf with long silver hair and pointed ears, ornate elven armor, holding a long elven sword
+At_Elfenkoenig|A|elvenking, a tall regal elf with long white hair, a silver crown, rich robes over elven armor, holding a sword, ageless cold eyes
+At_Earendil|A|earendil, a legendary elven mariner in shining silver armor and a blue cloak, a bright jewel glowing on his brow
+At_Elwing|A|elwing, an elven lady in a white flowing gown, long dark hair, a glowing jewel on her necklace
+At_Erzpriester|A|arch priest, an elderly high priest in white and gold robes, a tall mitre, holding a golden holy symbol
+At_ThothAmon|A|thoth amon, an evil egyptian sorcerer with a shaved head, dark robes, a serpent ring, dark magic in his hands
+At_Hochelf|A|high-elf, a tall noble elf in white and gold, long golden hair, pointed ears, holding an elven sword
+Tilde_Hai|T|a great white shark seen exactly from the side, swimming straight and horizontally, the body perfectly straight and not bent, dorsal fin pointing up, belly down, mouth closed, whole shark from snout to tail fin visible, no water, no base, no ground

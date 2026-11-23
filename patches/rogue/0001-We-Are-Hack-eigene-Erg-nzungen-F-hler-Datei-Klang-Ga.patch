@@ -1,0 +1,227 @@
+From ca8014416cc408f2e4557cf72ef1e9f4bee2f63b Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Claude=20=28f=C3=BCr=20Peter=29?= <noreply@anthropic.com>
+Date: Sat, 21 Nov 2026 08:14:31 +0100
+Subject: [PATCH] =?UTF-8?q?We=20Are=20Hack:=20eigene=20Erg=C3=A4nzungen=20?=
+ =?UTF-8?q?(F=C3=BChler-Datei,=20Klang-/Gangmeldungen,=20PDCurses-Fix=20in?=
+ =?UTF-8?q?=20main.c)?=
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>
+---
+ command.c | 101 ++++++++++++++++++++++++++++++++++++++++++++++++++++++
+ fight.c   |   4 +++
+ main.c    |   2 ++
+ rogue.h   |   1 +
+ sticks.c  |   1 +
+ weapons.c |   2 ++
+ 6 files changed, 111 insertions(+)
+
+diff --git a/command.c b/command.c
+index 186572b..8d40f0f 100644
+--- a/command.c
++++ b/command.c
+@@ -1,3 +1,4 @@
++#include <string.h>
+ /*
+  * Read and execute the user commands
+  *
+@@ -14,8 +15,11 @@
+ #include <string.h>
+ #include <curses.h>
+ #include <ctype.h>
++#include <stdio.h>
+ #include "rogue.h"
+ 
++static void fuehler_schreiben(void);
++
+ /*
+  * command:
+  *	Process the user commands
+@@ -55,6 +59,7 @@ command()
+ 	if (!running)
+ 	    door_stop = FALSE;
+ 	status();
++	fuehler_schreiben();	/* We Are Hack: Monsterwerte fuer die 3D-Ansicht */
+ 	lastscore = purse;
+ 	move(hero.y, hero.x);
+ 	if (!((running || count) && jump))
+@@ -818,3 +823,99 @@ current(THING *cur, char *how, char *where)
+ 	endmsg();
+     }
+ }
++
++
++/*
++ * fuehler_schreiben:
++ *	We Are Hack (3D-Ansicht): schreibt vor jedem Befehl die Werte aller
++ *	Monster dieser Ebene in %TEMP%\wearehack_monster.txt, damit die
++ *	Grafik Lebenspunkte und Zustand zeigen kann. Am Spielablauf aendert
++ *	sich dadurch nichts.
++ *	Zeile 1: ebene <nr> held <0|1> hp <aktuell> <max>
++ *	Dann Zeilen "spieler ...", "ausruestung ...", "ort ...", je Gegenstand
++ *	"ding x y typ art". Danach je Monster: x y buchstabe lp max_lp flags tarnung
++ */
++int klang_nr = 0;		/* We Are Hack: zaehlt Waffenereignisse fuer den Ton */
++char klang_text[120] = "";
++
++void
++klang(char *art, int waffe, char *ergebnis)
++{
++    klang_nr++;
++    sprintf(klang_text, "%.20s %d %.20s", art, waffe, ergebnis);
++}
++
++/* We Are Hack: Gang vor dem Spieler (nur echte Gaenge, keine geheimen), damit die 3D-Ansicht weiter sehen kann */
++static char gang_tiefe[NUMLINES][NUMCOLS];
++
++static void
++gang_melden(FILE *f, int y, int x, int d)
++{
++    int dy, dx, ny, nx;
++    char ch;
++
++    if (d > 4)
++	return;
++    for (dy = -1; dy <= 1; dy++)
++	for (dx = -1; dx <= 1; dx++)
++	{
++	    ny = y + dy;
++	    nx = x + dx;
++	    if (ny < 1 || ny >= NUMLINES - 1 || nx < 0 || nx >= NUMCOLS)
++		continue;
++	    if (gang_tiefe[ny][nx] <= d || !(flat(ny, nx) & F_REAL))
++		continue;
++	    ch = chat(ny, nx);
++	    if (ch != PASSAGE && ch != DOOR)
++		continue;
++	    gang_tiefe[ny][nx] = (char) d;
++	    fprintf(f, "gang %d %d %d\n", nx, ny, d);
++	    if (ch == PASSAGE)
++		gang_melden(f, ny, nx, d + 1);
++	}
++}
++
++static void
++fuehler_schreiben(void)
++{
++    static char pfad[512];
++    FILE *f;
++    THING *tp;
++    char *tmp;
++
++    if (pfad[0] == '\0')
++    {
++	tmp = getenv("TEMP");
++	sprintf(pfad, "%.480s/wearehack_monster.txt", tmp != NULL ? tmp : ".");
++    }
++    if ((f = fopen(pfad, "w")) == NULL)
++	return;
++    fprintf(f, "ebene %d held %d hp %d %d\n", level, on(player, ISHELD) ? 1 : 0,
++	pstats.s_hpt, max_hp);
++    fprintf(f, "spieler tiefste %d kraft %d %d ruestung %d stufe %d erfahrung %d gold %d hunger %d flags %d amulett %d\n",
++	max_level, (int) pstats.s_str, (int) max_stats.s_str,
++	cur_armor != NULL ? cur_armor->o_arm : pstats.s_arm,
++	pstats.s_lvl, pstats.s_exp, purse, hungry_state, (int) player.t_flags,
++	amulet ? 1 : 0);
++    fprintf(f, "ausruestung waffe %d ruestung %d\n",
++	cur_weapon != NULL ? cur_weapon->o_which : -1,
++	cur_armor != NULL ? cur_armor->o_which : -1);
++    if (klang_nr > 0)
++	fprintf(f, "klang %d %s\n", klang_nr, klang_text);
++    if (chat(hero.y, hero.x) == PASSAGE || chat(hero.y, hero.x) == DOOR)
++    {
++	memset(gang_tiefe, 99, sizeof gang_tiefe);
++	gang_tiefe[hero.y][hero.x] = 0;
++	gang_melden(f, hero.y, hero.x, 1);
++    }
++    fprintf(f, "ort x %d y %d dunkel %d gang %d\n", hero.x, hero.y,
++	proom != NULL && (proom->r_flags & ISDARK) ? 1 : 0,
++	proom != NULL && (proom->r_flags & ISGONE) ? 1 : 0);
++    for (tp = lvl_obj; tp != NULL; tp = next(tp))
++	fprintf(f, "ding %d %d %c %d\n", tp->o_pos.x, tp->o_pos.y, tp->o_type, tp->o_which);
++    for (tp = mlist; tp != NULL; tp = next(tp))
++	fprintf(f, "%d %d %c %d %d %d %c\n", tp->t_pos.x, tp->t_pos.y, tp->t_type,
++	    tp->t_stats.s_hpt, tp->t_stats.s_maxhp, (int) tp->t_flags,
++	    tp->t_disguise ? tp->t_disguise : '-');
++    fclose(f);
++}
+diff --git a/fight.c b/fight.c
+index d1228ea..e53efe9 100644
+--- a/fight.c
++++ b/fight.c
+@@ -104,6 +104,7 @@ fight(coord *mp, THING *weap, bool thrown)
+     has_hit = (terse && !to_death);
+     if (roll_em(&player, tp, weap, thrown))
+     {
++	klang(thrown ? "wurf" : "hieb", weap != NULL ? weap->o_which : -1, "treffer");
+ 	did_hit = FALSE;
+ 	if (thrown)
+ 	    thunk(weap, mname, terse);
+@@ -125,10 +126,13 @@ fight(coord *mp, THING *weap, bool thrown)
+ 	did_hit = TRUE;
+     }
+     else
++    {
++	klang(thrown ? "wurf" : "hieb", weap != NULL ? weap->o_which : -1, "daneben");
+ 	if (thrown)
+ 	    bounce(weap, mname, terse);
+ 	else
+ 	    miss((char *) NULL, mname, terse);
++    }
+     return did_hit;
+ }
+ 
+diff --git a/main.c b/main.c
+index 5e59efd..9a63e2b 100644
+--- a/main.c
++++ b/main.c
+@@ -238,8 +238,10 @@ tstp(int ignored)
+     getyx(curscr, y, x);
+     mvcur(y, x, oy, ox);
+     fflush(stdout);
++#ifndef __PDCURSES__	/* PDCurses hides WINDOW internals; Ctrl-Z suspend does not exist on Windows */
+     curscr->_cury = oy;
+     curscr->_curx = ox;
++#endif
+ }
+ 
+ /*
+diff --git a/rogue.h b/rogue.h
+index 099adaa..086cce6 100644
+--- a/rogue.h
++++ b/rogue.h
+@@ -751,3 +751,4 @@ extern char     *wood[];
+ extern int      cNWOOD;
+ extern char     *metal[];
+ extern int      cNMETAL;
++void klang(char *art, int waffe, char *ergebnis); /* We Are Hack: Waffenton */
+diff --git a/sticks.c b/sticks.c
+index 1fd58cf..f51efaa 100644
+--- a/sticks.c
++++ b/sticks.c
+@@ -55,6 +55,7 @@ do_zap()
+ 
+     if ((obj = get_item("zap with", STICK)) == NULL)
+ 	return;
++    klang("stab", -1, "");
+     if (obj->o_type != STICK)
+     {
+ 	after = FALSE;
+diff --git a/weapons.c b/weapons.c
+index 8c52410..c31e68c 100644
+--- a/weapons.c
++++ b/weapons.c
+@@ -55,6 +55,8 @@ missile(int ydelta, int xdelta)
+ 	return;
+     obj = leave_pack(obj, TRUE, FALSE);
+     do_motion(obj, ydelta, xdelta);
++    if (moat(obj->o_pos.y, obj->o_pos.x) == NULL)
++	klang("wurf", obj->o_which, "wand");
+     /*
+      * AHA! Here it has hit something.  If it is a wall or a door,
+      * or if it misses (combat) the monster, put it on the floor
+-- 
+2.49.0.windows.1
+

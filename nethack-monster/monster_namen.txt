@@ -1,0 +1,393 @@
+# englischer NetHack-Name|Quelle (nethack, hack, rogue)|Schlüssel|Größe in Metern aus monst.c (automatisch, namen_zuordnen.py)
+giant ant|hack|A_Riesenameise|0.5
+killer bee|hack|k_Killerbiene|0.5
+soldier ant|nethack|a_SoldatenAmeise|0.5
+fire ant|nethack|a_FeuerAmeise|0.5
+giant beetle|hack|b_Riesenkaefer|2.6
+queen bee|nethack|a_Bienenkoenigin|0.5
+acid blob|hack|a_Saeureklumpen|0.5
+quivering blob|hack|q_Zitterklumpen|1.0
+gelatinous cube|hack|g_Gallertwuerfel|2.6
+chickatrice|nethack|c_Chickatrice|0.5
+cockatrice|hack|c_Cockatrice|1.0
+pyrolisk|nethack|c_Pyrolisk|1.0
+jackal|hack|J_Schakal|1.0
+fox|nethack|d_Fuchs|1.0
+coyote|nethack|d_Kojote|1.0
+werejackal|nethack|d_Werschakal|1.0
+little dog|hack|d1_KleinerHund|1.0
+dingo|nethack|d_Dingo|1.8
+dog|hack|d2_Hund|1.8
+large dog|hack|d3_GrosserHund|1.8
+wolf|nethack|d_Wolf|1.8
+werewolf|nethack|d_Werwolf|1.8
+winter wolf cub|nethack|d_WinterwolfJunges|1.0
+warg|nethack|d_Warg|1.8
+winter wolf|nethack|d_Winterwolf|2.6
+hell hound pup|nethack|d_HoellenhundJunges|1.0
+hell hound|nethack|d_Hoellenhund|1.8
+Cerberus|nethack|d_Zerberus|2.6
+gas spore|nethack|e_Gassporen|1.0
+floating eye|hack|E_SchwebendesAuge|1.0
+freezing sphere|hack|F_Frostkugel|1.0
+flaming sphere|nethack|e_Flammenkugel|1.0
+shocking sphere|nethack|e_Blitzkugel|1.0
+beholder|nethack|e_Betrachter|1.0
+kitten|nethack|f_Kaetzchen|1.0
+housecat|nethack|f_Hauskatze|1.0
+jaguar|hack|j_Jaguar|2.6
+lynx|nethack|f_Luchs|1.0
+panther|nethack|f_Panther|2.6
+large cat|nethack|f_Grosskatze|1.0
+tiger|nethack|f_Tiger|2.6
+gremlin|nethack|g_Gremlin|1.0
+gargoyle|nethack|g_Gargoyle|1.8
+winged gargoyle|nethack|g_GefluegelteGargoyle|1.8
+hobbit|nethack|h_Hobbit|1.0
+dwarf|nethack|h_Zwerg|1.8
+bugbear|nethack|h_Grottenschrat|2.6
+dwarf lord|nethack|h_Zwergenfuerst|1.8
+dwarf king|nethack|h_Zwergenkoenig|1.8
+mind flayer|nethack|h_Gedankenschinder|1.8
+master mind flayer|nethack|h_MeisterGedankenschinder|1.8
+manes|nethack|i_Manes|1.0
+homunculus|hack|h_Homunkulus|0.5
+imp|hack|i_Imp|0.5
+lemure|nethack|i_Lemure|1.8
+quasit|hack|Q_Quasit|1.0
+tengu|hack|t_Tengu|1.0
+blue jelly|nethack|j_BlaueGallerte|1.8
+spotted jelly|nethack|j_GefleckteGallerte|1.8
+ochre jelly|nethack|j_OckerGallerte|1.8
+kobold|rogue|L|1.0
+large kobold|nethack|k_GrosserKobold|1.0
+kobold lord|nethack|k_Koboldfuerst|1.0
+kobold shaman|nethack|k_Koboldschamane|1.0
+leprechaun|rogue|L|0.5
+small mimic|rogue|X|1.8
+large mimic|rogue|X|2.6
+giant mimic|rogue|X|2.6
+wood nymph|rogue|N|1.8
+water nymph|nethack|n_Wassernymphe|1.8
+mountain nymph|nethack|n_Bergnymphe|1.8
+goblin|nethack|o_Goblin|1.0
+hobgoblin|rogue|H|1.8
+orc|rogue|O|1.8
+hill orc|nethack|o_Huegelork|1.8
+Mordor orc|nethack|o_MordorOrk|1.8
+Uruk-hai|nethack|o_UrukHai|1.8
+orc shaman|nethack|o_OrkSchamane|1.8
+orc-captain|nethack|o_OrkHauptmann|1.8
+rock piercer|hack|p_Durchbohrer|1.0
+iron piercer|nethack|p_Eisendurchbohrer|1.8
+glass piercer|nethack|p_Glasdurchbohrer|1.8
+rothe|nethack|q_Rothe|2.6
+mumak|nethack|q_Mumak|2.6
+leocrotta|hack|l_Leocrotta|2.6
+wumpus|nethack|q_Wumpus|2.6
+titanothere|nethack|q_Titanothere|2.6
+baluchitherium|nethack|q_Baluchitherium|2.6
+mastodon|nethack|q_Mastodon|2.6
+sewer rat|nethack|r_Kanalratte|0.5
+giant rat|hack|r_Riesenratte|0.5
+rabid rat|nethack|r_TollwutRatte|0.5
+wererat|nethack|r_Werratte|0.5
+rock mole|nethack|r_Felsmaulwurf|1.0
+woodchuck|nethack|r_Murmeltier|1.0
+cave spider|nethack|s_Hoehlenspinne|0.5
+centipede|nethack|s_Hundertfuesser|0.5
+giant spider|nethack|s_Riesenspinne|2.6
+scorpion|hack|s_Skorpion|1.0
+lurker above|hack|Tilde_LauererVonOben|3.6
+trapper|hack|Komma_Fallensteller|3.6
+pony|nethack|u_Pony|1.8
+white unicorn|nethack|u_WeissesEinhorn|2.6
+gray unicorn|nethack|u_GrauesEinhorn|2.6
+black unicorn|rogue|U|2.6
+horse|nethack|u_Pferd|2.6
+warhorse|nethack|u_Kriegspferd|2.6
+fog cloud|hack|f_Nebelwolke|3.6
+dust vortex|nethack|v_Staubwirbel|3.6
+ice vortex|nethack|v_Eiswirbel|3.6
+energy vortex|nethack|v_Energiewirbel|3.6
+steam vortex|nethack|v_Dampfwirbel|3.6
+fire vortex|nethack|v_Feuerwirbel|3.6
+baby long worm|nethack|w_JungerLangwurm|2.6
+baby purple worm|nethack|w_JungerPurpurwurm|2.6
+long worm|hack|w_Langwurm|4.6
+purple worm|hack|P_Purpurwurm|4.6
+grid bug|nethack|x_Gitterkaefer|0.5
+xan|hack|x_Xan|0.5
+yellow light|hack|y_GelbesLicht|1.0
+black light|nethack|y_SchwarzesLicht|1.0
+zruty|hack|z_Zruty|2.6
+couatl|nethack|A_Couatl|2.6
+Aleax|nethack|A_Aleax|1.8
+Angel|nethack|A_Engel|1.8
+ki-rin|nethack|A_KiRin|2.6
+Archon|nethack|A_Archon|2.6
+bat|rogue|B|0.5
+giant bat|nethack|B_Riesenfledermaus|1.0
+raven|nethack|B_Rabe|1.0
+vampire bat|nethack|B_Vampirfledermaus|1.0
+plains centaur|rogue|C|2.6
+forest centaur|nethack|C_Waldzentaur|2.6
+mountain centaur|nethack|C_Bergzentaur|2.6
+baby gray dragon|nethack|D_JungerGrauerDrache|3.6
+baby silver dragon|nethack|D_JungerSilberdrache|3.6
+baby shimmering dragon|nethack|D_JungerSchillerdrache|3.6
+baby red dragon|nethack|D_JungerRoterDrache|3.6
+baby white dragon|nethack|D_JungerWeisserDrache|3.6
+baby orange dragon|nethack|D_JungerOrangeDrache|3.6
+baby black dragon|nethack|D_JungerSchwarzerDrache|3.6
+baby blue dragon|nethack|D_JungerBlauerDrache|3.6
+baby green dragon|nethack|D_JungerGruenerDrache|3.6
+baby yellow dragon|nethack|D_JungerGelberDrache|3.6
+gray dragon|nethack|D_GrauerDrache|4.6
+silver dragon|nethack|D_Silberdrache|4.6
+shimmering dragon|nethack|D_Schillerdrache|4.6
+red dragon|nethack|D_RoterDrache|4.6
+white dragon|nethack|D_WeisserDrache|4.6
+orange dragon|nethack|D_OrangeDrache|4.6
+black dragon|nethack|D_SchwarzerDrache|4.6
+blue dragon|nethack|D_BlauerDrache|4.6
+green dragon|nethack|D_GruenerDrache|4.6
+yellow dragon|nethack|D_GelberDrache|4.6
+stalker|hack|I_Pirscher|2.6
+air elemental|nethack|E_Luftelementar|3.6
+fire elemental|nethack|E_Feuerelementar|3.6
+earth elemental|nethack|E_Erdelementar|3.6
+water elemental|nethack|E_Wasserelementar|3.6
+lichen|nethack|F_Flechte|1.0
+brown mold|nethack|F_BraunerSchimmel|1.0
+yellow mold|nethack|F_GelberSchimmel|1.0
+green mold|nethack|F_GruenerSchimmel|1.0
+red mold|nethack|F_RoterSchimmel|1.0
+shrieker|nethack|F_Kreischer|1.0
+violet fungus|hack|v_VioletterPilz|1.0
+gnome|hack|G_Gnom|1.0
+gnome lord|nethack|G_Gnomenfuerst|1.0
+gnomish wizard|nethack|G_Gnomenzauberer|1.0
+gnome king|nethack|G_Gnomenkoenig|1.0
+giant|nethack|H_Riese|3.6
+stone giant|nethack|H_Steinriese|3.6
+hill giant|nethack|H_Huegelriese|3.6
+fire giant|nethack|H_Feuerriese|3.6
+frost giant|nethack|H_Frostriese|3.6
+ettin|hack|e_Ettin|3.6
+storm giant|nethack|H_Sturmriese|3.6
+titan|nethack|H_Titan|3.6
+minotaur|hack|m_Minotaurus|2.6
+jabberwock|rogue|J|2.6
+vorpal jabberwock|nethack|J_VorpalJabberwock|2.6
+Keystone Kop|nethack|K_Polizist|1.8
+Kop Sergeant|nethack|K_KopSergeant|1.8
+Kop Lieutenant|nethack|K_KopLeutnant|1.8
+Kop Kaptain|nethack|K_KopKapitaen|1.8
+lich|nethack|L_Lich|1.8
+demilich|nethack|L_Demilich|1.8
+master lich|nethack|L_Meisterlich|1.8
+arch-lich|nethack|L_Erzlich|1.8
+kobold mummy|nethack|M_Koboldmumie|1.0
+gnome mummy|nethack|M_Gnomenmumie|1.0
+orc mummy|nethack|M_Orkmumie|1.8
+dwarf mummy|nethack|M_Zwergenmumie|1.8
+elf mummy|nethack|M_Elfenmumie|1.8
+human mummy|nethack|M_Menschenmumie|1.8
+ettin mummy|nethack|M_Ettinmumie|3.6
+giant mummy|nethack|M_Riesenmumie|3.6
+red naga hatchling|nethack|N_JungeRoteNaga|2.6
+black naga hatchling|nethack|N_JungeSchwarzeNaga|2.6
+golden naga hatchling|nethack|N_JungeGoldeneNaga|2.6
+guardian naga hatchling|nethack|N_JungeWaechterNaga|2.6
+red naga|nethack|N_RoteNaga|3.6
+black naga|nethack|N_SchwarzeNaga|3.6
+golden naga|nethack|N_GoldeneNaga|3.6
+guardian naga|nethack|N_WaechterNaga|3.6
+ogre|nethack|O_Oger|2.6
+ogre lord|nethack|O_Ogerfuerst|2.6
+ogre king|nethack|O_Ogerkoenig|2.6
+gray ooze|nethack|P_GrauerSchleim|1.8
+brown pudding|nethack|P_BraunerPudding|1.8
+green slime|nethack|P_GruenerSchleim|2.6
+black pudding|nethack|P_SchwarzerPudding|2.6
+quantum mechanic|nethack|Q_Quantenmechaniker|1.8
+rust monster|hack|R_Rostmonster|1.8
+disenchanter|nethack|R_Entzauberer|2.6
+garter snake|nethack|S_Strumpfbandnatter|0.5
+snake|rogue|S|1.0
+water moccasin|nethack|S_Wassermokassin|1.0
+python|nethack|S_Python|2.6
+pit viper|nethack|S_Grubenotter|1.8
+cobra|nethack|S_Kobra|1.8
+troll|rogue|T|2.6
+ice troll|nethack|T_Eistroll|2.6
+rock troll|nethack|T_Felstroll|2.6
+water troll|nethack|T_Wassertroll|2.6
+Olog-hai|nethack|T_OlogHai|2.6
+umber hulk|hack|U_UmberHulk|2.6
+vampire|rogue|V|1.8
+vampire lord|nethack|V_Vampirfuerst|1.8
+vampire mage|nethack|V_Vampirmagier|1.8
+Vlad the Impaler|nethack|V_VladDerPfaehler|1.8
+barrow wight|nethack|W_Grabunhold|1.8
+wraith|rogue|W|1.8
+Nazgul|nethack|W_Nazgul|1.8
+xorn|hack|X_Xorn|1.8
+monkey|nethack|Y_Affe|1.0
+ape|nethack|Y_MenschenAffe|2.6
+owlbear|hack|o_Eulenbaer|2.6
+yeti|rogue|Y|2.6
+carnivorous ape|nethack|Y_Fleischfresseraffe|2.6
+sasquatch|nethack|Y_Sasquatch|2.6
+kobold zombie|nethack|Z_Koboldzombie|1.0
+gnome zombie|nethack|Z_Gnomenzombie|1.0
+orc zombie|nethack|Z_Orkzombie|1.8
+dwarf zombie|nethack|Z_Zwergenzombie|1.8
+elf zombie|nethack|Z_Elfenzombie|1.8
+human zombie|rogue|Z|1.8
+ettin zombie|nethack|Z_Ettinzombie|3.6
+ghoul|nethack|Z_Ghul|1.0
+giant zombie|nethack|Z_Riesenzombie|3.6
+skeleton|nethack|Z_Skelett|1.8
+straw golem|nethack|Golem_Strohgolem|2.6
+paper golem|nethack|Golem_Papiergolem|2.6
+rope golem|nethack|Golem_Seilgolem|2.6
+gold golem|nethack|Golem_Goldgolem|2.6
+leather golem|nethack|Golem_Ledergolem|2.6
+wood golem|nethack|Golem_Holzgolem|2.6
+flesh golem|nethack|Golem_Fleischgolem|2.6
+clay golem|nethack|Golem_Lehmgolem|2.6
+stone golem|nethack|Golem_Steingolem|2.6
+glass golem|nethack|Golem_Glasgolem|2.6
+iron golem|nethack|Golem_Eisengolem|2.6
+human|nethack|At_Mensch|1.8
+wererat|nethack|r_Werratte|0.5
+werejackal|nethack|d_Werschakal|1.0
+werewolf|nethack|d_Werwolf|1.8
+elf|nethack|At_Elf|1.8
+Woodland-elf|nethack|At_Waldelf|1.8
+Green-elf|nethack|At_Gruenelf|1.8
+Grey-elf|nethack|At_Grauelf|1.8
+elf-lord|nethack|At_Elfenfuerst|1.8
+Elvenking|nethack|At_Elfenkoenig|1.8
+doppelganger|nethack|At_Doppelgaenger|1.8
+shopkeeper|hack|At_Ladenbesitzer|1.8
+guard|nethack|At_Wache|1.8
+prisoner|nethack|At_Gefangener|1.8
+Oracle|nethack|At_Orakel|1.8
+aligned priest|nethack|At_Priester|1.8
+high priest|nethack|At_Hohepriester|1.8
+soldier|nethack|At_Soldat|1.8
+sergeant|nethack|At_Feldwebel|1.8
+nurse|hack|n_Krankenschwester|1.8
+lieutenant|nethack|At_Leutnant|1.8
+captain|nethack|At_Hauptmann|1.8
+watchman|nethack|At_Waechter|1.8
+watch captain|nethack|At_Wachhauptmann|1.8
+Medusa|rogue|M|2.6
+Wizard of Yendor|nethack|At_ZaubererVonYendor|1.8
+Croesus|nethack|At_Kroesus|1.8
+Charon|nethack|At_Charon|1.8
+ghost|nethack|X_Geist|1.8
+shade|nethack|X_Schatten|1.8
+water demon|nethack|Und_Wasserdaemon|1.8
+succubus|nethack|Und_Sukkubus|1.8
+horned devil|nethack|Und_GehoernterTeufel|1.8
+incubus|nethack|Und_Inkubus|1.8
+erinys|nethack|Und_Erinnye|1.8
+barbed devil|nethack|Und_Stachelteufel|1.8
+marilith|nethack|Und_Marilith|2.6
+vrock|nethack|Und_Vrock|2.6
+hezrou|nethack|Und_Hezrou|2.6
+bone devil|nethack|Und_Knochenteufel|2.6
+ice devil|nethack|Und_Eisteufel|2.6
+nalfeshnee|nethack|Und_Nalfeshnee|2.6
+pit fiend|nethack|Und_Grubenunhold|2.6
+sandestin|nethack|Und_Sandestin|1.8
+balrog|nethack|Und_Balrog|2.6
+Juiblex|nethack|Und_Juiblex|2.6
+Yeenoghu|nethack|Und_Yeenoghu|2.6
+Orcus|nethack|Und_Orcus|3.6
+Geryon|nethack|Und_Geryon|3.6
+Dispater|nethack|Und_Dispater|1.8
+Baalzebub|nethack|Und_Baalzebub|2.6
+Asmodeus|nethack|Und_Asmodeus|3.6
+Demogorgon|nethack|Und_Demogorgon|3.6
+Death|nethack|Und_Tod|1.8
+Pestilence|nethack|Und_Pestilenz|1.8
+Famine|nethack|Und_Hunger|1.8
+mail daemon|nethack|Und_Postdaemon|1.8
+djinni|nethack|Und_Dschinn|1.8
+jellyfish|nethack|Tilde_Qualle|1.0
+piranha|nethack|Tilde_Piranha|1.0
+shark|nethack|Tilde_Hai|2.6
+giant eel|nethack|Tilde_Riesenaal|3.6
+electric eel|nethack|Tilde_Zitteraal|3.6
+kraken|nethack|Tilde_Krake|3.6
+newt|nethack|Doppelpunkt_Molch|0.5
+gecko|nethack|Doppelpunkt_Gecko|0.5
+iguana|nethack|Doppelpunkt_Leguan|0.5
+baby crocodile|nethack|Doppelpunkt_JungesKrokodil|1.8
+lizard|nethack|Doppelpunkt_Eidechse|0.5
+chameleon|hack|Doppelpunkt_Chamaeleon|0.5
+crocodile|nethack|Doppelpunkt_Krokodil|2.6
+salamander|nethack|Doppelpunkt_Salamander|1.8
+archeologist|nethack|At_Archaeologe|1.8
+barbarian|nethack|At_Barbar|1.8
+caveman|nethack|At_Hoehlenmensch|1.8
+cavewoman|nethack|At_Hoehlenfrau|1.8
+healer|nethack|At_Heiler|1.8
+knight|nethack|At_Ritter|1.8
+monk|nethack|At_Moench|1.8
+priest|nethack|At_Priester|1.8
+priestess|nethack|At_Priesterin|1.8
+ranger|nethack|At_Waldlaeufer|1.8
+rogue|nethack|At_Schurke|1.8
+samurai|nethack|At_Samurai|1.8
+tourist|nethack|At_Tourist|1.8
+valkyrie|nethack|At_Walkuere|1.8
+wizard|nethack|At_Zauberer|1.8
+Lord Carnarvon|nethack|At_LordCarnarvon|1.8
+Pelias|nethack|At_Pelias|1.8
+Shaman Karnov|nethack|At_SchamaneKarnov|1.8
+Earendil|nethack|At_Earendil|1.8
+Elwing|nethack|At_Elwing|1.8
+Hippocrates|nethack|At_Hippokrates|1.8
+King Arthur|nethack|At_KoenigArtus|1.8
+Grand Master|nethack|At_Grossmeister|1.8
+Arch Priest|nethack|At_Erzpriester|1.8
+Orion|nethack|At_Orion|3.6
+Master of Thieves|nethack|At_MeisterDerDiebe|1.8
+Lord Sato|nethack|At_LordSato|1.8
+Twoflower|nethack|At_Twoflower|1.8
+Norn|nethack|At_Norn|3.6
+Neferet the Green|nethack|At_NeferetDieGruene|1.8
+Minion of Huhetotl|nethack|Und_DienerHuhetotls|2.6
+Thoth Amon|nethack|At_ThothAmon|1.8
+Chromatic Dragon|nethack|D_ChromatischerDrache|4.6
+Goblin King|nethack|o_Goblinkoenig|1.8
+Cyclops|nethack|H_Zyklop|3.6
+Ixoth|nethack|D_Ixoth|4.6
+Master Kaen|nethack|At_MeisterKaen|1.8
+Nalzok|nethack|Und_Nalzok|2.6
+Scorpius|nethack|s_Scorpius|1.8
+Master Assassin|nethack|At_Meisterassassine|1.8
+Ashikaga Takauji|nethack|At_AshikagaTakauji|1.8
+Lord Surtur|nethack|H_LordSurtur|3.6
+Dark One|nethack|At_DerDunkleEine|1.8
+student|nethack|At_Student|1.8
+chieftain|nethack|At_Haeuptling|1.8
+neanderthal|nethack|At_Neandertaler|1.8
+High-elf|nethack|At_Hochelf|1.8
+attendant|nethack|At_Diener|1.8
+page|nethack|At_Page|1.8
+abbot|nethack|At_Abt|1.8
+acolyte|nethack|At_Akolyth|1.8
+hunter|nethack|At_Jaeger|1.8
+thug|nethack|At_Schlaeger|1.8
+ninja|nethack|At_Ninja|1.8
+roshi|nethack|At_Roshi|1.8
+guide|nethack|At_Fuehrer|1.8
+warrior|nethack|At_Krieger|1.8
+apprentice|nethack|At_Lehrling|1.8

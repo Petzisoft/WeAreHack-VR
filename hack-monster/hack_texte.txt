@@ -1,0 +1,45 @@
+d1_KleinerHund|friendly wire-haired dachshund dog, the loyal companion of a dungeon adventurer, long low body and short legs, dark brown and tan coat, a worn leather collar, warm intelligent eyes, alert and brave, tail up
+d2_Hund|Romanian Carpathian shepherd dog, big wolf-like dog, dense wolf-grey and fawn coat with old scars, spiked iron collar, intense intelligent amber eyes, snarling with bared fangs, hackles raised
+d3_GrosserHund|huge Romanian Carpathian shepherd war dog, massive muscular body with short dense smooth dark wolf-grey fur lying flat along a straight smooth back, no raised hackles, no spikes on the back, a few battle scars, heavy spiked iron collar, glowing amber eyes, snarling jaws with long fangs
+G_Gnom|small wizened gnome miner, knee-high, wrinkled grey skin, long matted beard, crooked nose, beady glowing eyes, ragged hooded tunic, small rusty pickaxe, sly and malicious
+J_Schakal|feral starving jackal, mangy patchy yellow-grey fur, visible ribs, snarling with bared yellow teeth, pointed ears, standing on four legs
+K_Kobold|small reptilian kobold, scaly rust-red skin, dog-like snout with small horns, yellow eyes, sharp teeth, ragged loincloth, crude spear
+r_Riesenratte|giant sewer rat the size of a dog, filthy matted dark fur, long naked scaly tail, red eyes, long yellow incisors, standing on four legs
+a_Saeureklumpen|acid blob, a low wide shapeless puddle-like dome of glistening translucent yellow-green slime lying on the ground, bubbling and smoking with corrosive acid, half-dissolved bones and a skull inside it, no face, no limbs
+E_SchwebendesAuge|floating eye, one single gigantic bloodshot eyeball the size of a human head hovering in the air, wet glistening veined white surface, enormous hypnotic pale blue iris and black pupil looking straight at the viewer, a few thin dangling nerve tendrils below, no wings, no body
+h_Homunkulus|homunculus, a tiny grotesque artificial man created by an alchemist, a hairless wrinkled grey-green body like a withered newborn, an oversized bald head with big black eyes, small leathery bat wings, long thin clawed fingers, a mouth full of needle teeth, crouching
+i_Imp|small vicious imp devil, dark red leathery skin, small curved horns, bat-like wings, a long tail ending in a venomous barbed stinger, sharp grin full of needle teeth, glowing yellow eyes
+y_GelbesLicht|yellow light, a floating sphere of glowing sickly yellow light hovering in darkness, crackling energy and faint rays, eerie and dangerous
+A_Riesenameise|giant ant the size of a large dog, glossy black-brown armored body, huge serrated mandibles, segmented antennae, six legs
+f_Nebelwolke|fog cloud, a dense swirling grey mist cloud with a vague menacing shape, hollow dark eye-like voids and a gaping mouth in the vapor, wisps curling outward
+p_Durchbohrer|piercer, a short thick creature shaped like a rocky stalactite, pointed tip downward, grey stone-like ridged shell, a wet toothed maw and two small eyes near the pointed tip, the whole creature including its flat broken top end visible and floating in the middle of the image
+Q_Quasit|quasit, a tiny wiry demon with warty green skin, small curved horns, long clawed fingers and toes, pointed ears, a long barbed tail, hunched, malicious glowing red eyes
+q_Zitterklumpen|quivering blob, a large trembling mass of pale white translucent jelly, faint veins and organs visible inside, wobbling
+v_VioletterPilz|violet fungus, a man-sized purple mushroom monster, thick fleshy pale stalk, ragged violet cap, four long rubbery purple tendril arms hanging down to grab prey, rotting and slimy
+b_Riesenkaefer|giant beetle the size of a pony, thick black chitin armor with a dark oily sheen, huge pincer mandibles, spiky legs
+c_Cockatrice|cockatrice, a monster with the head and body of a large scrawny rooster, a red comb and wattles, a sharp beak, leathery bat-like wings, a long scaly lizard tail, clawed bird legs, deadly glaring eyes
+g_Gallertwuerfel|gelatinous cube, a huge transparent cube of quivering greenish jelly filling a corridor, half-dissolved skeletons, a rusty sword and coins suspended inside it
+j_Jaguar|wild jaguar, golden coat with black rosettes, muscular, crouched ready to pounce, snarling with long fangs, standing on four legs
+k_Killerbiene|giant killer bee the size of a cat, black and yellow striped hairy body, translucent buzzing wings, huge dripping stinger, compound eyes
+F_Frostkugel|freezing sphere, a floating orb of glowing icy blue light surrounded by frost crystals and freezing mist, crackling with cold
+o_Eulenbaer|owlbear, a massive bear body covered in matted brown fur and ragged feathers, the head of a huge horned owl with a wide open hooked beak screaming, huge round furious blood-red eyes, long curved bear claws raised to attack, blood on the claws and feathers, standing upright
+R_Rostmonster|rust monster, an armored insect-like creature with four legs, a rust-red and yellowish plated hide, two long feathery antennae, a tail ending in a flat bony paddle, flakes of rust falling around it
+s_Skorpion|giant scorpion the size of a horse, black armored segments, huge pincers raised, curled tail with a dripping stinger
+t_Tengu|tengu, a crow-headed goblin with black feathers, a long sharp beak, red glaring eyes, black feathered wings folded, clawed hands, ragged monk robe
+w_Langwurm|long worm, a gigantic pale pinkish-grey segmented worm lying coiled in loops on the ground with its head raised, round mouth with rings of teeth facing the viewer, the whole coiled body visible
+l_Leocrotta|leocrotta, a large beast with the body and cloven hooves of a stag, the neck, chest and tail of a lion, the head of a badger, a huge mouth splitting the head to the ears with jagged bony ridges instead of teeth, standing on four legs
+M_Mimic|mimic, an old iron-bound wooden dungeon door standing upright on its own that is secretly a living monster, the lower half of the wood melting into grey sticky flesh, a huge mouth with rows of sharp teeth opened in the middle of the door, one bulging eye in the wood, sticky pseudopods reaching out from its sides
+I_Pirscher|invisible stalker, a tall humanoid shape made of swirling invisible air, only a faint shimmering distortion of dust and wind shows its body outline and long arms, two glowing eyes
+U_UmberHulk|umber hulk, a massive hulking beetle-like humanoid with dark brown-black chitin armor, huge mandibles, two large compound eyes and two smaller eyes, enormous digging claws, standing upright
+X_Xorn|xorn, a creature made of stone, a thick barrel-shaped rocky body, three thick stone arms, three legs, a huge mouth with stone teeth on the top of its body, eyes all around
+x_Xan|xan, a giant mosquito-like insect with a long needle stinger on its legs, translucent wings, red compound eyes, thin legs
+z_Zruty|zruty, a gigantic brutish forest beast, hairy and huge, half ape half troll, long arms, primitive and savage
+Doppelpunkt_Chamaeleon|chameleon monster, a large lizard-like creature whose skin shifts colors and patterns, rolling turret eyes, long curled tail, standing on four legs
+e_Ettin|ettin, a huge two-headed giant, both heads ugly, brutish and arguing, filthy furs and crude rusty armor, a spiked morningstar in each hand
+Tilde_LauererVonOben|lurker above, a huge flat manta-like creature that clings to the ceiling, dark grey stony-looking skin, wide flat body edges, a hidden maw on its underside
+n_Krankenschwester|sinister nurse from a dark fantasy dungeon, pale woman in an old bloodstained grey nurse uniform and white cap, cold empty smile, holding a large syringe
+Komma_Fallensteller|trapper, a huge flat ray-like monster in the moment it strikes, its upper side camouflaged as cracked grey dungeon flagstones, its wide edges curling up high like a closing blanket or giant jaws, the inside is raw wet red flesh with rows of small teeth and a gaping maw in the center, mucus dripping, seen from the front at a low angle
+P_Purpurwurm|purple worm, a gigantic burrowing worm with violet segmented skin, a huge round mouth full of teeth, a venomous stinger on its tail
+Und_Daemon|demon, a tall terrifying horned demon with dark red skin, huge bat wings, burning eyes, sharp claws, hooved feet
+m_Minotaurus|minotaur, a towering muscular man with the head of a huge bull, long horns, dark fur, wild eyes, holding a massive double-bladed axe
+At_Ladenbesitzer|grim dungeon shopkeeper, a big stern bearded man in a dirty leather apron and dark robes, keys and coin pouches on the belt, holding a pickaxe
